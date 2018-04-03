@@ -47,8 +47,9 @@ class SliderController extends AdminController
     public function store(Request $request)
     {
         $rules = [
-            'title' => 'max:30',
-            'description' => 'max:100',
+            'small_title' => 'max:30',
+            'big_title' => 'max:30',
+            'description' => 'max:200',
             'link' => 'max:100',
             'link_text' => 'max:15',
             'status' => 'required'
@@ -66,7 +67,8 @@ class SliderController extends AdminController
         } else {
 
             $slider = new Slider();
-            $slider->title = $request->input('title');
+            $slider->small_title = $request->input('small_title');
+            $slider->big_title = $request->input('big_title');
             $slider->description = $request->input('description');
             $slider->link = $request->input('link');
             $slider->link_text = $request->input('link_text');
@@ -125,8 +127,9 @@ class SliderController extends AdminController
     {
         $slider = Slider::find($id);
         $rules = [
-            'title' => 'max:30',
-            'description' => 'max:100',
+            'small_title' => 'max:30',
+            'big_title' => 'max:30',
+            'description' => 'max:200',
             'link' => 'max:100',
             'link_text' => 'max:15',
             'status' => 'required'
@@ -144,7 +147,8 @@ class SliderController extends AdminController
                 ->withErrors($validator)
                 ->with('image', $slider);
         }
-        $slider->title = $request->input('title');
+        $slider->small_title = $request->input('small_title');
+        $slider->big_title = $request->input('big_title');
         $slider->description = $request->input('description');
         $slider->link = $request->input('link');
         $slider->status = $request->input('status');

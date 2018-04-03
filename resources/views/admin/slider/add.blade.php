@@ -24,11 +24,16 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Title</label>
-                                        <input type="text" name="title" class="form-control border-input"
-                                               placeholder="Ex: Talbarahi Mandir" value="{{ old('title') }}">
+                                        <label>Small Title</label>
+                                        <input type="text" name="small_title" class="form-control border-input" value="{{ old('small_title') }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Big Title</label>
+                                        <input type="text" name="big_title" class="form-control border-input" value="{{ old('big_title') }}">
                                     </div>
                                 </div>
                             </div>
@@ -36,8 +41,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea name="description" rows="5" class="form-control border-input"
-                                                  placeholder="Ex: Talbarahi is located in Pokhara.">{{ old('description') }}</textarea>
+                                        <textarea name="description" rows="5" class="form-control border-input">{{ old('description') }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +51,7 @@
                                         <div class="form-group">
                                             <label>Link</label>
                                             <input type="text" name="link" class="form-control border-input"
-                                                   placeholder="ex: www.facebook.com/journey-planner" value="{{ old('link') }}">
+                                                   placeholder="ex: www.facebook.com/the-royal-hotel" value="{{ old('link') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -57,7 +61,6 @@
                                                    placeholder="ex: Visit Now" value="{{ old('link_text') }}">
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                             <div class="row">

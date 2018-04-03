@@ -30,11 +30,16 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Title</label>
-                                        <input type="text" name="title" class="form-control border-input"
-                                               placeholder="Ex: Talbarahi Mandir" value="{{ $image->title  }}">
+                                        <label>Small Title</label>
+                                        <input type="text" name="small_title" class="form-control border-input" value="{{ $image->small_title  }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Big Title</label>
+                                        <input type="text" name="big_title" class="form-control border-input" value="{{ $image->big_title  }}">
                                     </div>
                                 </div>
                             </div>
@@ -42,17 +47,26 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea name="description" rows="5" class="form-control border-input"
-                                                  placeholder="Ex: Talbarahi is located in Pokhara.">{{ $image->description }}</textarea>
+                                        <textarea name="description" rows="5" class="form-control border-input">{{ $image->description }}</textarea>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Link</label>
-                                        <input type="text" name="link" class="form-control border-input"
-                                               placeholder="ex: Link" value="{{ $image->link }}">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label>Link</label>
+                                            <input type="text" name="link" class="form-control border-input"
+                                                   placeholder="ex: www.facebook.com/the-royal-hotel" value="{{ $image->link }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Link Text</label>
+                                            <input type="text" name="link_text" class="form-control border-input"
+                                                   placeholder="ex: Book Now" value="{{ $image->link_text }}">
+                                        </div>
                                     </div>
                                 </div>
                             </div>

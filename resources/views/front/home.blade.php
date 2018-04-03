@@ -5,34 +5,24 @@
     <div>
         <div class="slider fullscreen">
             <ul class="slides">
-                <li> <img src="{{ asset("front/images/slider/1.jpg") }}" alt="">
+                @forelse($images as $image)
+                <li> <img src="{{'/storage/slider/'.$image->name}}" alt="">
+                    <!-- random image -->
+                    <div class="caption center-align slid-cap">
+                        <h5 class="light grey-text text-lighten-3">{{ $image->small_title }}</h5>
+                        <h2>{{ $image->big_title }}</h2>
+                        <p>{{ $image->description }}</p>
+                        <a href="{{ $image->link }}" class="waves-effect waves-light">{{ $image->link_text }}</a></div>
+                </li>
+                    @empty
+                    <li> <img src="{{ asset("front/images/slider/1.jpg") }}" alt="">
                     <!-- random image -->
                     <div class="caption center-align slid-cap">
                         <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
                         <h2>This is our big Tagline!</h2>
                         <p>Mauris non placerat nulla. Sed vestibulum quam mauris, et malesuada tortor venenatis at.Aenean euismod sem porta est consectetur posuere. Praesent nisi velit, porttitor ut imperdiet a, pellentesque id mi.</p> <a href="#" class="waves-effect waves-light">Booking</a></div>
                 </li>
-                <li> <img src="{{ asset("front/images/slider/2.jpg") }}" alt="">
-                    <!-- random image -->
-                    <div class="caption center-align slid-cap">
-                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                        <h2>This is our big Tagline!</h2>
-                        <p>Mauris non placerat nulla. Sed vestibulum quam mauris, et malesuada tortor venenatis at.Aenean euismod sem porta est consectetur posuere. Praesent nisi velit, porttitor ut imperdiet a, pellentesque id mi.</p> <a href="#" class="waves-effect waves-light">Booking</a></div>
-                </li>
-                <li> <img src="{{ asset("front/images/slider/3.jpg") }}" alt="">
-                    <!-- random image -->
-                    <div class="caption center-align slid-cap">
-                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                        <h2>This is our big Tagline!</h2>
-                        <p>Mauris non placerat nulla. Sed vestibulum quam mauris, et malesuada tortor venenatis at.Aenean euismod sem porta est consectetur posuere. Praesent nisi velit, porttitor ut imperdiet a, pellentesque id mi.</p> <a href="#" class="waves-effect waves-light">Booking</a></div>
-                </li>
-                <li> <img src="{{ asset("front/images/slider/4.jpg") }}" alt="">
-                    <!-- random image -->
-                    <div class="caption center-align slid-cap">
-                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
-                        <h2>This is our big Tagline!</h2>
-                        <p>Mauris non placerat nulla. Sed vestibulum quam mauris, et malesuada tortor venenatis at.Aenean euismod sem porta est consectetur posuere. Praesent nisi velit, porttitor ut imperdiet a, pellentesque id mi.</p> <a href="#" class="waves-effect waves-light">Booking</a></div>
-                </li>
+                    @endforelse
             </ul>
         </div>
     </div>

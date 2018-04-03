@@ -24,7 +24,7 @@
                                 <th data-field="phone" data-sortable="true">Phone</th>
                                 <th data-field="email" data-sortable="true">Email</th>
                                 <th data-field="address" data-sortable="true">Address</th>
-                                <th data-field="roles" data-sortable="true">Roles</th>
+                                <th data-field="roles" data-sortable="true">Role</th>
                                 <th data-field="status" data-sortable="true">Status</th>
                                 <th data-field="actions" class="td-actions text-right">Actions
                                 </th>
@@ -41,13 +41,7 @@
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->address }}</td>
                                                 <td>
-                                                    @if(!empty($user->roles))
-                                                        @foreach($user->roles as $index => $role)
-                                                            <h6>{{$role->name}}</h6>
-                                                        @endforeach
-                                                    @else
-                                                        <button class="btn btn-default btn-xs btn-fill">No Role</button>
-                                                    @endif
+                                                        <button class="btn btn-default btn-xs btn-fill">{{ $user->role }}</button>
                                                 </td>
                                                 <td>
                                                     @if($user->status == 1)

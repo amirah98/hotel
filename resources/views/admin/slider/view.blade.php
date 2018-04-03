@@ -20,8 +20,8 @@
                                 <thead>
                                 <th data-field="sn" class="text-center">S.N.</th>
                                 <th data-field="id" class="text-center">Image</th>
-                                <th data-field="name" data-sortable="true">Title</th>
-                                <th data-field="phone" data-sortable="true">Description</th>
+                                <th data-field="small_title" data-sortable="true">Small Title</th>
+                                <th data-field="big_title" data-sortable="true">Big Title</th>
                                 <th data-field="status" data-sortable="true">Status</th>
                                 <th data-field="actions" class="td-actions text-right">Actions
                                 </th>
@@ -34,9 +34,9 @@
                                                 <td>{{$index+1}}</td>
                                                 <td><img height="60px" width="60px" rel="tooltip"  alt="{{ $image->caption }}" title="{{ $image->caption }}"
                                                          src="{{'/storage/slider/'.$image->name}}"/></td>
-                                                <td>{{ $image->title }}</td>
+                                                <td>{{ $image->small_title }}</td>
 
-                                                <td>{{ $image->description }}</td>
+                                                <td>{{ $image->big_title }}</td>
                                                 <td>
                                                     @if($image->status == 1)
                                                         <button class="btn btn-success btn-xs btn-fill">Active</button>
