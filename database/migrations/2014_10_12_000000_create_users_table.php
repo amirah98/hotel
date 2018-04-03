@@ -17,8 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('first_name', 25)->nullable();
             $table->string('last_name', 25)->nullable();
-            $table->date('date_of_birth')->nullable();
-            $table->enum('gender', ['male', 'female', 'other'])->nullable();
+            $table->enum('gender', ['male', 'female', 'lesbian', 'gay', 'bisexual', 'transgender', 'others'])->nullable();
             $table->string('phone', 15)->nullable();
             $table->text('address')->nullable();
             $table->string('email', 50)->unique()->nullable();

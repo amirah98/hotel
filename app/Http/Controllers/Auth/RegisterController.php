@@ -53,8 +53,7 @@ class RegisterController extends Controller
             'first_name' => 'required|max:25',
             'last_name' => 'required|max:25',
             'email' => 'required|email|max:255|unique:users',
-            'gender' => 'required|in:male, female, other',
-            'date_of_birth' => 'date_format:Y-m-d',
+            'gender' => 'required|in:male, female, lesbian, gay, bisexual, transgender, others',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -72,7 +71,6 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'gender' => $data['gender'],
-            'date_of_birth' => Carbon::createFromFormat('Y-m-d', $data['date_of_birth'])->format('Y-m-d'),
             'password' => bcrypt($data['password']),
         ]);
     }

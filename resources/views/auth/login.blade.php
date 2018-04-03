@@ -1,69 +1,96 @@
-@extends('layouts.app')
+@extends('layouts.front')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback">
+    <div class="inn-body-section pad-bot-55">
+        <div class="container">
+            <div class="row">
+                <div class="page-head">
+                    <h2>Login</h2>
+                    <div class="head-title">
+                        <div class="hl-1"></div>
+                        <div class="hl-2"></div>
+                        <div class="hl-3"></div>
+                    </div>
+                </div>
+                <!--TYPOGRAPHY SECTION-->
+                <div class="col-md-6">
+                    <div class="head-typo typo-com collap-expand book-form inn-com-form">
+                        <h2>Log In with Email</h2>
+                        <form class="col s12" method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="email" type="email"
+                                           class="validate {{ $errors->has('email') ? ' invalid' : '' }}" value="{{ old('email') }}" required>
+                                    <label>Email Address</label>
+                                    @if ($errors->has('email'))
+                                        <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                                    </label>
+                                    @endif
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="password" type="password"
+                                           class="validate {{ $errors->has('password') ? ' invalid' : '' }}" required>
+                                    <label>Password</label>
+                                    @if ($errors->has('password'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input name="remember" type="checkbox" id="test5" {{ old('remember') ? 'checked' : '' }}>
+                                    <label for="test5" style="padding: 1px 33px">Remember Me</label>
+                                    @if ($errors->has('remember'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('remember') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                                <div class="input-field col s6">
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        Forget Your Password
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="submit" value="login">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="head-typo typo-com collap-expand book-form inn-com-form">
+                        <h2>Log in with Social Networks</h2>
+                        <p>Click any button and authorize to login using following social networks.</p>
+                        <form class="col s12">
+                            <div class="row">
+                                <div class="social-btn">
+                                    <a class="waves-light" href="{{ url('/social/auth/redirect', ['facebook']) }}" id="facebook">Log in with Facebook</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="social-btn">
+                                    <a class="waves-light" href="{{ url('/social/auth/redirect', ['twitter']) }}" id="twitter">Log in with Twitter</a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="social-btn">
+                                    <a class="waves-light" href="{{ url('/social/auth/redirect', ['google']) }}" id="google">Log in with Google</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--END TYPOGRAPHY SECTION-->
             </div>
         </div>
     </div>
-</div>
 @endsection

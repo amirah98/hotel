@@ -11,15 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+// Authentication Routes
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
+// Social Logins
 Route::get('social/auth/redirect/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback');
+
+// Home and Dashboard Controller
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
 

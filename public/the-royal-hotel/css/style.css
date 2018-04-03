@@ -4519,3 +4519,51 @@ form .stars label:before {
 .hp-main-overview-block ul li span {
     color: #b1aa9c;
 }
+
+
+.social-btn a {
+    display: block;
+    padding: 7px 25px;
+    font-weight: 600;
+    font-family: 'Quicksand', sans-serif;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.social-btn {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.social-btn>#facebook{
+    color: white;
+    border-color: #3B5998;
+    background-color: #3B5998;
+}
+.social-btn>#facebook:hover{
+    background-color: #004aa4;
+    border-color: #004aa4;
+}
+.social-btn>#twitter{
+    color: white;
+    background-color: #006df0;
+    border-color: #006df0;
+}
+.social-btn>#twitter:hover{
+    background-color: #004aa4;
+    border-color: #004aa4;
+}
+.social-btn>#google{
+    color: white;
+    background-color: #db402c;
+    border-color: #db402c;
+}
+.social-btn>#google:hover{
+    background-color: #b5301f;
+    border-color: #b5301f;
+}
+
+.help-block{
+    color: #cc0000;
+}

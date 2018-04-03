@@ -28,7 +28,7 @@
 	<![endif]-->
 </head>
 
-<body data-ng-app="">
+<body data-ng-app="app" ng-controller="ng-controller">
 	<!--MOBILE MENU-->
 	<section>
 		<div class="mm">
@@ -1141,7 +1141,7 @@
 		<div id="modal1" class="modal fade" role="dialog">
 			<div class="log-in-pop">
 				<div class="log-in-pop-left">
-					<h1>Hello... <span>{{ name }}</span></h1>
+					<h1>Hello... <span><% name %></span></h1>
 					<p>Don't have an account? Create your account. It's take less then a minutes</p>
 					<h4>Login with social media</h4>
 					<ul>
@@ -1194,7 +1194,7 @@
 		<div id="modal2" class="modal fade" role="dialog">
 			<div class="log-in-pop">
 				<div class="log-in-pop-left">
-					<h1>Hello... <span>{{ name1 }}</span></h1>
+					<h1>Hello... <span><% name1 %></span></h1>
 					<p>Don't have an account? Create your account. It's take less then a minutes</p>
 					<h4>Login with social media</h4>
 					<ul>
@@ -1251,7 +1251,7 @@
 		<div id="modal3" class="modal fade" role="dialog">
 			<div class="log-in-pop">
 				<div class="log-in-pop-left">
-					<h1>Hello... <span>{{ name3 }}</span></h1>
+					<h1>Hello... <span><% name3 %></span></h1>
 					<p>Don't have an account? Create your account. It's take less then a minutes</p>
 					<h4>Login with social media</h4>
 					<ul>
@@ -1295,6 +1295,19 @@
 	<script src="js/materialize.min.js" type="text/javascript"></script>
 	<script src="js/jquery.mixitup.min.js" type="text/javascript"></script>
 	<script src="js/custom.js"></script>
+	<script>
+        var customInterpolationApp = angular.module('app', []);
+
+        customInterpolationApp.config(function($interpolateProvider) {
+            $interpolateProvider.startSymbol('<%');
+            $interpolateProvider.endSymbol('%>');
+        });
+
+
+        customInterpolationApp.controller('ng-controller', function() {
+            this.label = "This binding is brought you by // interpolation symbols.";
+        });
+	</script>
 </body>
 
 
