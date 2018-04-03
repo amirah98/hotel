@@ -1,4 +1,4 @@
-<?php
+]<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,10 +19,8 @@ class CreateSlidersTable extends Migration
             $table->string('small_title', 30)->nullable();
             $table->string('big_title', 30)->nullable();
             $table->string('description', 100)->nullable();
-            $table->string('link1', 100)->nullable();
-            $table->string('link1_text', 15)->nullable();
-            $table->string('link2', 100)->nullable();
-            $table->string('link2_text', 15)->nullable();
+            $table->string('link', 100)->nullable();
+            $table->string('link_text', 15)->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

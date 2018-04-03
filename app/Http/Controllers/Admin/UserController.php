@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Model\Role;
 use App\Model\User;
 use Illuminate\Http\Request;
 
@@ -35,10 +34,7 @@ class UserController extends AdminController
      */
     public function create()
     {
-        $roles = Role::all();
-        return view('admin.user.add')->with([
-            'roles' => $roles
-        ]);
+        return view('admin.user.add');
     }
 
     /**
@@ -55,7 +51,9 @@ class UserController extends AdminController
             'gender' => 'required',
             'email' => 'required|email|max:50|unique:users',
             'address' => 'max:200',
-            'about' => 'max:300'
+            'about' => 'max:300',
+            'role' => 'in:user,admin',
+            'password' => 'required|min:6',
         ];
         if (!empty($request->input('phone'))) {
             $rules['phone'] = 'numeric|max:999999999999999';
@@ -76,23 +74,19 @@ class UserController extends AdminController
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
             $user->gender = $request->input('gender');
-            $user->date_of_birth = $request->input('date_of_birth');
             $user->phone = $request->input('phone');
             $user->email = $request->input('email');
             $user->address = $request->input('address');
             $user->about = $request->input('about');
+            $user->role = $request->input('role');
             $user->status = $request->input('status');
+            $user->password = bcrypt($request->input('password'));
 
             // Avatar Upload
             if ($request->hasFile('avatar')) {
                 $path = $request->file('avatar')->store('','avatar');
                 $user->avatar = $path;
             }
-
-            $user->save();
-
-            // Upload Role_User Table with New Roles
-            $user->roles()->sync((array)$request->input('roles'));
 
             $user->save();
             Session::flash('flash_title', "Success");
@@ -121,10 +115,8 @@ class UserController extends AdminController
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::all();
         return view('admin.user.edit')->with([
-            'user' => $user,
-            'roles' => $roles
+            'user' => $user
         ]);
     }
 
@@ -144,7 +136,8 @@ class UserController extends AdminController
             'gender' => 'required',
             'email' => 'required|email|max:255|unique:users,email,' . $id,
             'address' => 'max:200',
-            'about' => 'max:300'
+            'about' => 'max:300',
+            'role' => 'in:user,admin'
         ];
         if (!empty($request->input('phone'))) {
             $rules['phone'] = 'numeric|max:999999999999999';
@@ -152,6 +145,10 @@ class UserController extends AdminController
 
         if (!empty($request->input('avatar'))) {
             $rules['avatar'] = 'mimes:jpeg,jpg,png';
+        }
+
+        if (!empty($request->input('password'))) {
+            $rules['password'] = 'min:6';
         }
 
         $validator = Validator::make($request->all(), $rules);
@@ -165,12 +162,16 @@ class UserController extends AdminController
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
             $user->gender = $request->input('gender');
-            $user->date_of_birth = $request->input('date_of_birth');
             $user->phone = $request->input('phone');
             $user->email = $request->input('email');
             $user->address = $request->input('address');
             $user->about = $request->input('about');
+            $user->role = $request->input('role');
             $user->status = $request->input('status');
+
+            if ($request->input('password')){
+                $user->password = bcrypt($request->input('password'));
+            }
 
             // Avatar Upload
             if ($request->hasFile('avatar')) {
@@ -179,9 +180,6 @@ class UserController extends AdminController
                 $user->avatar = $path;
             }
 
-            // Upload Role_User Table with New Roles
-
-            $user->roles()->sync((array)$request->input('roles'));
 
             $user->save();
             Session::flash('flash_title', "Success");
@@ -242,7 +240,6 @@ class UserController extends AdminController
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
             $user->gender = $request->input('gender');
-            $user->date_of_birth = $request->input('date_of_birth');
             $user->phone = $request->input('phone');
             $user->email = $request->input('email');
             $user->address = $request->input('address');

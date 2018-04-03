@@ -84,25 +84,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Date of Birth</label>
-                                        <input type="text" name="date_of_birth" class="form-control datepicker"
-                                               placeholder="Date Picker Here" value="{{$user->date_of_birth}}"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label>Phone</label>
                                         <input type="text" name="phone" class="form-control border-input"
                                                placeholder="Phone Number" value="{{$user->phone}}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" name="email" class="form-control border-input"
-                                               placeholder="ex: hari@gmail.com" value="{{$user->email}}">
                                     </div>
                                 </div>
                             </div>
@@ -120,6 +104,15 @@
                                     <div class="form-group">
                                         <label>Avatar</label>
                                         <input type="file" name="avatar" class="form-control border-input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" name="email" class="form-control border-input"
+                                               placeholder="ex: hari@gmail.com" value="{{$user->email}}">
                                     </div>
                                 </div>
                             </div>

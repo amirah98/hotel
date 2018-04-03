@@ -56,25 +56,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Date of Birth</label>
-                                        <input type="text" name="date_of_birth" class="form-control datepicker"
-                                               placeholder="Date Picker Here" value="{{ old('date_of_birth') }}"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label>Phone</label>
                                         <input type="text" name="phone" class="form-control border-input"
                                                placeholder="Phone Number" value="{{ old('phone') }}">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Email</label>
-                                        <input type="email" name="email" class="form-control border-input"
-                                               placeholder="ex: hari@gmail.com" value="{{ old('email') }}">
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +67,7 @@
                                     <div class="form-group">
                                         <label>Address</label>
                                         <input type="text" name="address" class="form-control border-input"
-                                               placeholder="Home Address" value="{{ old('address') }}">
+                                               value="{{ old('address') }}">
                                     </div>
                                 </div>
                             </div>
@@ -98,9 +82,29 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>About Me</label>
-                                        <textarea name="about" rows="5" class="form-control border-input"
-                                                  placeholder="Here can be your description">{{ old('about') }}</textarea>
+                                        <label>Email</label>
+                                        <input type="email" name="email" class="form-control border-input"
+                                               placeholder="ex: hari@gmail.com" value="{{ old('email') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="password" class="form-control border-input"
+                                               placeholder="new password for this user">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Role</label>
+                                        <select name="role" id="role" class="form-control">
+                                            <option value="user" @if (Input::old('role') == 'user') selected="selected" @endif>User</option>
+                                            <option value="admin" @if (Input::old('role') == 'admin') selected="selected" @endif>Admin</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -111,21 +115,6 @@
                                         <select name="status" id="status" class="form-control">
                                             <option value="1" @if (Input::old('status') == '1') selected="selected" @endif>Active</option>
                                             <option value="0" @if (Input::old('status') == '0') selected="selected" @endif>Inactive</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Roles</label>
-                                        <select multiple data-title="Multiple Select" name="roles[]"
-                                                class="selectpicker" data-style="btn-info btn-fill btn-block"
-                                                data-menu-style="dropdown-blue">
-
-                                            @foreach($roles as $role)
-                                                <option value="{{$role->id}}">{{ucfirst($role->name)}}</option>
-                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
