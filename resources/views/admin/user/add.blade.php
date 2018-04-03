@@ -41,14 +41,6 @@
                                             </option>
                                             <option value="female" @if (Input::old('gender') == 'female') selected="selected" @endif>Female
                                             </option>
-                                            <option value="lesbian" @if (Input::old('gender') == 'lesbian') selected="selected" @endif>Lesbian
-                                            </option>
-                                            <option value="gay" @if (Input::old('gender') == 'gay') selected="selected" @endif>Gay
-                                            </option>
-                                            <option value="bisexual" @if (Input::old('gender') == 'bisexual') selected="selected" @endif>Bisexual
-                                            </option>
-                                            <option value="transgender" @if (Input::old('gender') == 'transgender') selected="selected" @endif>Transgender
-                                            </option>
                                             <option value="others" @if (Input::old('gender') == 'others') selected="selected" @endif>Others
                                             </option>
                                         </select>

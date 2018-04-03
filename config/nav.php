@@ -14,11 +14,11 @@ return [
     */
 
     'admin' => [
-        'destination' => [
-            'name' =>  'Destination',
+        'room' => [
+            'name' =>  'Room',
             'actions' => [
-                'add' => 'admin/destination/create',
-                'view' =>  'admin/destination'
+                'add' => 'admin/room/create',
+                'view' =>  'admin/room'
             ],
             'icon' => 'ti-control-forward'
         ],
@@ -35,27 +35,6 @@ return [
                 'view' => 'admin/slider',
             ],
             'icon' => 'ti-layout-grid2'
-        ],
-        'agency' => [
-            'name' => 'Agency',
-            'actions' => [
-                'view' => 'admin/agency',
-            ],
-            'icon' => 'ti-panel'
-        ],
-        'hotel' => [
-            'name' => 'Hotel',
-            'actions' => [
-                'view' => 'admin/hotel',
-            ],
-            'icon' => 'ti-home'
-        ],
-        'travel_medium' => [
-            'name' => 'Travel Medium',
-            'actions' => [
-                'view' => 'admin/travel_medium',
-            ],
-            'icon' => 'ti-car'
         ],
     ],
 

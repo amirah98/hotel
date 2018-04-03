@@ -60,14 +60,6 @@
                                         </option>
                                         <option value="female">Female
                                         </option>
-                                        <option value="lesbian">Lesbian
-                                        </option>
-                                        <option value="gay">Gay
-                                        </option>
-                                        <option value="bisexual">Bisexual
-                                        </option>
-                                        <option value="transgender">Transgender
-                                        </option>
                                         <option value="others">Others
                                         </option>
                                     </select>

@@ -48,7 +48,7 @@ class UserController extends AdminController
         $rules = [
             'first_name' => 'required|max:25',
             'last_name' => 'required|max:25',
-            'gender' => 'required',
+            'gender' => 'required|in:male,female,others',
             'email' => 'required|email|max:50|unique:users',
             'address' => 'max:200',
             'about' => 'max:300',
@@ -133,7 +133,7 @@ class UserController extends AdminController
         $rules = [
             'first_name' => 'required|max:25',
             'last_name' => 'required|max:25',
-            'gender' => 'required',
+            'gender' => 'required|in:male,female,others',
             'email' => 'required|email|max:255|unique:users,email,' . $id,
             'address' => 'max:200',
             'about' => 'max:300',
@@ -216,7 +216,7 @@ class UserController extends AdminController
         $rules = [
             'first_name' => 'required|max:25',
             'last_name' => 'required|max:25',
-            'gender' => 'required',
+            'gender' => 'required|in:male,female,others',
             'email' => 'required|email|max:255|unique:users,email,' . $id,
             'address' => 'max:200',
             'about' => 'max:300'

@@ -53,7 +53,7 @@ class RegisterController extends Controller
             'first_name' => 'required|max:25',
             'last_name' => 'required|max:25',
             'email' => 'required|email|max:255|unique:users',
-            'gender' => 'required|in:male, female, lesbian, gay, bisexual, transgender, others',
+            'gender' => 'required|in:male,female,others',
             'password' => 'required|min:6|confirmed',
         ]);
     }

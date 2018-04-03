@@ -49,30 +49,6 @@
                                                     @endif
                                             >Female
                                             </option>
-                                            <option value="lesbian"
-                                                    @if($user->gender == "lesbian")
-                                                    selected="selected"
-                                                    @endif
-                                            >Lesbian
-                                            </option>
-                                            <option value="gay"
-                                                    @if($user->gender == "gay")
-                                                    selected="selected"
-                                                    @endif
-                                            >Gay
-                                            </option>
-                                            <option value="bisexual"
-                                                    @if($user->gender == "bisexual")
-                                                    selected="selected"
-                                                    @endif
-                                            >Bisexual
-                                            </option>
-                                            <option value="transgender"
-                                                    @if($user->gender == "transgender")
-                                                    selected="selected"
-                                                    @endif
-                                            >Transgender
-                                            </option>
                                             <option value="others"
                                                     @if($user->gender == "others")
                                                     selected="selected"
