@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('facebook_id', 191)->unique()->nullable();
             $table->string('twitter_id', 191)->unique()->nullable();
             $table->string('google_id', 191)->unique()->nullable();
+            $table->enum('role', ['admin', 'user'])->default('admin');
             $table->boolean('status')->default(true);
             $table->rememberToken();
             $table->timestamps();

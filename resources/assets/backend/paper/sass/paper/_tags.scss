@@ -1,0 +1,104 @@
+.tagsinput {
+    height: $height-base;
+    overflow-y: auto;
+    text-align: left;
+    .tag {
+        background-color: $font-color;
+        cursor: pointer;
+        margin: 5px 3px 5px 0;
+        position: relative;
+        @include label-style();
+        padding-left: 0.8em;
+    }
+
+    .tag:hover{
+        padding-right: 14px;
+    }
+
+    .tagsinput-remove-link {
+        color: $white-color;
+        cursor: pointer;
+        font-size: 0.75em;
+        position: absolute;
+        right: 0;
+        opacity: 0;
+        text-align: right;
+        text-decoration: none;
+        top: 3px;
+        z-index: 2;
+    }
+    .tag:hover .tagsinput-remove-link {
+        opacity: 1;
+        padding-right: 6px;
+    }
+    .tagsinput-remove-link:before {
+        content: "\e646";;
+        font-family: "themify";
+        font-weight: bolder;
+    }
+
+    .tagsinput-add-container {
+        display: inline-block;
+        line-height: 1;
+        margin-top: -6px;
+        vertical-align: middle;
+    }
+    .tagsinput-add {
+        color: $font-color;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 0.9em;
+        padding: 5px 6px;
+        margin: 7px 0 0;
+        vertical-align: top;
+        @include opacity(0.8);
+
+        &:hover,
+        &:focus{
+            @include opacity(1);
+        }
+    }
+    .tagsinput-add:before {
+	    content: "\e61a";
+        font-family: "themify";
+        font-weight: bolder;
+    }
+
+    input{
+        background: transparent;
+        border: none;
+        color: $font-color !important;
+        font-size: 0.9em;
+        margin: 0;
+        outline: medium none !important;
+        padding-top: 7px;
+        vertical-align: middle;
+        width: 40px;
+        height: 30px;
+    }
+
+/*
+    &.tag-primary .tag,
+    &.tag-primary .tagsinput-remove-link{
+         background-color: $primary-color;
+    }
+*/
+    &.tag-primary .tag{
+         background-color: $primary-color;
+    }
+    &.tag-primary .tagsinput-add{
+        color: $primary-color;
+    }
+    &.tag-info .tag{
+         background-color: $info-color;
+    }
+    &.tag-success .tag{
+         background-color: $success-color;
+    }
+    &.tag-warning .tag{
+         background-color: $warning-color;
+    }
+    &.tag-danger .tag{
+         background-color: $danger-color;
+    }
+}
