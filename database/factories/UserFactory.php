@@ -13,11 +13,26 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\Model\User::class, function (Faker $faker) {
+    static $password;
+    $gender = $faker->randomElement(['male', 'female', 'others']);
+
+    if($gender == "female")
+        $avatar = $faker->randomElement(['girl.png', 'girl-1.png']);
+    else
+        $avatar = $faker->randomElement(['boy.png', 'boy-1.png', 'man.png', 'man-1.png', 'man-2.png', 'man-3.png', 'man-4.png']);
     return [
-        'name' => $faker->name,
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
+        'gender' => $gender,
+        'phone' => $faker->isbn10(),
+        'address' => $faker->address,
         'email' => $faker->unique()->safeEmail,
-        'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm', // secret
+        'password' => bcrypt('password'),
+        'avatar' => $avatar,
+        'about' => $faker->text($maxNbChars = 200),
+        'role' => 'user',
+        'status' => TRUE,
         'remember_token' => str_random(10),
     ];
 });

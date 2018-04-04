@@ -22,6 +22,13 @@ return [
             ],
             'icon' => 'ti-control-forward'
         ],
+        'facility' => [
+            'name' => 'Facility',
+            'actions' => [
+                'view' => 'admin/facility',
+            ],
+            'icon' => 'ti-crown'
+        ],
         'user' => [
             'name' => 'User',
             'actions' => [

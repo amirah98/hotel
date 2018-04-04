@@ -26,12 +26,13 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 
 
-Route::get('/admin/login', 'Auth\LoginController@showLoginForm');
+// Route::get('/admin/login', 'Auth\LoginController@showLoginForm');
 
 // Routes for Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'Admin\DashboardController@index');
 
+    Route::resource('facility', 'Admin\FacilityController');
     Route::resource('destination', 'Admin\DestinationController');
     Route::resource('travel_medium', 'Admin\TravelMediumController');
     Route::resource('hotel', 'Admin\HotelController');
