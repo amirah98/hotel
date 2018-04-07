@@ -28,14 +28,13 @@
         <div class="all-drop-down">
             <!-- Dropdown Structure -->
             <ul id='dropdown1' class='dropdown-content drop-con-man'>
+                @if(Auth::user()->role == "admin")
+                    <li>
+                        <a href="{{ url('/admin') }}"><img src="{{ asset("front/images/icon/2.png") }}" alt=""> Admin Panel</a>
+                    </li>
+                @endif
                 <li>
-                    <a href="dashboard.html"><img src="{{ asset("front/images/icon/15.png") }}" alt=""> My Account</a>
-                </li>
-                <li>
-                    <a href="db-profile.html"><img src="{{ asset("front/images/icon/2.png") }}" alt=""> My Profile</a>
-                </li>
-                <li>
-                    <a href="db-booking.html"><img src="{{ asset("front/images/icon/16.png") }}" alt=""> My Bookings</a>
+                    <a href="{{ url('/dashboard') }}"><img src="{{ asset("front/images/icon/15.png") }}" alt=""> User Dashboard</a>
                 </li>
                 <li>
                     <a href="db-event.html"><img src="{{ asset("front/images/icon/17.png") }}" alt=""> My Events</a>

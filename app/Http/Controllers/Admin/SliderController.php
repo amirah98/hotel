@@ -52,7 +52,7 @@ class SliderController extends AdminController
             'description' => 'max:200',
             'link' => 'max:100',
             'link_text' => 'max:15',
-            'status' => 'required'
+            'status' => 'required|boolean'
         ];
 
         if (!empty($request->input('image'))) {
@@ -132,7 +132,7 @@ class SliderController extends AdminController
             'description' => 'max:200',
             'link' => 'max:100',
             'link_text' => 'max:15',
-            'status' => 'required'
+            'status' => 'required|boolean'
         ];
 
         if(!empty($request->input('image'))){

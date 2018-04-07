@@ -22,6 +22,27 @@ return [
             ],
             'icon' => 'ti-control-forward'
         ],
+        'event' => [
+            'name' => 'Events',
+            'actions' => [
+                'view' => 'admin/event',
+            ],
+            'icon' => 'ti-ticket'
+        ],
+        'food' => [
+            'name' => 'Food Menu',
+            'actions' => [
+                'view' => 'admin/food',
+            ],
+            'icon' => 'ti-pencil-alt'
+        ],
+        'room_type' => [
+            'name' => 'Room Type',
+            'actions' => [
+                'view' => 'admin/room_type',
+            ],
+            'icon' => 'ti-home'
+        ],
         'facility' => [
             'name' => 'Facility',
             'actions' => [

@@ -1,0 +1,514 @@
+.sidebar{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+
+    .sidebar-wrapper{
+        position: relative;
+        height: calc(100vh - 75px);
+        overflow: auto;
+        z-index: 4;
+        box-shadow: inset -1px 0px 0px 0px $medium-gray;
+        width: 260px;
+
+    }
+
+    .logo-mini{
+        display: none;
+    }
+
+    .sidebar-background{
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        display: block;
+        top: 0;
+        left: 0;
+        background-size: cover;
+        background-position: center center;
+    }
+    .user{
+        border-bottom: 1px solid rgba($white-color, .3);
+        padding-bottom: 20px;
+
+        .photo{
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            border-radius: 50%;
+            margin: 0 auto;
+            @extend .general-animation;
+
+            img{
+                width: 100%;
+            }
+        }
+
+        a{
+            opacity: .7;
+            color: $font-color;
+            padding: $padding-base-vertical $padding-large-vertical;
+            text-align: center;
+            display: block;
+            @extend .general-animation;
+
+            &:hover,
+            &:visited,
+            &:focus{
+                color: $font-color;
+                opacity: 1;
+            }
+
+        }
+    }
+
+}
+.sidebar,
+.off-canvas-sidebar{
+    width: 260px;
+    display: block;
+
+    .logo{
+        padding: 18px 0px;
+        margin: 0;
+        box-shadow: inset -1px 0px 0px 0px #cfcfca;
+        height: 75px;
+        position: relative;
+        z-index: 4;
+
+
+        .simple-text{
+            text-transform: uppercase;
+            padding: $padding-small-vertical $padding-zero;
+            display: block;
+            font-size: $font-size-large;
+            text-align: center;
+            font-weight: $font-weight-normal;
+            line-height: 30px;
+            white-space: nowrap;
+        }
+        p{
+            float: left;
+            font-size: 20px;
+            margin: 10px 10px;
+            line-height: 20px;
+        }
+
+        &:before{
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            right: 10%;
+            width: 80%;
+            height: 1px;
+        }
+
+    }
+
+    .sidebar-wrapper > .nav{
+        margin-top: 10px;
+
+        li{
+            > a{
+                margin: 10px 0px 0px;
+                padding-left: 25px;
+                padding-right: 25px;
+                opacity: .7;
+            }
+
+            &:hover > a{
+                opacity: 1;
+            }
+
+            &.active > a{
+                color: $primary-color;
+                opacity: 1;
+            }
+        }
+
+        p{
+            margin: 0;
+            line-height: 30px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+            left: 0;
+            opacity: 1;
+            white-space: nowrap;
+
+            @extend .general-animation;
+        }
+        .caret{
+            margin-top: 12px;
+            position: absolute;
+            right: 0;
+        }
+
+        [data-toggle="collapse"] ~ div > ul > li > a {
+            padding-left: 70px;
+            margin: 0;
+        }
+    }
+
+    .nav{
+        i{
+            font-size: 24px;
+            float: left;
+            margin-right: 15px;
+            line-height: 30px;
+            width: 30px;
+            text-align: center;
+        }
+    }
+
+    &:after,
+    &:before{
+        display: block;
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        background:  $white-background-color;
+    }
+
+    &,
+    &[data-background-color="white"]{
+        @include sidebar-background-color($white-background-color, $default-color);
+
+        .user{
+            margin-top: 20px;
+
+            .photo{
+                border: 4px solid rgba(0, 0, 0, 0.15);
+            }
+        }
+    }
+
+    &[data-background-color="brown"]{
+        @include sidebar-background-color($brown-background-color, $white-color);
+
+        &[data-active-color="danger"]{
+            @include sidebar-active-color( lighten($danger-color, 10%) );
+        }
+
+        .info{
+            a{
+                color: $white-color;
+            }
+        }
+
+        .user{
+            .photo{
+                border-color: rgba($white-color, 0.3);
+            }
+        }
+    }
+
+    &[data-active-color="primary"]{
+        @include sidebar-active-color($primary-color);
+    }
+    &[data-active-color="info"]{
+        @include sidebar-active-color($info-color);
+    }
+    &[data-active-color="success"]{
+        @include sidebar-active-color($success-color);
+    }
+    &[data-active-color="warning"]{
+        @include sidebar-active-color($warning-color);
+    }
+    &[data-active-color="danger"]{
+        @include sidebar-active-color($danger-color);
+    }
+
+}
+
+.main-panel{
+    background-color: $bg-nude;
+    overflow: auto;
+    position: relative;
+    z-index: 2;
+    float: right;
+    width: $sidebar-width;
+    min-height: 100%;
+
+    > .content{
+        padding: 30px 15px 0 15px;
+        min-height: calc(100% - 123px);
+    }
+
+    > .footer{
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar{
+        margin-bottom: 0;
+    }
+}
+
+.sidebar,
+.main-panel,
+.sidebar-wrapper{
+    -webkit-transition-property: top,bottom,width;
+    transition-property: top,bottom, width;
+    -webkit-transition-duration: .2s,.2s, .35s;
+    transition-duration: .2s,.2s, .35s;
+    -webkit-transition-timing-function: linear,linear,ease;
+    transition-timing-function: linear,linear,ease;
+    -webkit-overflow-scrolling: touch;
+}
+.sidebar,
+.main-panel{
+    max-height: 100%;
+    height: 100%;
+}
+
+// windows os settings for perfect scrollbar off
+.sidebar .sidebar-wrapper,
+.main-panel{
+    .perfect-scrollbar-on &,
+    &{
+        overflow: hidden;
+    }
+}
+
+// regular settings for perfect scrollbar off
+.perfect-scrollbar-off{
+    .sidebar .sidebar-wrapper,
+    .main-panel{
+        overflow: auto;
+    }
+}
+
+@media (min-width: $screen-md){
+    .hover-collapse{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 81px;
+        background-color: $pale-bg;
+        border: 0 none;
+        border-radius: $border-radius-extreme;
+        padding: 0px;
+        @include box-shadow($dropdown-shadow);
+    }
+
+    .sidebar-mini{
+
+        [data-background-color="brown"]{
+
+            .nav,
+            .user{
+                .collapse {
+                    li:not(.active){
+                        > a{
+                            color: $font-color;
+                        }
+                    }
+                }
+            }
+        }
+
+        .sidebar{
+            width: 80px;
+            display: block;
+            z-index: 3;
+
+            .sidebar-wrapper{
+                overflow: inherit;
+                width: 80px;
+                box-shadow: none;
+
+                .collapse.in{
+                    display: none;
+                }
+
+                .collapse .nav{
+                    width: 160px;
+                    height: auto;
+                    position: relative;
+
+                    li.active{
+                        a{
+                            &:before,
+                            &:after{
+                                display: none
+                            }
+                        }
+
+                    }
+
+                    li{
+
+                        & > a:hover,
+                        & > a:focus{
+
+                            background-color: $default-color;
+                            color: $fill-font-color;
+                            opacity: 1;
+                            text-decoration: none;
+                        }
+
+                        &:first-child > a{
+                            border-top-left-radius: 6px;
+                            border-top-right-radius: 6px;
+                        }
+
+                        &:last-child > a{
+                            border-bottom-left-radius: 6px;
+                            border-bottom-right-radius: 6px;
+                        }
+
+                    }
+
+                    &:before{
+                        border-right: 11px solid $medium-pale-bg;
+                        border-top: 11px solid transparent;
+                        border-bottom: 11px solid transparent;
+                        position: absolute;
+                        content: "";
+                        display: inline-block;
+                        left:-12px;
+                        top:14px;
+                    }
+                    &:after{
+                        border-right: 11px solid $pale-bg;
+                        border-top: 11px solid transparent;
+                        border-bottom: 11px solid transparent;
+                        position: absolute;
+                        content: "";
+                        display: inline-block;
+                        left:-11px;
+                        top:14px;
+                    }
+
+
+
+                }
+            }
+
+            .logo{
+                display: none;
+                box-shadow: none;
+            }
+
+            .logo-mini{
+                display: block;
+            }
+
+            .sidebar-wrapper > .nav{
+
+                a{
+                    transition: none;
+                }
+
+
+                li{
+                    &:hover,
+                    &:focus{
+                        .collapse{
+                            @extend .hover-collapse;
+                        }
+                    }
+                    > a{
+                        margin: 10px 0px;
+                        padding-left: 25px;
+                        padding-right: 25px;
+                    }
+                }
+
+                li.active{
+                    > a{
+                        &:before,
+                        &:after{
+                            display:none;
+                        }
+                    }
+                }
+
+                p{
+                    display: none;
+                    left: -20px;
+                    opacity: 0;
+                }
+
+                i{
+                    float: none;
+                }
+
+                [data-toggle="collapse"] ~ div > ul > li > a {
+                    padding-left: 25px;
+                }
+            }
+
+            .user{
+                position: relative;
+                margin-top: 20px;
+
+                .nav{
+
+                    a{
+                        transition: none;
+                    }
+                }
+
+                .info{
+                    > a{
+                        height: 0;
+                        opacity: 0;
+                        padding: 0;
+                    }
+                }
+                .photo{
+                    width: 50px;
+                    height: 50px;
+                    border-width: 2px;
+
+                }
+
+                &:hover{
+
+                    .collapse{
+                        @extend .hover-collapse;
+                    }
+                }
+
+            }
+        }
+        .main-panel{
+            width: calc(100% - 80px);
+            margin-left: 80px;
+
+            &:before{
+                position: absolute;
+                content: "";
+                display: block;
+                z-index: 5;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 1px;
+                background-color: $medium-gray;
+            }
+
+        }
+
+        .wrapper{
+            height: auto;
+        }
+
+        .sidebar,
+        .main-panel{
+            overflow: visible;
+            max-height: none;
+            height: auto;
+        }
+    }
+
+}

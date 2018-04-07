@@ -53,7 +53,7 @@ $(function() {
                     filter: '.filter'
                 },
                 load: {
-                    filter: '.logo'
+                    filter: '.room'
                 }
             });
 

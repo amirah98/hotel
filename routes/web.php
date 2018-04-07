@@ -19,11 +19,9 @@ Route::get('social/auth/redirect/{provider}', 'Auth\AuthController@redirectToPro
 Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback');
 
 // Routes for Front
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'Front\HomeController@index')->name('home');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-
-
-
+Route::resource('room_type', 'Front\RoomTypeController');
 
 
 // Route::get('/admin/login', 'Auth\LoginController@showLoginForm');
@@ -31,16 +29,14 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 // Routes for Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'Admin\DashboardController@index');
-
-    Route::resource('facility', 'Admin\FacilityController');
-    Route::resource('destination', 'Admin\DestinationController');
-    Route::resource('travel_medium', 'Admin\TravelMediumController');
-    Route::resource('hotel', 'Admin\HotelController');
     Route::resource('slider', 'Admin\SliderController');
 
-    Route::get('agency', 'Admin\AgencyController@index');
-    Route::delete('agency/{id}', 'Admin\AgencyController@destroy');
-    Route::post('agency/{id}/status', 'Admin\AgencyController@status');
+    Route::resource('facility', 'Admin\FacilityController');
+    Route::resource('event', 'Admin\EventController');
+    Route::resource('food', 'Admin\FoodController');
+
+
+
 
     // User Routes
     Route::resource('user', 'Admin\UserController');
@@ -49,14 +45,27 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('user/{id}/setting', 'Admin\UserController@setting');
     Route::put('user/{id}/setting', 'Admin\UserController@update_setting');
 
-    // Route routes
-    Route::group(['prefix' => 'destination'], function() {
-        Route::get('/{id}/route', 'Admin\DestinationRouteController@index');
-        Route::get('/{id}/route/create', 'Admin\DestinationRouteController@create');;
-        Route::post('/{id}/route', 'Admin\DestinationRouteController@store');
-        Route::get('/{id}/route/{route_id}/edit', 'Admin\DestinationRouteController@edit');
-        Route::put('/{id}/route/{route_id}', 'Admin\DestinationRouteController@update');
-        Route::delete('/{id}/route/{route_id}', 'Admin\DestinationRouteController@destroy');
+
+    Route::resource('room_type', 'Admin\RoomTypeController');
+    // Route for room types
+    Route::group(['prefix' => 'room_type', 'middleware' => 'auth'], function(){
+        // Rutes for Room Type Images
+        Route::get('/{id}/image', 'Admin\ImageController@index');
+        Route::get('/{id}/image/create', 'Admin\ImageController@create');
+        Route::post('/{id}/image', 'Admin\ImageController@store');
+        Route::get('/{id}/image/{image_id}/edit', 'Admin\ImageController@edit');
+        Route::put('/{id}/image/{image_id}/edit', 'Admin\ImageController@update');
+        Route::get('/{id}/image/create_multiple', 'Admin\ImageController@create_multiple');
+        Route::post('/{id}/image/create_multiple', 'Admin\ImageController@store_multiple');
+        Route::delete('/{id}/image/{image_id}', 'Admin\ImageController@destroy');
+
+        // Routes for Rooms
+        Route::get('/{id}/room', 'Admin\RoomController@index');
+        Route::get('/{id}/room/create', 'Admin\RoomController@create');
+        Route::post('/{id}/room', 'Admin\RoomController@store');
+        Route::get('/{id}/room/{room_id}/edit', 'Admin\RoomController@edit');
+        Route::put('/{id}/room/{room_id}/edit', 'Admin\RoomController@update');
+        Route::delete('/{id}/room/{image_id}', 'Admin\RoomController@destroy');
     });
 });
 

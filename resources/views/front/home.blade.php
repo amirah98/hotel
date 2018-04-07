@@ -5,7 +5,7 @@
     <div>
         <div class="slider fullscreen">
             <ul class="slides">
-                @forelse($images as $image)
+                @forelse($slider_images as $image)
                 <li> <img src="{{'/storage/slider/'.$image->name}}" alt="">
                     <!-- random image -->
                     <div class="caption center-align slid-cap">
@@ -28,6 +28,8 @@
     </div>
     <!--End Check Availability SECTION-->
     <!--HOTEL ROOMS SECTION-->
+
+    @if(count($room_types) > 0)
     <div class="hom1 hom-com pad-bot-40">
         <div class="container">
             <div class="row">
@@ -38,123 +40,36 @@
                         <div class="hl-2"></div>
                         <div class="hl-3"></div>
                     </div>
-                    <p>Aenean euismod sem porta est consectetur posuere. Praesent nisi velit, porttitor ut imperdiet a, pellentesque id mi.</p>
+                    <p>Every hotel stay provides you with great experience and hospitality.</p>
                 </div>
             </div>
             <div class="row">
                 <div class="to-ho-hotel">
+                    @foreach($room_types as $room_type)
                     <!-- HOTEL GRID -->
                     <div class="col-md-4">
                         <div class="to-ho-hotel-con">
                             <div class="to-ho-hotel-con-1">
-                                <div class="hom-hot-av-tic"> Available Tickets: 42 </div> <img src="{{ asset("front/images/room/3.jpg") }}" alt=""> </div>
+                                <div class="hom-hot-av-tic"> Available Rooms: {{ count($room_type->rooms) }} </div> <img src="{{'/storage/room_types/'.$room_type->images->first()->name}}" alt=""> </div>
                             <div class="to-ho-hotel-con-23">
-                                <div class="to-ho-hotel-con-2"> <a href="all-rooms.html"><h4>Master Room</h4></a> </div>
+                                <div class="to-ho-hotel-con-2"> <a href="{{url('/room_type/'.$room_type->id)}}"><h4>{{ $room_type->name }}</h4></a> </div>
                                 <div class="to-ho-hotel-con-3">
                                     <ul>
-                                        <li>City: illunois,united states
+                                        <li>
                                             <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
                                         </li>
-                                        <li><span class="ho-hot-pri-dis">$720</span><span class="ho-hot-pri">$420</span> </li>
+                                        <li><span class="ho-hot-pri">${{ $room_type->cost_per_day }}</span> </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- HOTEL GRID -->
-                    <div class="col-md-4">
-                        <div class="to-ho-hotel-con">
-                            <div class="to-ho-hotel-con-1">
-                                <div class="hom-hot-av-tic"> Available Tickets: 520 </div> <img src="{{ asset("front/images/room/1.jpg") }}" alt=""> </div>
-                            <div class="to-ho-hotel-con-23">
-                                <div class="to-ho-hotel-con-2"> <a href="all-rooms.html"><h4>Mini-Suite</h4></a> </div>
-                                <div class="to-ho-hotel-con-3">
-                                    <ul>
-                                        <li>City: illunois,united states
-                                            <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                                        </li>
-                                        <li><span class="ho-hot-pri-dis">$840</span><span class="ho-hot-pri">$540</span> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- HOTEL GRID -->
-                    <div class="col-md-4">
-                        <div class="to-ho-hotel-con">
-                            <div class="to-ho-hotel-con-1">
-                                <div class="hom-hot-av-tic"> Available Tickets: 92 </div> <img src="{{ asset("front/images/room/2.jpg") }}" alt=""> </div>
-                            <div class="to-ho-hotel-con-23">
-                                <div class="to-ho-hotel-con-2"> <a href="all-rooms.html"><h4>Ultra Deluxe</h4></a> </div>
-                                <div class="to-ho-hotel-con-3">
-                                    <ul>
-                                        <li>City: illunois,united states
-                                            <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                                        </li>
-                                        <li><span class="ho-hot-pri-dis">$680</span><span class="ho-hot-pri">$380</span> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- HOTEL GRID -->
-                    <div class="col-md-4">
-                        <div class="to-ho-hotel-con">
-                            <div class="to-ho-hotel-con-1">
-                                <div class="hom-hot-av-tic"> Available Tickets: 42 </div> <img src="{{ asset("front/images/room/4.jpg") }}" alt=""> </div>
-                            <div class="to-ho-hotel-con-23">
-                                <div class="to-ho-hotel-con-2"> <a href="all-rooms.html"><h4>Luxury Room</h4></a> </div>
-                                <div class="to-ho-hotel-con-3">
-                                    <ul>
-                                        <li>City: illunois,united states
-                                            <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                                        </li>
-                                        <li><span class="ho-hot-pri-dis">$720</span><span class="ho-hot-pri">$420</span> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- HOTEL GRID -->
-                    <div class="col-md-4">
-                        <div class="to-ho-hotel-con">
-                            <div class="to-ho-hotel-con-1">
-                                <div class="hom-hot-av-tic"> Available Tickets: 520 </div> <img src="{{ asset("front/images/room/5.jpg") }}" alt=""> </div>
-                            <div class="to-ho-hotel-con-23">
-                                <div class="to-ho-hotel-con-2"> <a href="all-rooms.html"><h4>Premium Room</h4></a> </div>
-                                <div class="to-ho-hotel-con-3">
-                                    <ul>
-                                        <li>City: illunois,united states
-                                            <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                                        </li>
-                                        <li><span class="ho-hot-pri-dis">$840</span><span class="ho-hot-pri">$540</span> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- HOTEL GRID -->
-                    <div class="col-md-4">
-                        <div class="to-ho-hotel-con">
-                            <div class="to-ho-hotel-con-1">
-                                <div class="hom-hot-av-tic"> Available Tickets: 92 </div> <img src="{{ asset("front/images/room/6.jpg") }}" alt=""> </div>
-                            <div class="to-ho-hotel-con-23">
-                                <div class="to-ho-hotel-con-2"> <a href="all-rooms.html"><h4>Normal Room</h4></a> </div>
-                                <div class="to-ho-hotel-con-3">
-                                    <ul>
-                                        <li>City: illunois,united states
-                                            <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
-                                        </li>
-                                        <li><span class="ho-hot-pri-dis">$680</span><span class="ho-hot-pri">$380</span> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
+    @endif
     <!--END HOTEL ROOMS-->
     <!--TOP SECTION-->
     <div class="offer">
@@ -191,117 +106,52 @@
             </div>
         </div>
     </div>
+    @if(count($events) > 0)
     <div class="blog hom-com pad-bot-0">
         <div class="container">
             <div class="row">
                 <div class="hom1-title">
-                    <h2>Banquet Spaces & Meeting Rooms</h2>
+                    <h2>Events</h2>
                     <div class="head-title">
                         <div class="hl-1"></div>
                         <div class="hl-2"></div>
                         <div class="hl-3"></div>
                     </div>
-                    <p>Aenean euismod sem porta est consectetur posuere. Praesent nisi velit, porttitor ut imperdiet a, pellentesque id mi.</p>
+                    <p>Join events and conferences organized in our hotel.</p>
                 </div>
             </div>
             <div class="row">
                 <div>
+                    @foreach($events as $event)
                     <div class="col-md-3 n2-event">
                         <!--event IMAGE-->
-                        <div class="n21-event hovereffect"> <img src="{{ asset("front/images/event/1.jpg") }}" alt="">
+                        <div class="n21-event hovereffect"> <img src="{{'/storage/events/'.$event->image}}" alt="">
                             <div class="overlay"> <a href="booking.html"><span class="ev-book">Book Now</span></a> </div>
                         </div>
                         <!--event DETAILS-->
-                        <div class="n22-event"> <a href="#!"><h4>Wedding Halls</h4></a> <span class="event-date">Capacity: 500,</span> <span class="event-by"> Price: $900</span>
-                            <p>undergraduate applicants are admitted on a need-blind basis, and the university offers undergraduate applicants</p>
+                        <div class="n22-event"> <a href="#!"><h4>{{ $event->name }}</h4></a> <span class="event-date">Date: {{ $event->date }},</span> <span class="event-by"> Price: {{ $event->price > 0? "Rs. ".$event->price : 'Free'}}</span>
+                            <p>{{ $event->description }}</p>
                             <!--event SHARE-->
                             <div class="event-share">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                                    <li><a href="https://www.facebook.com/sharer.php?u={{ Request::url() }}" rel="me" title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
                                     </li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <li><a href="https://plus.google.com/share?url={{ Request::url() }}" rel="me" title="Google Plus" target="_blank"><i class="fa fa-google-plus"></i></a>
                                     </li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                                    <li><a href="https://twitter.com/share?url={{ Request::url() }}&text={{ $event->name }}" rel="me" title="Twitter" target="_blank"><i class="fa fa-twitter"></i></a>
                                     </li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <li><a href="https://pinterest.com/pin/create/button/?url={{ Request::url() }}&media={{ $event->image }}&description={{ $event->name }}" rel="me" title="Pinterest" target="_blank"><i class="fa fa-pinterest"></i></a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 n2-event">
-                        <!--event IMAGE-->
-                        <div class="n21-event hovereffect"> <img src="{{ asset("front/images/event/2.jpg") }}" alt="">
-                            <div class="overlay"> <a href="booking.html"><span class="ev-book">Book Now</span></a> </div>
-                        </div>
-                        <!--event DETAILS-->
-                        <div class="n22-event"> <a href="#!"><h4>Business Meetings</h4></a> <span class="event-date">Capacity: 500,</span> <span class="event-by"> Price: $700</span>
-                            <p>undergraduate applicants are admitted on a need-blind basis, and the university offers undergraduate applicants</p>
-                            <!--event SHARE-->
-                            <div class="event-share">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 n2-event">
-                        <!--event IMAGE-->
-                        <div class="n21-event hovereffect"> <img src="{{ asset("front/images/event/3.jpg") }}" alt="">
-                            <div class="overlay"> <a href="booking.html"><span class="ev-book">Book Now</span></a> </div>
-                        </div>
-                        <!--event DETAILS-->
-                        <div class="n22-event"> <a href="#!"><h4>Social Event</h4></a> <span class="event-date">Capacity: 420,</span> <span class="event-by"> Price: $750</span>
-                            <p>undergraduate applicants are admitted on a need-blind basis, and the university offers undergraduate applicants</p>
-                            <!--event SHARE-->
-                            <div class="event-share">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 n2-event">
-                        <!--event IMAGE-->
-                        <div class="n21-event hovereffect"> <img src="{{ asset("front/images/event/4.jpg") }}" alt="">
-                            <div class="overlay"> <a href="booking.html"><span class="ev-book">Book Now</span></a> </div>
-                        </div>
-                        <!--event DETAILS-->
-                        <div class="n22-event"> <a href="#!"><h4>Birthdays and Debut</h4></a> <span class="event-date">Capacity: 240,</span> <span class="event-by"> Price: $500</span>
-                            <p>undergraduate applicants are admitted on a need-blind basis, and the university offers undergraduate applicants</p>
-                            <!--event SHARE-->
-                            <div class="event-share">
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
                 </div>
             </div>
         </div>
     </div>
+    @endif
     <div class="blog hom-com pad-bot-0">
         <div class="container">
             <div class="row">
@@ -312,219 +162,59 @@
                         <div class="hl-2"></div>
                         <div class="hl-3"></div>
                     </div>
-                    <p>Aenean euismod sem porta est consectetur posuere. Praesent nisi velit, porttitor ut imperdiet a, pellentesque id mi.</p>
+                    <p>View photos of hotel rooms, food menus and events</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="inn-services head-typo typo-com mar-bot-0">
                         <ul id="filters" class="clearfix">
-                            <li><span class="filter active" data-filter=".app, .card, .icon, .logo, .web">All</span>
+                            <li><span class="filter active" data-filter=".room, .facilities, .food, .event">All</span>
                             </li>
-                            <li><span class="filter" data-filter=".app">Hotels</span>
+                            <li><span class="filter" data-filter=".room">Rooms</span>
                             </li>
-                            <li><span class="filter" data-filter=".card">Aminities</span>
+                            <li><span class="filter" data-filter=".facilities">Facilities</span>
                             </li>
-                            <li><span class="filter" data-filter=".icon">Rooms</span>
+                            <li><span class="filter" data-filter=".food">Food Menu</span>
                             </li>
-                            <li><span class="filter" data-filter=".logo">Food Menu</span>
-                            </li>
-                            <li><span class="filter" data-filter=".web">Events</span>
+                            <li><span class="filter" data-filter=".event">Events</span>
                             </li>
                         </ul>
                         <div id="portfoliolist">
-                            <div class="portfolio logo" data-cat="logo">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/logo/5.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Logo</span> </div>
-                                        <div class="label-bg"></div>
+                            <!-- Room Types -->
+                            @foreach($room_types as $room_type)
+                                <div class="portfolio room" data-cat="room">
+                                    <div class="portfolio-wrapper"> <img src="{{'/storage/room_types/'.$room_type->images->last()->name}}" alt="" />
+                                        <div class="label">
+                                            <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Web design</span> </div>
+                                            <div class="label-bg"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="portfolio app" data-cat="app">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/app/1.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">APP</span> </div>
-                                        <div class="label-bg"></div>
+                            @endforeach
+                            <!-- Event Events -->
+                            @foreach($events as $event)
+                                <div class="portfolio event" data-cat="event">
+                                    <div class="portfolio-wrapper"> <img src="{{ '/storage/events/'.$event->image }}" alt="" />
+                                        <div class="label">
+                                            <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Web design</span> </div>
+                                            <div class="label-bg"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="portfolio web" data-cat="web">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/web/4.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Web design</span> </div>
-                                        <div class="label-bg"></div>
+                            @endforeach
+
+                        <!-- Food Photos -->
+                            @foreach($foods as $food)
+                                <div class="portfolio food" data-cat="food">
+                                    <div class="portfolio-wrapper"> <img src="{{ '/storage/foods/'.$food->image }}" alt="" />
+                                        <div class="label">
+                                            <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Logo</span> </div>
+                                            <div class="label-bg"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="portfolio card" data-cat="card">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/card/1.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Business card</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio app" data-cat="app">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/app/3.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">APP</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio card" data-cat="card">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/card/4.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Business card</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio card" data-cat="card">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/card/5.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Business card</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio logo" data-cat="logo">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/logo/1.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Logo</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio app" data-cat="app">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/app/2.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">APP</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio card" data-cat="card">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/card/2.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Business card</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio logo" data-cat="logo">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/logo/6.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Logo</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio logo" data-cat="logo">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/logo/7.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Logo</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio icon" data-cat="icon">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/icon/4.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Icon</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio web" data-cat="web">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/web/3.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Web design</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio icon" data-cat="icon">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/icon/1.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Icon</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio web" data-cat="web">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/web/2.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Web design</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio icon" data-cat="icon">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/icon/2.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Icon</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio icon" data-cat="icon">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/icon/5.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">3D Map</a> <span class="text-category">Icon</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio web" data-cat="web">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/web/1.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Note</a> <span class="text-category">Web design</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio logo" data-cat="logo">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/logo/3.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Native Designers</a> <span class="text-category">Logo</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio logo" data-cat="logo">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/logo/4.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Bookworm</a> <span class="text-category">Logo</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio icon" data-cat="icon">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("") }}{{ asset("front/img/portfolios/icon/3.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Sandwich</a> <span class="text-category">Icon</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio card" data-cat="card">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/card/3.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Reality</a> <span class="text-category">Business card</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio logo" data-cat="logo">
-                                <div class="portfolio-wrapper"> <img src="{{ asset("front/img/portfolios/logo/2.jpg") }}" alt="" />
-                                    <div class="label">
-                                        <div class="label-text"> <a class="text-title">Speciallisterne</a> <span class="text-category">Logo</span> </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -535,13 +225,12 @@
         <div class="container">
             <div class="row">
                 <div class="hom1-title">
-                    <h2>News & Event</h2>
+                    <h2>Read More</h2>
                     <div class="head-title">
                         <div class="hl-1"></div>
                         <div class="hl-2"></div>
                         <div class="hl-3"></div>
                     </div>
-                    <p>Aenean euismod sem porta est consectetur posuere. Praesent nisi velit, porttitor ut imperdiet a, pellentesque id mi.</p>
                 </div>
             </div>
             <div class="row">

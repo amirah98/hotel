@@ -1,4 +1,4 @@
-.++++++++++++<?php
+<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,8 +16,7 @@ class CreateFacilitiesTable extends Migration
         Schema::create('facilities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 50)->unique();
-            $table->string('icon', 20)->unique();
-            $table->text('description');
+            $table->string('icon', 200);
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

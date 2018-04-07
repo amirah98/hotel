@@ -1,0 +1,9 @@
+- V1.0.0 05.07.2016 Original Release
+
+- V1.1.0 04.08.2016 Bug Fixes and New DataTables.net Plugin
+	- Added DataTables.net library for more powerful table data manipulation
+	- Added perfect scroll bar library for Windows Users
+	- Added Touch Punch library so sliders will work on touch devices
+	- Update dropdown inside Documentation
+	- Removed double caret from the Off Canvas menu on small screens
+	- Other bug fixes

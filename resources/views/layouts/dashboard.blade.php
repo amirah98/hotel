@@ -66,19 +66,6 @@
     <script src="{{ asset("front/js/materialize.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset("front/js/jquery.mixitup.min.js") }}" type="text/javascript"></script>
     <script src="{{ asset("front/js/custom.js") }}"></script>
-    <script>
-        var angularApp = angular.module('angularApp', []);
-
-        angularApp.config(function($interpolateProvider) {
-            $interpolateProvider.startSymbol('<%');
-            $interpolateProvider.endSymbol('%>');
-        });
-
-
-        angularApp.controller('ng-controller', function() {
-            this.label = "This binding is brought you by // interpolation symbols.";
-        });
-    </script>
 @show
 </body>
 

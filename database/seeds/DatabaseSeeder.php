@@ -13,5 +13,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(UsersTableSeeder::class);
         $this->call(SliderTableSeeder::class);
+        $this->call(RoomTypesTableSeeder::class);
+        $this->call(ImagesTableSeeder::class);
+        $this->call(FacilitiesTableSeeder::class);
+        $this->call(FacilityRoomTypeTableSeeder::class);
+        $this->call(RoomsTableSeeder::class);
+        $this->call(EventsTableSeeder::class);
+        //$this->call(FoodsTableSeeder::class);
     }
 }

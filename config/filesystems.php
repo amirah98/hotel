@@ -69,6 +69,27 @@ return [
             'visibility' => 'public',
         ],
 
+        'room_type' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/room_types'),
+            'url' => env('APP_URL').'/storage/room_types',
+            'visibility' => 'public',
+        ],
+
+        'food' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/foods'),
+            'url' => env('APP_URL').'/storage/foods',
+            'visibility' => 'public',
+        ],
+
+        'event' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/events'),
+            'url' => env('APP_URL').'/storage/events',
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

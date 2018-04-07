@@ -17,6 +17,7 @@ class CreateRoomsTable extends Migration
             $table->increments('id');
             $table->string('room_number', 5)->unique();
             $table->text('description');
+            $table->boolean('available')->default(true);
             $table->boolean('status')->default(true);
             $table->integer('room_type_id')->unsigned()->index();
             $table->timestamps();

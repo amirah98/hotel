@@ -22,8 +22,8 @@ class FacilityController extends AdminController
      */
     public function index()
     {
-        $facility = Facility::all();
-        return view('admin.facility.view')->with('facility', $facility);
+        $facilities = Facility::all();
+        return view('admin.facility.view')->with('facilities', $facilities);
     }
 
     /**
@@ -44,11 +44,11 @@ class FacilityController extends AdminController
      */
     public function store(Request $request)
     {
-        dd($request->all());
         $rules = [
-            'name' => 'required|max:50|unique:facility',
-            'travel_mode' => 'required|max:15',
-            'description' => 'max:200'
+            'name' => 'required|max:50|unique:facilities,name',
+            'icon' => 'required|max:15',
+            'description' => 'max:200',
+            'status' => 'required|boolean'
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -57,28 +57,17 @@ class FacilityController extends AdminController
                 ->withInput($request->all())
                 ->withErrors($validator);
         }
-
-        Facility::create([
-            'name' => $request->input('name'),
-            'travel_mpde' => $request->input('travel_mode'),
-            'description' => $request->input('description')
-        ]);
+        $facility = new Facility();
+        $facility->name = $request->input('name');
+        $facility->icon = $request->input('icon');
+        $facility->description = $request->input('description');
+        $facility->status = $request->input('status');
+        $facility->save();
 
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The facility has been added successfully');
-        return redirect('admin/travel_medium');
+        return redirect('admin/facility');
 
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -89,8 +78,8 @@ class FacilityController extends AdminController
      */
     public function edit($id)
     {
-        $travel_medium = Facility::find($id);
-        return view('admin.facility.edit')->with('travel_medium', $travel_medium);
+        $facility = Facility::find($id);
+        return view('admin.facility.edit')->with('facility', $facility);
     }
 
     /**
@@ -102,11 +91,10 @@ class FacilityController extends AdminController
      */
     public function update(Request $request, $id)
     {
-        $travel_medium = Facility::find($id);
+        $facility = Facility::find($id);
         $rules = [
-            'name' => 'required|max:50|unique:facility,name,'.$id,
-            'travel_mode' => 'required|max:15',
-            'description' => 'max:200'
+            'name' => 'required|max:50|unique:facilities,name,'.$id,
+            'status' => 'required|boolean'
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -116,14 +104,13 @@ class FacilityController extends AdminController
                 ->withErrors($validator);
         }
 
-        $travel_medium->name = $request->input('name');
-        $travel_medium->travel_mode = $request->input('travel_mode');
-        $travel_medium->description = $request->input('description');
-        $travel_medium->save();
+        $facility->name = $request->input('name');
+        $facility->status = $request->input('status');
+        $facility->save();
 
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The facility has been updated successfully');
-        return redirect('admin/travel_medium');
+        return redirect('admin/facility');
     }
 
     /**
@@ -134,12 +121,12 @@ class FacilityController extends AdminController
      */
     public function destroy($id)
     {
-        $travel_medium = Facility::find($id);
-        $travel_medium->delete();
+        $facility = Facility::find($id);
+        $facility->delete();
 
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The facility has been deleted successfully');
-        return redirect('admin/travel_medium');
+        return redirect('admin/facility');
 
     }
 }

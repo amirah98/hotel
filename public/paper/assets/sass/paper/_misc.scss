@@ -1,0 +1,104 @@
+/*     General overwrite     */
+body{
+    color: $font-color;
+    font-size: $font-size-base;
+    font-family: 'Muli', Arial, sans-serif;
+    .wrapper{
+        min-height: 100vh;
+        position: relative;
+
+        &:after{
+            display: table;
+            content: " ";
+            clear: both;
+        }
+    }
+}
+a{
+  color: $info-color;
+
+  &:hover, &:focus{
+     color: $info-states-color;
+     text-decoration: none;
+  }
+}
+
+a:focus, a:active,
+button::-moz-focus-inner,
+input::-moz-focus-inner,
+select::-moz-focus-inner,
+input[type="file"] > input[type="button"]::-moz-focus-inner{
+    outline:0 !important;
+}
+.ui-slider-handle:focus,
+.navbar-toggle,
+input:focus,
+button:focus {
+    outline : 0 !important;
+}
+
+/*           Animations              */
+.form-control,
+.input-group-addon,
+.tagsinput,
+.navbar,
+.navbar .alert,
+.general-animation{
+    @include transition($general-transition-time, $transition-linear);
+}
+
+.tagsinput .tag,
+.tagsinput-remove-link,
+.filter,
+.btn-hover,
+[data-toggle="collapse"] i{
+    @include transition($fast-transition-time, linear);
+}
+
+.sidebar .nav a,
+.table > tbody > tr .td-actions .btn,
+.caret{
+    @include transition($fast-transition-time, $transition-ease-in);
+}
+
+.btn,
+.pagination a{
+    @include transition($ultra-fast-transition-time, $transition-ease-in);
+}
+.fa{
+    text-align: center;
+}
+.fa-base{
+    font-size: 1.25em !important;
+}
+
+.margin-top{
+    margin-top: 50px;
+}
+hr{
+    border-color: $medium-pale-bg;
+}
+
+.animation-transition-general{
+    @include transition($general-transition-time, $transition-linear);
+}
+
+.animation-transition-fast{
+    @include transition($fast-transition-time, $transition-linear);
+}
+.animation-transition-ultra-fast{
+    @include transition($ultra-fast-transition-time, $transition-ease-in);
+}
+
+a[data-toggle="collapse"][aria-expanded="true"] .caret,
+.btn[data-toggle="collapse"][aria-expanded="true"] .caret,
+a.dropdown-toggle[aria-expanded="true"] .caret{
+    @include rotate-180();
+}
+
+.section-gray{
+    background-color: #EEEEEE;
+}
+.section-white{
+    background-color: #FFFFFF;
+}

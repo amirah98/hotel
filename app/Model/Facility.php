@@ -10,4 +10,9 @@ class Facility extends Model
 
     protected $fillable = ['name', 'icon', 'description', 'status'];
 
+    public function room_types()
+    {
+        return $this->belongsToMany('App\Model\RoomType', 'facility_room_type')->withTimestamps();
+    }
+
 }
