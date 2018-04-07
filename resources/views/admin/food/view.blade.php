@@ -20,6 +20,7 @@
                                 <thead>
                                 <th data-field="sn" class="text-center">S.N.</th>
                                 <th data-field="name" class="text-center">Name</th>
+                                <th data-field="type" class="text-center">Type</th>
                                 <th data-field="image" class="text-center">Image</th>
                                 <th data-field="price">Price</th>
                                 <th data-field="status" data-sortable="true">Status</th>
@@ -33,7 +34,8 @@
                                             <tr>
                                                 <td>{{$index+1}}</td>
                                                 <td>{{ $food->name }}</td>
-                                                <td><img height="70px" width="70px" rel="tooltip"  alt="{{ $food->image }}" title="{{ $image->caption }}"
+                                                <td>{{ $food->type }}</td>
+                                                <td><img height="70px" width="70px" rel="tooltip"  alt="{{ $food->image }}"
                                                          src="{{'/storage/foods/'.$food->image}}"/></td>
                                                 <td><span class="badge">{{ $food->price }}</span></td>
                                                 <td>

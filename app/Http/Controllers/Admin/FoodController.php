@@ -48,6 +48,7 @@ class FoodController extends AdminController
     {
         $rules = [
             'name' => 'required|max:100|unique:foods,name',
+            'type' => 'required|in:Appetizer,Soup,Salad,Main Course,Dessert',
             'image' => 'required|mimes:jpeg, jpg, png',
             'price' => 'required|numeric|min:0',
             'description' => 'max:200',
@@ -106,6 +107,7 @@ class FoodController extends AdminController
         $food = Food::find($id);
         $rules = [
             'name' => 'required|max:100|unique:foods,name,'.$id,
+            'type' => 'required|in:Appetizer,Soup,Salad,Main Course,Dessert',
             'price' => 'required|numeric|min:0',
             'description' => 'max:200',
             'status' => 'required|boolean'

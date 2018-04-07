@@ -28,6 +28,34 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label>Type<star>*</star></label>
+                                        <select name="type" id="type" class="form-control">
+                                            <option value="Appetizer"
+                                                    @if (Input::old('type') == 'Appetizer') selected="selected" @endif>Appetizer
+                                            </option>
+                                            <option value="Soup"
+                                                    @if (Input::old('type') == 'Soup') selected="selected" @endif>
+                                                Soup
+                                            </option>
+                                            <option value="Salad"
+                                                    @if (Input::old('type') == 'Salad') selected="selected" @endif>
+                                                Salad
+                                            </option>
+                                            <option value="Main Course"
+                                                    @if (Input::old('type') == 'Main Course') selected="selected" @endif>
+                                                Main Course
+                                            </option>
+                                            <option value="Dessert"
+                                                    @if (Input::old('type') == 'Dessert') selected="selected" @endif>
+                                                Dessert
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label>Image<star>*</star></label>
                                         <input type="file" name="image" class="form-control border-input">
                                     </div>

@@ -186,7 +186,7 @@
                                 <div class="portfolio room" data-cat="room">
                                     <div class="portfolio-wrapper"> <img src="{{'/storage/room_types/'.$room_type->images->last()->name}}" alt="" />
                                         <div class="label">
-                                            <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Web design</span> </div>
+                                            <div class="label-text"> <a class="text-title">{{ $room_type->name }}</a></div>
                                             <div class="label-bg"></div>
                                         </div>
                                     </div>
@@ -197,7 +197,7 @@
                                 <div class="portfolio event" data-cat="event">
                                     <div class="portfolio-wrapper"> <img src="{{ '/storage/events/'.$event->image }}" alt="" />
                                         <div class="label">
-                                            <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Web design</span> </div>
+                                            <div class="label-text"> <a class="text-title">{{ $event->name }}</a></div>
                                             <div class="label-bg"></div>
                                         </div>
                                     </div>
@@ -209,7 +209,7 @@
                                 <div class="portfolio food" data-cat="food">
                                     <div class="portfolio-wrapper"> <img src="{{ '/storage/foods/'.$food->image }}" alt="" />
                                         <div class="label">
-                                            <div class="label-text"> <a class="text-title">Photo Caption</a> <span class="text-category">Logo</span> </div>
+                                            <div class="label-text"> <a class="text-title">{{ $food->name }}</a></div>
                                             <div class="label-bg"></div>
                                         </div>
                                     </div>

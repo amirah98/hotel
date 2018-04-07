@@ -25,6 +25,30 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Type<star>*</star></label>
+                                        <select name="type" id="type" class="form-control">
+                                            <option value="Appetizer"
+                                                    @if ($food->type == 'Appetizer') selected="selected" @endif>Appetizer
+                                            </option>
+                                            <option value="Soup"
+                                                    @if ($food->type == 'Soup') selected="selected" @endif>Soup
+                                            </option>
+                                            <option value="Salad"
+                                                    @if ($food->type == 'Salad') selected="selected" @endif>Salad
+                                            </option>
+                                            <option value="Main Course"
+                                                    @if ($food->type == 'Main Course') selected="selected" @endif>Main Course
+                                            </option>
+                                            <option value="Dessert"
+                                                    @if ($food->type == 'Dessert') selected="selected" @endif>Dessert
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-12" align="center">
                                     <img height="70px" width="70px" src="{{'/storage/foods/'.$food->image}}"/>
                                 </div>
