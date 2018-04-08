@@ -44,12 +44,12 @@
     </div>
     <!--DASHBOARD SECTION-->
         <div class="dashboard">
-            @include('front.components.dashboard_left')
+            @include('dashboard.components.dashboard_left')
             <div class="db-cent">
-            @include('front.components.dashboard_center_top')
+            @include('dashboard.components.dashboard_center_top')
                 @yield('content')
             </div>
-            @include('front.components.dashboard_right')
+            @include('dashboard.components.dashboard_right')
         </div>
         <!--END DASHBOARD SECTION-->
 

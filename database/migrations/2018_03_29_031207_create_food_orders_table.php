@@ -15,9 +15,9 @@ class CreateFoodOrdersTable extends Migration
     {
         Schema::create('food_orders', function (Blueprint $table) {
             $table->integer('food_id')->unsigned()->index();
-            $table->integer('booking_id')->unsigned()->index();
+            $table->integer('room_booking_id')->unsigned()->index();
             $table->integer('quantity')->default(1);
-            $table->decimal('cost', 8, 2);
+            $table->integer('cost');
 
             $table->timestamps();
 
@@ -25,8 +25,8 @@ class CreateFoodOrdersTable extends Migration
                 ->references('id')->on('foods')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreign('booking_id')
-                ->references('id')->on('bookings')
+            $table->foreign('room_booking_id')
+                ->references('id')->on('room_bookings')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

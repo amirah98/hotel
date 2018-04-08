@@ -51,7 +51,7 @@ class FoodController extends AdminController
             'type' => 'required|in:Appetizer,Soup,Salad,Main Course,Dessert',
             'image' => 'required|mimes:jpeg, jpg, png',
             'price' => 'required|numeric|min:0',
-            'description' => 'max:200',
+            'description' => 'max:100',
             'status' => 'required|boolean'
         ];
 
@@ -109,7 +109,7 @@ class FoodController extends AdminController
             'name' => 'required|max:100|unique:foods,name,'.$id,
             'type' => 'required|in:Appetizer,Soup,Salad,Main Course,Dessert',
             'price' => 'required|numeric|min:0',
-            'description' => 'max:200',
+            'description' => 'max:100',
             'status' => 'required|boolean'
         ];
 

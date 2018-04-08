@@ -21,22 +21,32 @@ Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback
 // Routes for Front
 Route::get('/', 'Front\HomeController@index')->name('home');
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-Route::resource('room_type', 'Front\RoomTypeController');
+Route::get('/room_type', 'Front\RoomTypeController@index');
+Route::get('/room_type/{id}', 'Front\RoomTypeController@show');
+Route::get('/food', 'Front\FoodController@index');
+Route::get('/food/{id}', 'Front\FoodController@show');
+Route::get('/event', 'Front\EventController@index');
+Route::get('/event/{id}', 'Front\EventController@show');
+Route::post('/room_type/{id}/book', 'Front\RoomBookingController@book_room');
 
 
-// Route::get('/admin/login', 'Auth\LoginController@showLoginForm');
+
+// Routes for Dashboard
+Route::group(['prefix' => 'dashboard'], function () {
+    Route::get('/', 'Dashboard\HomeController@index');
+    Route::get('/room/booking', 'Dashboard\RoomBookingController@index');
+});
+
+
+
 
 // Routes for Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/', 'Admin\DashboardController@index');
     Route::resource('slider', 'Admin\SliderController');
-
     Route::resource('facility', 'Admin\FacilityController');
     Route::resource('event', 'Admin\EventController');
     Route::resource('food', 'Admin\FoodController');
-
-
-
 
     // User Routes
     Route::resource('user', 'Admin\UserController');
@@ -68,5 +78,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::delete('/{id}/room/{image_id}', 'Admin\RoomController@destroy');
     });
 });
+
 
 

@@ -11,52 +11,53 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="inn-com-form">
-
-
-                        {!! Form::open(array('url' => 'room_type/'.$room_type->id.'/book', 'class' => 'col s12')) !!}
-                        {{ Form::hidden('_method', 'POST') }}
-                        @csrf
+                        <form class="col s12">
                             <div class="row">
                                 <div class="col s12 avail-title">
                                     <h4>Check Availability</h4> </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m4 l2">
-                                    <select name="room_id">
+                                    <select>
                                         <option value="" disabled selected>Select Room</option>
-                                        @foreach($room_type->rooms as $room)
-                                            <option value="{{ $room->id }}" @if (Input::old('room_id') == $room->id) selected="selected" @endif>{{ $room->room_number }}</option>
-                                        @endforeach
+                                        <option value="1">Master Suite</option>
+                                        <option value="2">Mini-Suite</option>
+                                        <option value="3">Ultra Deluxe</option>
+                                        <option value="4">Luxury</option>
+                                        <option value="5">Premium </option>
+                                        <option value="6">Normal</option>
                                     </select>
                                 </div>
                                 <div class="input-field col s12 m4 l2">
-                                    <select name="adult">
+                                    <select>
                                         <option value="" disabled selected>No of adults</option>
-                                        @for($i = 1; $i <= $room_type->max_adult; $i++ )
-                                        <option value="{{ $i }}" @if (Input::old('max_adult') == $i) selected="selected" @endif>{{ $i }}</option>
-                                            @endfor
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="1">4</option>
                                     </select>
                                 </div>
                                 <div class="input-field col s12 m4 l2">
-                                    <select name="child">
+                                    <select>
                                         <option value="" disabled selected>No of childrens</option>
-                                        @for($i = 0; $i <= $room_type->max_child; $i++ )
-                                            <option value="{{ $i }}" @if (Input::old('max_child') == $i) selected="selected" @endif>{{ $i }}</option>
-                                        @endfor
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="1">4</option>
                                     </select>
                                 </div>
                                 <div class="input-field col s12 m4 l2">
-                                    <input type="text" id="from" name="arrival_date" value="{{ old('arrival_date') }}">
+                                    <input type="text" id="from" name="from">
                                     <label for="from">Arrival Date</label>
                                 </div>
                                 <div class="input-field col s12 m4 l2">
-                                    <input type="text" id="to" name="departure_date" value="{{ old('departure_date') }}">
+                                    <input type="text" id="to" name="to">
                                     <label for="to">Departure Date</label>
                                 </div>
                                 <div class="input-field col s12 m4 l2">
                                     <input type="submit" value="submit" class="form-btn"> </div>
                             </div>
-                        {!! Form::close() !!}
+                        </form>
                     </div>
                 </div>
             </div>

@@ -71,41 +71,7 @@
     </div>
     @endif
     <!--END HOTEL ROOMS-->
-    <!--TOP SECTION-->
-    <div class="offer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="offer-l"> <span class="ol-1"></span> <span class="ol-2"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span> <span class="ol-4">Standardized Budget Rooms</span> <span class="ol-3"></span> <span class="ol-5">$99/-</span>
-                        <ul>
-                            <li>
-                                <a href="#!" class="waves-effect waves-light btn-large offer-btn"><img src="{{ asset("front/images/icon/dis1.png") }}" alt="">
-                                </a><span>Free WiFi</span>
-                            </li>
-                            <li>
-                                <a href="#!" class="waves-effect waves-light btn-large offer-btn"><img src="{{ asset("front/images/icon/h2.png") }}" alt=""> </a><span>Breakfast</span>
-                            </li>
-                            <li>
-                                <a href="#!" class="waves-effect waves-light btn-large offer-btn"><img src="{{ asset("front/images/icon/dis3.png") }}" alt=""> </a><span>Pool</span>
-                            </li>
-                            <li>
-                                <a href="#!" class="waves-effect waves-light btn-large offer-btn"><img src="{{ asset("front/images/icon/dis4.png") }}" alt=""> </a><span>Television</span>
-                            </li>
-                            <li>
-                                <a href="#!" class="waves-effect waves-light btn-large offer-btn"><img src="{{ asset("front/images/icon/dis5.png") }}" alt=""> </a><span>GYM</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="offer-r">
-                        <div class="or-1"> <span class="or-11">go</span> <span class="or-12">Stays</span> </div>
-                        <div class="or-2"> <span class="or-21">Get</span> <span class="or-22">70%</span> <span class="or-23">Off</span> <span class="or-24">use code: RG5481WERQ</span> <span class="or-25"></span> </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     @if(count($events) > 0)
     <div class="blog hom-com pad-bot-0">
         <div class="container">

@@ -19,7 +19,7 @@ class CreateFoodsTable extends Migration
             $table->enum('type', ['Appetizer', 'Soup', 'Salad', 'Main Course', 'Dessert']);
             $table->string('image', 200);
             $table->decimal('price', 8, 2);
-            $table->text('description')->nullable();
+            $table->string('description', 200)->nullable();
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

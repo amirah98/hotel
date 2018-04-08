@@ -43,6 +43,7 @@ class HomeController extends FrontController
 
         $events = Event::where('status', 1)
             ->orderBy('date', 'desc')
+            ->limit('4')
             ->get();
 
         $foods = Food::where('status', 1)->get();

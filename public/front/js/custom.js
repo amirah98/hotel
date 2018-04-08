@@ -71,18 +71,22 @@ $(function() {
 
 //DATE PICKER	
 $(function() {
-    var dateFormat = "mm/dd/yy",
+    var from_min_date = new Date();
+    var dateFormat = "yy/mm/dd",
         from = $("#from")
         .datepicker({
-            defaultDate: "+1w",
+            minDate: from_min_date,
+            dateFormat: dateFormat,
             changeMonth: false,
             numberOfMonths: 1
         })
         .on("change", function() {
             to.datepicker("option", "minDate", getDate(this));
+            from_min_date = getDate(this);
         }),
         to = $("#to").datepicker({
-            defaultDate: "+1w",
+            minDate: from_min_date,
+            dateFormat: dateFormat,
             changeMonth: false,
             numberOfMonths: 1
         })

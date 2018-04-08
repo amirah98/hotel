@@ -52,7 +52,7 @@
                     <!--ROOM BOOKING BUTTON-->
                     <div class="r5 r-com">
                         <div class="r2-available">Available</div>
-                        <p>Price for 1 night</p> <a href="room-details-block.html" class="inn-room-book">Book</a> </div>
+                        <p>Price for 1 night</p> <a href="{{url('/room_type/'.$room_type->id)}}" class="inn-room-book">Book</a> </div>
                 </div>
                 <!--END ROOM SECTION-->
                 @empty

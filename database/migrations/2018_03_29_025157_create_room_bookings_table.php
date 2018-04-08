@@ -1,4 +1,4 @@
-<?php
+  `<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -14,19 +14,22 @@ class CreateRoomBookingsTable extends Migration
     public function up()
     {
         Schema::create('room_bookings', function (Blueprint $table) {
-            $table->integer('booking_id')->unsigned()->index();
+            $table->increments('id');
             $table->integer('room_id')->unsigned()->index();
+            $table->integer('user_id')->unsigned()->index();
             $table->date('arrival_date');
             $table->date('departure_date')->nullable();
-            $table->decimal('cost', 8, 2);
+            $table->integer('room_cost');
+            $table->enum('status', ['pending', 'checked_in', 'checked_out'])->default('pending');
+            $table->boolean('payment')->default(false);
             $table->timestamps();
 
-            $table->foreign('booking_id')
-                ->references('id')->on('bookings')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
             $table->foreign('room_id')
                 ->references('id')->on('rooms')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreign('user_id')
+                ->references('id')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
