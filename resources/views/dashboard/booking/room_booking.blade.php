@@ -5,8 +5,8 @@
     <div class="db-cent-3">
         <div class="db-cent-table db-com-table">
             <div class="db-title">
-                <h3><img src="{{ asset("front/images/icon/dbc5.png") }}" alt=""/> My Bookings</h3>
-                <p>View all of your hotel rooms booking here.</p>
+                <h3><img src="{{ asset("front/images/icon/dbc5.png") }}" alt=""/> My Room Bookings</h3>
+                <p>View all of your hotel room bookings here.</p>
             </div>
             <table class="bordered responsive-table">
                 <thead>
@@ -17,6 +17,7 @@
                     <th>Arrival</th>
                     <th>Departure</th>
                     <th>Total Room Cost</th>
+                    <th>Status</th>
                     <th>Payment</th>
                 </tr>
                 </thead>
@@ -29,6 +30,15 @@
                     <td>{{ $room_booking->arrival_date }}</td>
                     <td>{{ $room_booking->departure_date }}</td>
                     <td>Rs. {{ $room_booking->room_cost }}</td>
+                    <td>
+                        @if($room_booking->status == "pending")
+                            <span class="db-success">Pending</span>
+                        @elseif($room_booking->status == "checked_in")
+                            <span class="db-success">Checked In</span>
+                        @else
+                            <span class="db-success">Checked Out</span>
+                        @endif
+                    </td>
                     <td>
                         @if($room_booking->payment == true)
                             <span class="db-success">Paid</span>

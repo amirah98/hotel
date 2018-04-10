@@ -20,17 +20,34 @@
                             <h2>Upcoming Events</h2>
                             <p>All future events being hosted in our hotel</p>
                             @foreach($events as $event)
+                            {!! Form::open(array('url' => 'event/'.$event->id.'/book', 'class' => 'col s12')) !!}
+                            {{ Form::hidden('_method', 'POST') }}
+                            @csrf
                             @continue($event->date < today()->format('Y-m-d'))
                             <!--EVENT-->
+
                             <div class="row events">
+
+                                @if ($errors->has('number_of_tickets'))
+                                    <div class="col-md-12 alert alert-danger">
+                                        <strong>Sorry!</strong> {{ $errors->first('number_of_tickets') }}
+                                    </div>
+                                @endif
                                 <div class="col-md-2"> <img src="{{ ('storage/events/'. $event->image) }}" alt="" /> </div>
                                 <div class="col-md-8">
-                                    <h3>{{ $event->name }}</h3> <span>Date: {{ \Carbon\Carbon::parse($event->date)->toFormattedDateString() }}</span>
+                                    <h3>{{ $event->name }}</h3> <span><strong>Date: </strong> {{ \Carbon\Carbon::parse($event->date)->toFormattedDateString() }}</span>
+                                    <p><strong>Price: </strong>Rs. {{ $event->price }}</p>
                                     <p>{{ $event->description }}</p>
                                 </div>
-                                <div class="col-md-2"> <a href="#" class="waves-effect waves-light event-regi">Register</a> </div>
+                                <div class="col-md-2"> <span style="font-weight: bold">Number of tickets</span> </div>
+                                <div class="input-field col-md-2">
+                                   <input style="margin-bottom: 10px; height: 40px;" type="text" name="number_of_tickets">
+                                </div>
+                                <div class="col-md-2"> <input id="register-button" type="submit" value="Register" class="waves-effect waves-light event-regi"> </div>
+
                             </div>
                             <!--END EVENT-->
+                            {!! Form::close() !!}
                              @endforeach
                         </div>
                     </div>
@@ -44,10 +61,10 @@
                                 <div class="row events">
                                     <div class="col-md-2"> <img src="{{ ('storage/events/'. $event->image) }}" alt="" /> </div>
                                     <div class="col-md-8">
-                                        <h3>{{ $event->name }}</h3> <span>Date: {{ \Carbon\Carbon::parse($event->date)->toFormattedDateString() }}</span>
+                                        <h3>{{ $event->name }}</h3> <span><strong>Date: </strong> {{ \Carbon\Carbon::parse($event->date)->toFormattedDateString() }}</span>
+                                        <p><strong>Price: </strong>Rs. {{ $event->price }}</p>
                                         <p>{{ $event->description }}</p>
                                     </div>
-                                    <div class="col-md-2"> <a href="#" class="waves-effect waves-light event-regi">Register</a> </div>
                                 </div>
                                 <!--END EVENT-->
                             @endforeach

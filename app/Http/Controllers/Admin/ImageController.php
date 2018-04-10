@@ -74,7 +74,7 @@ class ImageController extends AdminController
             if ($request->hasFile('image')) {
                 $path = $request->file('image')->store('', 'room_type');
                 $room_type_image = ImageManager::make('storage/room_types/' . $path);
-                $room_type_image->fit(950, 650);
+                $room_type_image->fit(950, 400);
                 $room_type_image->save(storage_path() . '/app/public/room_types/' . $path);
                 $image->name = $path;
             }
@@ -154,7 +154,7 @@ class ImageController extends AdminController
 
                 $path = $request->file('image')->store('', 'room_type');
                 $room_type_image = ImageManager::make('storage/room_types/' . $path);
-                $room_type_image->fit(950, 650);
+                $room_type_image->fit(950, 400);
                 $room_type_image->save(storage_path() . '/app/public/room_types/' . $path);
                 $image->name = $path;
             }

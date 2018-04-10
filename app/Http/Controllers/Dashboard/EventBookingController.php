@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Model\RoomBooking;
+use App\Model\EventBooking;
 use Illuminate\Support\Facades\Auth;
 
 
-class RoomBookingController extends DashboardController
+class EventBookingController extends DashboardController
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +15,12 @@ class RoomBookingController extends DashboardController
      */
     public function index()
     {
-        $room_bookings = RoomBooking::with('room')
+        $event_bookings = EventBooking::with('event')
             ->where('user_id', Auth::user()->id)
             ->paginate(10);
 
-        return view('dashboard.booking.room_booking')->with([
-            'room_bookings' => $room_bookings
+        return view('dashboard.booking.event_booking')->with([
+            'event_bookings' => $event_bookings
         ]);
     }
 

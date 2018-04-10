@@ -4567,3 +4567,9 @@ form .stars label:before {
 .help-block{
     color: #cc0000;
 }
+
+#register-button{
+    text-transform: none;
+    padding: 0px;
+    height: 20px
+}

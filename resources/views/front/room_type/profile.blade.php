@@ -3,7 +3,7 @@
 @section('content')
 
     <!--TOP SECTION-->
-    <div class="hp-banner"> <img src="{{ asset('front/images/detailed-banner.jpg') }}" alt=""> </div>
+    <div class="hp-banner"> <img src="{{'/storage/room_types/'.$room_type->images->first()->name}}" alt=""> </div>
     <!--END HOTEL ROOMS-->
     <!--CHECK AVAILABILITY FORM-->
     <div class="check-available">
@@ -11,37 +11,44 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="inn-com-form">
-
-
                         {!! Form::open(array('url' => 'room_type/'.$room_type->id.'/book', 'class' => 'col s12')) !!}
                         {{ Form::hidden('_method', 'POST') }}
                         @csrf
+
+                        @if ($errors->any())
+                            <div class="row">
+                                <div class="col-md-12 alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        @endif
                             <div class="row">
                                 <div class="col s12 avail-title">
                                     <h4>Check Availability</h4> </div>
                             </div>
-                            <div class="row">
+                        <input name="booking_validation" type="hidden" value="0">
+
+                        <div class="row">
                                 <div class="input-field col s12 m4 l2">
-                                    <select name="room_id">
-                                        <option value="" disabled selected>Select Room</option>
-                                        @foreach($room_type->rooms as $room)
-                                            <option value="{{ $room->id }}" @if (Input::old('room_id') == $room->id) selected="selected" @endif>{{ $room->room_number }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" style="color: black" value="Price: Rs. {{ $room_type->cost_per_day }}" class="form-btn" disabled>
                                 </div>
                                 <div class="input-field col s12 m4 l2">
-                                    <select name="adult">
+                                    <select name="number_of_adult">
                                         <option value="" disabled selected>No of adults</option>
                                         @for($i = 1; $i <= $room_type->max_adult; $i++ )
-                                        <option value="{{ $i }}" @if (Input::old('max_adult') == $i) selected="selected" @endif>{{ $i }}</option>
+                                        <option value="{{ $i }}" @if (Input::old('number_of_adult') == $i) selected="selected" @endif>{{ $i }}</option>
                                             @endfor
                                     </select>
                                 </div>
                                 <div class="input-field col s12 m4 l2">
-                                    <select name="child">
-                                        <option value="" disabled selected>No of childrens</option>
-                                        @for($i = 0; $i <= $room_type->max_child; $i++ )
-                                            <option value="{{ $i }}" @if (Input::old('max_child') == $i) selected="selected" @endif>{{ $i }}</option>
+                                    <select name="number_of_child">
+                                        <option value="" disabled selected>No of childs</option>
+                                        @for($i = 0; $i <= $room_type->max_adult; $i++ )
+                                            <option value="{{ $i }}" @if (Input::old('number_of_child') == $i) selected="selected" @endif>{{ $i }}</option>
                                         @endfor
                                     </select>
                                 </div>
@@ -54,7 +61,8 @@
                                     <label for="to">Departure Date</label>
                                 </div>
                                 <div class="input-field col s12 m4 l2">
-                                    <input type="submit" value="submit" class="form-btn"> </div>
+                                    <input type="submit" value="submit" class="form-btn">
+                                </div>
                             </div>
                         {!! Form::close() !!}
                     </div>

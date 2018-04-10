@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Model\Room;
 use App\Model\RoomBooking;
 use App\Model\RoomType;
+use App\Rules\RoomAvailableRule;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -13,10 +14,13 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RoomBooked;
+
 
 class RoomBookingController extends FrontController
 {
-    public function book_room(Request $request, $room_type_id)
+    public function book(Request $request, $room_type_id)
     {
         //check here if the user is authenticated
         if (!Auth::check()) {
@@ -24,11 +28,14 @@ class RoomBookingController extends FrontController
         }
 
         $rules = [
-            'adult' => 'required|numeric|min:1',
-            'child' => 'required|numeric|min:0',
+            'number_of_adult' => 'required|numeric|min:1',
+            'number_of_child' => 'required|numeric|min:0',
             'arrival_date' => 'required|date|date_format:Y/m/d|after_or_equal:today',
-            'departure_date' => 'required|date|date_format:Y/m/d|after_or_equal:today',
+            'departure_date' => 'required|date|date_format:Y/m/d|after_or_equal:'.$request->input('arrival_date'),
         ];
+
+        $room_type = RoomType::findOrFail($room_type_id);
+        $rules['booking_validation'] = [new RoomAvailableRule($room_type, $request)];
 
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){
@@ -39,7 +46,6 @@ class RoomBookingController extends FrontController
 
         $room_booking = new RoomBooking();
         $user = Auth::user();
-        $room_type = RoomType::findOrFail($room_type_id);
 
         $room_booking->arrival_date = $request->input('arrival_date');
         $room_booking->departure_date = $request->input('departure_date');
@@ -51,8 +57,6 @@ class RoomBookingController extends FrontController
         $no_of_days = $finishTime->diffInDays($startTime) ? $finishTime->diffInDays($startTime) : 1;
         $room_booking->room_cost = $no_of_days * $room_type->cost_per_day;
         $room_booking->user_id = $user->id;
-
-
         /**
          * Select random room for booking of given room type
          */
@@ -61,7 +65,7 @@ class RoomBookingController extends FrontController
         $room_booking->user_id = $user->id;
         $room_booking->save();
 
-        // $this->send_email_to_agent($request->input('contact_email'));
+        //$this->send_email_to_agent(Auth::user()->email);
 
         Session::flash('flash_title', "Success");
         Session::flash('flash_message', "Room has been Booked.");
@@ -70,10 +74,6 @@ class RoomBookingController extends FrontController
     }
 
     private function send_email_to_agent($email){
-        if(empty($email)){
-            $email = Auth::user()->email;
-        }
-
-        Mail::to($email)->send(new AgentMail());
+        Mail::to($email)->send(new RoomBooked());
     }
 }

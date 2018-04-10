@@ -27,7 +27,8 @@ Route::get('/food', 'Front\FoodController@index');
 Route::get('/food/{id}', 'Front\FoodController@show');
 Route::get('/event', 'Front\EventController@index');
 Route::get('/event/{id}', 'Front\EventController@show');
-Route::post('/room_type/{id}/book', 'Front\RoomBookingController@book_room');
+Route::post('/room_type/{id}/book', 'Front\RoomBookingController@book');
+Route::post('/event/{id}/book', 'Front\EventBookingController@book');
 
 
 
@@ -35,9 +36,8 @@ Route::post('/room_type/{id}/book', 'Front\RoomBookingController@book_room');
 Route::group(['prefix' => 'dashboard'], function () {
     Route::get('/', 'Dashboard\HomeController@index');
     Route::get('/room/booking', 'Dashboard\RoomBookingController@index');
+    Route::get('/event/booking', 'Dashboard\EventBookingController@index');
 });
-
-
 
 
 // Routes for Admin

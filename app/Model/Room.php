@@ -15,11 +15,15 @@ class Room extends Model
 
     protected $fillable = ['room_number', 'description', 'available', 'status', 'room_type_id'];
 
-    /**
-     * Get the gallery that owns the image.
-     */
+
     public function room_type()
     {
         return $this->belongsTo('App\Model\RoomType');
     }
+
+    public function room_bookings()
+    {
+        return $this->hasMany('App\Model\RoomBooking');
+    }
+
 }
