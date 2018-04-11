@@ -35,7 +35,9 @@ class RoomBookingController extends FrontController
         ];
 
         $room_type = RoomType::findOrFail($room_type_id);
-        $rules['booking_validation'] = [new RoomAvailableRule($room_type, $request)];
+        $new_arrival_date = $this->request->input('arrival_date');
+        $new_departure_date = $this->request->input('departure_date');
+        $rules['booking_validation'] = [new RoomAvailableRule($room_type, $new_arrival_date, $new_departure_date)];
 
         $validator = Validator::make($request->all(), $rules);
         if($validator->fails()){

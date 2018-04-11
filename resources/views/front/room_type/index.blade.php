@@ -58,7 +58,6 @@
                 @empty
                 <!--ROOM SECTION-->
                     <div class="room">
-                        <div class="ribbon ribbon-top-left"><span>Featured</span>
                         </div>
                         <!--ROOM IMAGE-->
                         <div class="r1 r-com"><img src="images/room/1.jpg" alt="" />

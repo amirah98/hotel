@@ -4,6 +4,6 @@
                                                 background: url({{ asset("front/images/slide2.jpg") }}) no-repeat center center;
                                                 background-size: cover;
                                                 position: relative;">
-        <p>Hi Jana Novakova,</p>
+        <p>Hi {{ Auth::user()->first_name." ".Auth::user()->last_name }},</p>
         <h4>Welcome to your dashboard</h4> </div>
     @show

@@ -5,8 +5,8 @@
                                                 background: url({{ asset("front/images/user.jpg") }}) no-repeat center center;
                                                 background-size: cover;
                                                 position: relative;">
-            <h4>Jana Novakova</h4>
-            <p>Newyork, United States</p>
+            <h4>{{ Auth::user()->first_name }}</h4>
+            <p>{{ Auth::user()->address }}</p>
         </div>
         <div class="db-left-2">
             <ul>

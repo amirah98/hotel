@@ -42,7 +42,9 @@ Route::group(['prefix' => 'dashboard'], function () {
 
 // Routes for Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-    Route::get('/', 'Admin\DashboardController@index');
+
+
+    Route::get('/', 'Admin\HomeController@index');
     Route::resource('slider', 'Admin\SliderController');
     Route::resource('facility', 'Admin\FacilityController');
     Route::resource('event', 'Admin\EventController');
@@ -54,6 +56,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::put('user/{id}/profile', 'Admin\UserController@update_profile');
     Route::get('user/{id}/setting', 'Admin\UserController@setting');
     Route::put('user/{id}/setting', 'Admin\UserController@update_setting');
+
+
+
+    //Routes for RoomBookings
+    Route::get('/room_booking', 'Admin\RoomBookingController@index');
+    Route::get('/room_booking/{id}/edit', 'Admin\RoomBookingController@edit');
+    Route::put('/room_booking/{id}/edit', 'Admin\RoomBookingController@update');
+
+    //Routes for EventBookings
+    Route::get('/event_booking', 'Admin\EventBookingController@index');
+    Route::get('/event_booking/{id}/edit', 'Admin\EventBookingController@edit');
+    Route::put('/event_booking/{id}/edit', 'Admin\EventBookingController@update');
+
 
 
     Route::resource('room_type', 'Admin\RoomTypeController');
@@ -76,6 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('/{id}/room/{room_id}/edit', 'Admin\RoomController@edit');
         Route::put('/{id}/room/{room_id}/edit', 'Admin\RoomController@update');
         Route::delete('/{id}/room/{image_id}', 'Admin\RoomController@destroy');
+
     });
 });
 

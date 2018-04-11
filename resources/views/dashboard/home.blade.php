@@ -3,96 +3,72 @@
 @section('content')
     <div class="db-cent-2">
         <div class="db-2-main-1">
-            <div class="db-2-main-2"> <img src="front/images/icon/dbc5.png" alt=""> <span>My Bookings</span>
-                <p>All the Lorem Ipsum generators on the</p>
-                <h2>12</h2> </div>
+            <div class="db-2-main-2"> <img src="{{ asset("front/images/icon/dbc5.png") }}" alt=""> <span> Room Bookings</span>
+                <p></p>
+                <h2>{{ $total_room_bookings }}</h2> </div>
         </div>
         <div class="db-2-main-1">
-            <div class="db-2-main-2"> <img src="front/images/icon/dbc6.png" alt=""> <span>Events</span>
-                <p>All the Lorem Ipsum generators on the</p>
-                <h2>04</h2> </div>
+            <div class="db-2-main-2"> <img src="{{ asset("front/images/icon/dbc6.png") }}" alt=""> <span> Event Bookings</span>
+                <p></p>
+                <h2>{{ $total_event_bookings }}</h2> </div>
         </div>
         <div class="db-2-main-1">
-            <div class="db-2-main-2"> <img src="front/images/icon/dbc3.png" alt=""> <span>Payment</span>
-                <p>All the Lorem Ipsum generators on the</p>
+            <div class="db-2-main-2"> <img src="{{ asset("front/images/icon/dbc3.png") }}" alt=""> <span> Payment Status</span>
+                <p></p>
                 <h2>16</h2> </div>
         </div>
     </div>
     <div class="db-cent-3">
         <div class="db-cent-table db-com-table">
             <div class="db-title">
-                <h3><img src="front/images/icon/dbc5.png" alt=""/> My Bookings</h3>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+                <h3><img src="{{ asset("front/images/icon/dbc5.png") }}" alt=""/> Room Bookings</h3>
+                <p>View your upcoming hotel bookings here</p>
             </div>
             <table class="bordered responsive-table">
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>City</th>
+                    <th>Room</th>
+                    <th>Room Number</th>
                     <th>Arrival</th>
                     <th>Departure</th>
-                    <th>Members</th>
+                    <th>Total Room Cost</th>
+                    <th>Status</th>
                     <th>Payment</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>Alvin</td>
-                    <td>+01 4215 3521</td>
-                    <td><span class="db-tab-hi">New york,</span>USA</td>
-                    <td>12may</td>
-                    <td>20may</td>
-                    <td>12</td>
-                    <td><a href="#" class="db-success">Success</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>02</td>
-                    <td>Liam</td>
-                    <td>+01 2484 6521</td>
-                    <td><span class="db-tab-hi">Bangalore,</span>India</td>
-                    <td>18apr</td>
-                    <td>24apr</td>
-                    <td>12</td>
-                    <td><a href="#" class="db-success">Success</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>03</td>
-                    <td>Logan</td>
-                    <td>+01 6524 6521</td>
-                    <td><span class="db-tab-hi">Los Angeles,</span>USA</td>
-                    <td>05dec</td>
-                    <td>12dec</td>
-                    <td>12</td>
-                    <td><a href="#" class="db-not-success">Pending</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>04</td>
-                    <td>Michael</td>
-                    <td>+01 3652 1425</td>
-                    <td><span class="db-tab-hi">Bristol,</span>UK</td>
-                    <td>14jen</td>
-                    <td>24jen</td>
-                    <td>12</td>
-                    <td><a href="#" class="db-not-success">Pending</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>05</td>
-                    <td>Alvin</td>
-                    <td>+01 4215 3521</td>
-                    <td><span class="db-tab-hi">New york,</span>USA</td>
-                    <td>12may</td>
-                    <td>20may</td>
-                    <td>12</td>
-                    <td><a href="#" class="db-success">Success</a>
-                    </td>
-                </tr>
+                @forelse($room_bookings as $index => $room_booking)
+                    <tr>
+                        <td>{{ $index+1 }}</td>
+                        <td>{{ $room_booking->room->room_type->name}}</td>
+                        <td>{{ $room_booking->room->room_number}}</td>
+                        <td>{{ $room_booking->arrival_date }}</td>
+                        <td>{{ $room_booking->departure_date }}</td>
+                        <td>Rs. {{ $room_booking->room_cost }}</td>
+                        <td>
+                            @if($room_booking->status == "pending")
+                                <span class="db-success">Pending</span>
+                            @elseif($room_booking->status == "checked_in")
+                                <span class="db-success">Checked In</span>
+                            @else
+                                <span class="db-success">Checked Out</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if($room_booking->payment == true)
+                                <span class="db-success">Paid</span>
+                            @else
+                                <span class="db-not-success">Not Paid</span>
+                            @endif
+                        </td>
+
+                    </tr>
+                @empty
+                    <tr>
+                        <td>Sorry, no room bookings found.</td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>
@@ -100,78 +76,52 @@
     <div class="db-cent-3">
         <div class="db-cent-table db-com-table">
             <div class="db-title">
-                <h3><img src="front/images/icon/dbc6.png" alt=""/> My Events</h3>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+                <h3><img src="{{ asset("front/images/icon/dbc6.png") }}" alt=""/> My Event Bookings</h3>
+                <p>View all of your event bookings here.</p>
             </div>
             <table class="bordered responsive-table">
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                    <th>City</th>
-                    <th>Arrival</th>
-                    <th>Departure</th>
-                    <th>Members</th>
+                    <th>Event</th>
+                    <th>Venue</th>
+                    <th>Date</th>
+                    <th>No of Tickets</th>
+                    <th>Total Cost</th>
+                    <th>Status</th>
                     <th>Payment</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>Alvin</td>
-                    <td>+01 4215 3521</td>
-                    <td><span class="db-tab-hi">New york,</span>USA</td>
-                    <td>12may</td>
-                    <td>20may</td>
-                    <td>12</td>
-                    <td><a href="#" class="db-success">Success</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>02</td>
-                    <td>Liam</td>
-                    <td>+01 2484 6521</td>
-                    <td><span class="db-tab-hi">Bangalore,</span>India</td>
-                    <td>18apr</td>
-                    <td>24apr</td>
-                    <td>12</td>
-                    <td><a href="#" class="db-success">Success</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>03</td>
-                    <td>Logan</td>
-                    <td>+01 6524 6521</td>
-                    <td><span class="db-tab-hi">Los Angeles,</span>USA</td>
-                    <td>05dec</td>
-                    <td>12dec</td>
-                    <td>12</td>
-                    <td><a href="#" class="db-not-success">Pending</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>04</td>
-                    <td>Michael</td>
-                    <td>+01 3652 1425</td>
-                    <td><span class="db-tab-hi">Bristol,</span>UK</td>
-                    <td>14jen</td>
-                    <td>24jen</td>
-                    <td>12</td>
-                    <td><a href="#" class="db-not-success">Pending</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>05</td>
-                    <td>Alvin</td>
-                    <td>+01 4215 3521</td>
-                    <td><span class="db-tab-hi">New york,</span>USA</td>
-                    <td>12may</td>
-                    <td>20may</td>
-                    <td>12</td>
-                    <td><a href="#" class="db-success">Success</a>
-                    </td>
-                </tr>
+                @forelse($event_bookings as $index => $event_booking)
+                    <tr>
+                        <td>{{ $index+1 }}</td>
+                        <td>{{ $event_booking->event->name}}</td>
+                        <td>{{ $event_booking->event->venue}}</td>
+                        <td>{{ $event_booking->event->date}}</td>
+                        <td>{{ $event_booking->number_of_tickets }}</td>
+                        <td>Rs. {{ $event_booking->total_cost }}</td>
+                        <td>
+                            @if($event_booking->status == true)
+                                <span class="db-success">Active</span>
+                            @else
+                                <span class="db-not-success">Cancelled</span>
+                            @endif
+                        </td>
+                        <td>
+                            @if($event_booking->payment == true)
+                                <span class="db-success">Paid</span>
+                            @else
+                                <span class="db-not-success">Not Paid</span>
+                            @endif
+                        </td>
+
+                    </tr>
+                @empty
+                    <tr>
+                        <td>Sorry, no bookings found.</td>
+                    </tr>
+                @endforelse
                 </tbody>
             </table>
         </div>

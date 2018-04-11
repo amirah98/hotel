@@ -60,6 +60,21 @@
                                 </ul>
                             </div>
                         </li>
+                        @elseif(array_key_exists('room_booking', $item['actions']) || array_key_exists('event_booking', $item['actions']))
+                            <li @if (Request::is('admin/'.strtolower($item['name']).'/*')) class="active" @endif>
+                                <a data-toggle="collapse" href="#componentsExamples">
+                                    <i class="{{$item['icon']}}"></i>
+                                    <p>{{$item['name']}}
+                                        <b class="caret"></b>
+                                    </p>
+                                </a>
+                                <div @if (Request::is('admin/'.strtolower($item['name']).'/*')) class="collapse in" @else class="collapse" @endif id="componentsExamples">
+                                    <ul class="nav">
+                                        <li @if (Request::is('admin/'.strtolower($item['name']).'/room_booking')) class="active" @endif><a href="{{ url($item['actions']['room_booking'])}}">Room Bookings</a></li>
+                                        <li @if (Request::is('admin/'.strtolower($item['name']).'/event_booking')) class="active" @endif><a href="{{ url($item['actions']['event_booking'])}}">Event Bookings</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         @else
                             <li @if (Request::is('admin/'.strtolower($item['name']).'/*')) class="active" @endif>
                                 <a href="{{ url($item['actions']['view'])}}">

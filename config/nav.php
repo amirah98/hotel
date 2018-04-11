@@ -14,11 +14,11 @@ return [
     */
 
     'admin' => [
-        'room' => [
-            'name' =>  'Room',
+        'booking' => [
+            'name' =>  'Booking',
             'actions' => [
-                'add' => 'admin/room/create',
-                'view' =>  'admin/room'
+                'room_booking' => 'admin/room_booking',
+                'event_booking' =>  'admin/event_booking'
             ],
             'icon' => 'ti-control-forward'
         ],

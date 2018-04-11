@@ -20,7 +20,7 @@ class CreateRoomBookingsTable extends Migration
             $table->date('arrival_date');
             $table->date('departure_date')->nullable();
             $table->integer('room_cost');
-            $table->enum('status', ['pending', 'checked_in', 'checked_out'])->default('pending');
+            $table->enum('status', ['pending', 'checked_in', 'checked_out', 'cancelled'])->default('pending');
             $table->boolean('payment')->default(false);
             $table->timestamps();
 

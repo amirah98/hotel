@@ -8,7 +8,8 @@ use Carbon\Carbon;
 class RoomAvailableRule implements Rule
 {
     protected $room_type;
-    protected $request;
+    protected $new_arrival_date;
+    protected $new_departure_date;
     protected $message;
 
     /**
@@ -16,10 +17,11 @@ class RoomAvailableRule implements Rule
      *
      * @return void
      */
-    public function __construct($room_type, $request)
+    public function __construct($room_type, $new_arrival_date, $new_departure_date)
     {
         $this->room_type = $room_type;
-        $this->request = $request;
+        $this->new_arrival_date = $new_arrival_date;
+        $this->new_departure_date = $new_departure_date;
     }
 
     /**
@@ -52,8 +54,8 @@ class RoomAvailableRule implements Rule
             foreach ($room->room_bookings as $room_booking) {
                 $old_arrival_date = Carbon::parse($room_booking->arrival_date)->format('Y/m/d');
                 $old_departure_date = Carbon::parse($room_booking->departure_date)->format('Y/m/d');
-                $new_arrival_date = $this->request->input('arrival_date');
-                $new_departure_date = $this->request->input('departure_date');
+                $new_arrival_date = $this->new_arrival_date;
+                $new_departure_date = $this->new_departure_date;
 
                 if ($new_arrival_date > $old_arrival_date) {
                     if ($new_arrival_date >= $old_departure_date)
