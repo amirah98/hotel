@@ -8,6 +8,15 @@
                 <h3><img src="{{ asset("front/images/icon/dbc5.png") }}" alt=""/> My Event Bookings</h3>
                 <p>View all of your event bookings here.</p>
             </div>
+            <div class="db-title">
+                @foreach ($errors->all() as $error)
+                    <p style="color:red">{{ $error }}</p>
+                @endforeach
+
+                @if(Session::has('flash_message'))
+                    <p style="color:forestgreen">{{ Session::get('flash_title') }}, {{ Session::get('flash_message') }}</p>
+                @endif
+            </div>
             <table class="bordered responsive-table">
                 <thead>
                 <tr>
@@ -19,6 +28,7 @@
                     <th>Total Cost</th>
                     <th>Status</th>
                     <th>Payment</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -42,6 +52,11 @@
                             <span class="db-success">Paid</span>
                         @else
                             <span class="db-not-success">Not Paid</span>
+                        @endif
+                    </td>
+                    <td>
+                        @if($event_booking->status == true)
+                            <a href="{{url('dashboard/event/booking/'.$event_booking->id.'/cancel')}}"><span class="label label-danger">Cancel</span></a>
                         @endif
                     </td>
 

@@ -27,12 +27,11 @@
             <table class="bordered responsive-table">
                 <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Room</th>
-                    <th>Room Number</th>
+                    <th>Room No</th>
+                    <th>Type</th>
                     <th>Arrival</th>
                     <th>Departure</th>
-                    <th>Total Room Cost</th>
+                    <th>Total Cost</th>
                     <th>Status</th>
                     <th>Payment</th>
                 </tr>
@@ -40,9 +39,8 @@
                 <tbody>
                 @forelse($room_bookings as $index => $room_booking)
                     <tr>
-                        <td>{{ $index+1 }}</td>
-                        <td>{{ $room_booking->room->room_type->name}}</td>
                         <td>{{ $room_booking->room->room_number}}</td>
+                        <td>{{ $room_booking->room->room_type->name}}</td>
                         <td>{{ $room_booking->arrival_date }}</td>
                         <td>{{ $room_booking->departure_date }}</td>
                         <td>Rs. {{ $room_booking->room_cost }}</td>

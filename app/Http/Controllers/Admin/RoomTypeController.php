@@ -160,6 +160,26 @@ class RoomTypeController extends AdminController
     public function destroy($id)
     {
         $room_type = RoomType::find($id);
+
+        // Delete rooms
+        foreach ($room_type->room as $room) {
+            // Delete room bookings
+            foreach ($room->room_bookings as $booking) {
+                $booking->delete();
+            }
+            $room->delete();
+        }
+
+        // Delete images
+        foreach ($room_type->images as $image) {
+            if ($image->delete()) {
+                if (Storage::disk('room_type')->exists($image->name)) {
+                    Storage::delete('public/room_types/' . $image->name);
+                }
+            }
+        }
+        // TO_DO_DEM Clear all Facilities by Eloquent remove pivot records
+
         $room_type->delete();
 
         Session::flash('flash_title', 'Success');

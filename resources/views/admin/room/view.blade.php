@@ -93,7 +93,7 @@
 
         var delete_button = function(){
             swal({  title: "Are you sure?",
-                text: "After you delete the room.",
+                text: "After you delete the room. All room bookings will also be deleted",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn btn-info btn-fill",

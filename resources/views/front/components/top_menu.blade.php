@@ -15,7 +15,7 @@
                     <li><a class='dropdown-button' href='#' data-activates='dropdown2'>Language <i
                                     class="fa fa-angle-down"></i></a>
                     </li>
-                    <li><a href="#">Toll Free No: 1800 102 7275</a>
+                    <li><a href="#">Phone No:  {{ config('app.phone_number', '977-9866893439') }}</a>
                     </li>
                 </ul>
 

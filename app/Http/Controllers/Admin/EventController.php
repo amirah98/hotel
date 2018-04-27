@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Model\Event;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as ImageManager;
 
 use Illuminate\Support\Facades\Session;
@@ -166,6 +167,12 @@ class EventController extends AdminController
     public function destroy($id)
     {
         $event = Event::find($id);
+
+        // Delete event bookings
+        foreach ($event->event_bookings as $booking) {
+            $booking->delete();
+        }
+
         if($event->delete()){
             Storage::delete('public/events/'.$event->image);
 

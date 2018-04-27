@@ -272,14 +272,14 @@ class UserController extends AdminController
         if ($user->id !== 1) {
             if ($user->id !== Auth::user()->id) {
 
-                // Delete destination packages
-                foreach ($user->packages as $package) {
-                    foreach ($package->images as $image) {
-                        if ($image->delete()) {
-                            Storage::delete('public/package/' . $image->name);
-                        }
-                    }
-                    $package->delete();
+                // Delete room bookings
+                foreach ($user->room_bookings as $booking) {
+                    $booking->delete();
+                }
+
+                // Delete event bookings
+                foreach ($user->event_bookings as $booking) {
+                    $booking->delete();
                 }
 
                 if ($user->delete()) {

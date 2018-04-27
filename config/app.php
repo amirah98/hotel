@@ -14,6 +14,11 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'phone_number' => env('PHONE_NUMBER', '977-9866893439'),
+    'facebook' => env('FACEBOOK', '#'),
+    'google' => env('GOOGLE', '#'),
+    'twitter' => env('TWITTER', '#'),
+    'instagram' => env('INSTAGRAM', '#'),
 
     /*
     |--------------------------------------------------------------------------

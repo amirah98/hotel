@@ -156,6 +156,12 @@ class RoomController extends AdminController
     public function destroy($id, $room_id)
     {
         $room = Room::findOrFail($room_id);
+
+        // Delete room bookings
+        foreach ($room->room_bookings as $booking) {
+            $booking->delete();
+        }
+
         if($room->delete()){
 
             Session::flash('flash_title', 'Success');

@@ -95,7 +95,7 @@
 
         var delete_button = function(){
             swal({  title: "Are you sure?",
-                text: "After you delete the user, all user packages and collaborations will also be deleted.",
+                text: "After you delete the user, all user room and events bookings will also be deleted.",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn btn-info btn-fill",

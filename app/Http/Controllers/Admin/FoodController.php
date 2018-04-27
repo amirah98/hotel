@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Model\Food;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\ImageManagerStatic as ImageManager;
 
 use Illuminate\Support\Facades\Session;

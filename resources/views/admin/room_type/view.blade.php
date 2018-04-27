@@ -100,7 +100,7 @@
 
         var delete_button = function(){
             swal({  title: "Are you sure?",
-                text: "You want to delete the room_type.",
+                text: "You want to delete the room_type. Deleting room_type will also delete its rooms and its room bookings.",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn btn-info btn-fill",

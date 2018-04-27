@@ -37,6 +37,8 @@ Route::group(['prefix' => 'dashboard'], function () {
     Route::get('/', 'Dashboard\HomeController@index');
     Route::get('/room/booking', 'Dashboard\RoomBookingController@index');
     Route::get('/event/booking', 'Dashboard\EventBookingController@index');
+    Route::get('room/booking/{id}/cancel', 'Dashboard\RoomBookingController@cancel');
+    Route::get('event/booking/{id}/cancel', 'Dashboard\EventBookingController@cancel');
 });
 
 

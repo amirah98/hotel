@@ -14,7 +14,7 @@
                         <div class="content">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h2 class="text-muted text-center">Welcome to The Royal Hotel Dashboard</h2>
+                                    <h2 class="text-muted text-center">Welcome to {{ config('app.name') }} Dashboard</h2>
                                 </div>
 
                             </div>

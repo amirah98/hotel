@@ -56,7 +56,7 @@
                                     <div class="col-sm-12 col-md-3">
                                         <h4>Address</h4>
                                         <p>28800 Orchard Lake Road, Suite 180 Farmington Hills, U.S.A. Landmark : Next To Airport</p>
-                                        <p> <span class="foot-phone">Phone: </span> <span class="foot-phone">+01 1245 2541</span> </p>
+                                        <p> <span class="foot-phone">Phone: </span> <span class="foot-phone">{{ config('app.phone_number', '977-9866893439') }}</span> </p>
                                     </div>
                                 </div>
                             </div>
@@ -83,12 +83,10 @@
                                         <h4>Follow with us</h4>
                                         <p>Join the thousands of other There are many variations of passages of Lorem Ipsum available</p>
                                         <ul>
-                                            <li><a href="#!"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                                            <li><a href="#!"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                                            <li><a href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                                            <li><a href="#!"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                                            <li><a href="#!"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
-                                            <li><a href="#!"><i class="fa fa-whatsapp" aria-hidden="true"></i></a> </li>
+                                            <li><a href="{{ config('app.facebook') }}"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                                            <li><a href="{{ config('app.google') }}"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
+                                            <li><a href="{{ config('app.twitter') }}"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                                            <li><a href="{{ config('app.instagram') }}"><i class="fa fa-instagram" aria-hidden="true"></i></a> </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -104,7 +102,7 @@
     </footer>
     <section class="copy">
         <div class="container">
-            <p>copyrights © 2017 RN53Themes.net. &nbsp;&nbsp;All rights reserved. </p>
+            <p>copyrights © 2017 {{ config('app.name', "The Hotel Symbiosis") }}. &nbsp;&nbsp;All rights reserved. </p>
         </div>
     </section>
     @show

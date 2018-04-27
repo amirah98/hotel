@@ -93,7 +93,7 @@
 
         var delete_button = function(){
             swal({  title: "Are you sure?",
-                text: "You want to delete the event.",
+                text: "You want to delete the event. Deleting event will also delete all event bookings.",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn btn-info btn-fill",

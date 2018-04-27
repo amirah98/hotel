@@ -8,25 +8,33 @@
                 <h3><img src="{{ asset("front/images/icon/dbc5.png") }}" alt=""/> My Room Bookings</h3>
                 <p>View all of your hotel room bookings here.</p>
             </div>
+            <div class="db-title">
+                @foreach ($errors->all() as $error)
+                    <p style="color:red">{{ $error }}</p>
+                @endforeach
+
+                    @if(Session::has('flash_message'))
+                        <p style="color:forestgreen">{{ Session::get('flash_title') }}, {{ Session::get('flash_message') }}</p>
+                    @endif
+            </div>
             <table class="bordered responsive-table">
                 <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Room</th>
-                    <th>Room Number</th>
+                    <th>Room No</th>
+                    <th>Type</th>
                     <th>Arrival</th>
                     <th>Departure</th>
-                    <th>Total Room Cost</th>
+                    <th>Total Cost</th>
                     <th>Status</th>
                     <th>Payment</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 @forelse($room_bookings as $index => $room_booking)
                 <tr>
-                    <td>{{ $index+1 }}</td>
-                    <td>{{ $room_booking->room->room_type->name}}</td>
                     <td>{{ $room_booking->room->room_number}}</td>
+                    <td>{{ $room_booking->room->room_type->name}}</td>
                     <td>{{ $room_booking->arrival_date }}</td>
                     <td>{{ $room_booking->departure_date }}</td>
                     <td>Rs. {{ $room_booking->room_cost }}</td>
@@ -35,8 +43,10 @@
                             <span class="db-success">Pending</span>
                         @elseif($room_booking->status == "checked_in")
                             <span class="db-success">Checked In</span>
-                        @else
+                        @elseif($room_booking->status == "checked_out")
                             <span class="db-success">Checked Out</span>
+                        @else
+                            <span class="db-success">Cancelled</span>
                         @endif
                     </td>
                     <td>
@@ -44,6 +54,12 @@
                             <span class="db-success">Paid</span>
                         @else
                             <span class="db-not-success">Not Paid</span>
+                        @endif
+
+                    </td>
+                    <td>
+                        @if($room_booking->status !== "cancelled")
+                            <a href="{{url('dashboard/room/booking/'.$room_booking->id.'/cancel')}}"><span class="label label-danger">Cancel</span></a>
                         @endif
                     </td>
 
