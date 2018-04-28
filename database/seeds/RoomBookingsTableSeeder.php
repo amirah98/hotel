@@ -16,7 +16,7 @@ class RoomBookingsTableSeeder extends Seeder
             'arrival_date' => "2018-04-18",
             'departure_date' => "2018-04-19",
             'room_cost' => "25000",
-            'status' => 'pending',
+            'status' => 'checked_in',
             'payment' => false,
             'room_id' => 1,
             'user_id' => 2,

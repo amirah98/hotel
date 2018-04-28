@@ -2,12 +2,15 @@
     <div class="db-left">
         <div class="db-left-1" style="
                                                 padding: 116px 50px 30px 50px;
-                                                background: url({{ asset("front/images/user.jpg") }}) no-repeat center center;
+                                                background: url({{'/storage/avatars/'.Auth::user()->avatar}}) no-repeat center center;
                                                 background-size: cover;
                                                 position: relative;">
             <h4>{{ Auth::user()->first_name }}</h4>
             <p>{{ Auth::user()->address }}</p>
         </div>
+
+
+
         <div class="db-left-2">
             <ul>
                 <li>

@@ -117,7 +117,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td>Sorry, no bookings found.</td>
+                        <td>Sorry, no event bookings found.</td>
                     </tr>
                 @endforelse
                 </tbody>

@@ -195,108 +195,36 @@
                                 </div>
                                 <div class="hp-review-right">
                                     <h5>Overall Ratings</h5>
-                                    <p><span>4.5 <i class="fa fa-star" aria-hidden="true"></i></span> based on 242 reviews</p>
+                                    <p><span>4.5 <i class="fa fa-star" aria-hidden="true"></i></span> based on 555 reviews</p>
                                 </div>
                             </div>
                         </div>
                         <div class="hp-section">
                             <div class="hp-sub-tit">
                                 <h4><span>USER</span> REVIEWS</h4>
-                                <p>Aliquam id tempor sem. Cras molestie risus et lobortis congue. Donec id est consectetur, cursus tellus at, mattis lacus.</p>
+                                <p>View all reviews from our customer regarding this room.</p>
                             </div>
                             <div class="lp-ur-all-rat">
                                 <ul>
-                                    <li>
-                                        <div class="lr-user-wr-img"> <img src="images/users/2.png" alt=""> </div>
-                                        <div class="lr-user-wr-con">
-                                            <h6>Jacob Michael <span>4.5 <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date">19th January, 2017</span>
-                                            <p>Good service... nice and clean rooms... very good spread of buffet and friendly staffs. Located in heart of city and easy to reach any places in a short distance. </p>
-                                            <ul>
-                                                <li><a href="#!"><span>Like</span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Dis-Like</span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Report</span> <i class="fa fa-flag-o" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Comments</span> <i class="fa fa-commenting-o" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Share Now</span>  <i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="lr-user-wr-img"> <img src="images/users/3.png" alt=""> </div>
-                                        <div class="lr-user-wr-con">
-                                            <h6>Gabriel Elijah <span>5.0 <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date">21th July, 2016</span>
-                                            <p>The hotel is clean, convenient and good value for money. Staff are courteous and helpful. However, they need more training to be efficient.</p>
-                                            <ul>
-                                                <li><a href="#!"><span>Like</span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Dis-Like</span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Report</span> <i class="fa fa-flag-o" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Comments</span> <i class="fa fa-commenting-o" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Share Now</span>  <i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="lr-user-wr-img"> <img src="images/users/4.png" alt=""> </div>
-                                        <div class="lr-user-wr-con">
-                                            <h6>Luke Mason <span>4.2 <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date">21th March, 2018</span>
-                                            <p>Too much good experience with hospitality, cleanliness, facility and privacy and good value for money... To keep mind relaxing... Keep it up... </p>
-                                            <ul>
-                                                <li><a href="#!"><span>Like</span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Dis-Like</span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Report</span> <i class="fa fa-flag-o" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Comments</span> <i class="fa fa-commenting-o" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Share Now</span>  <i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="lr-user-wr-img"> <img src="images/users/5.png" alt=""> </div>
-                                        <div class="lr-user-wr-con">
-                                            <h6>Kevin Jack <span>3.6 <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date">21th Aug, 2018</span>
-                                            <p>I am deaf. Bar is closed and Restaurant is okay ... It should be more decoration as beautiful. I enjoyed swimming top floor and weather is good</p>
-                                            <ul>
-                                                <li><a href="#!"><span>Like</span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Dis-Like</span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Report</span> <i class="fa fa-flag-o" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Comments</span> <i class="fa fa-commenting-o" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Share Now</span>  <i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="lr-user-wr-img"> <img src="images/users/6.png" alt=""> </div>
-                                        <div class="lr-user-wr-con">
-                                            <h6>Nicholas Tyler <span>4.4 <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date">21th Aug, 2018</span>
-                                            <p>Overall, it was good experience. Rooms were spacious and they were kept very clean and tidy. Room service was good.</p>
-                                            <ul>
-                                                <li><a href="#!"><span>Like</span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Dis-Like</span><i class="fa fa-thumbs-o-down" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Report</span> <i class="fa fa-flag-o" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Comments</span> <i class="fa fa-commenting-o" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><span>Share Now</span>  <i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                                                <li><a href="#!"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul> <a class="waves-effect waves-light wr-re-btn" href="%21.html#" data-toggle="modal" data-target="#commend"><i class="fa fa-edit"></i> Write Review</a> </div>
+                                    @if(count($room_type->rooms) > 0)
+                                    @foreach($room_type->rooms as $room)
+                                            @if(count($room->reviews) > 0)
+                                            @foreach($room->reviews as $review)
+
+                                                    <li>
+                                                        <div class="lr-user-wr-img"> <img src="{{'/storage/avatars/'.$review->room_booking->user->avatar}}" alt=""> </div>
+                                                        <div class="lr-user-wr-con">
+                                                            <h6>Jacob Michael <span> {{ $review->rating }} <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date"> {{ \Carbon\Carbon::parse($review->updated_at)->diffForHumans() }}</span>
+                                                            <p>{{ $review->review }}</p>
+
+                                                        </div>
+                                                    </li>
+                                                @endforeach
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </ul>
+                                </div>
                         </div>
                     </div>
                 </div>

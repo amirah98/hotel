@@ -45,13 +45,20 @@ class RoomTypeController extends FrontController
      */
     public function show($id)
     {
-        $room_type = RoomType::where('status', true)->findOrFail($id);
+        $room_type = RoomType::with([
+            'images' => function($clientQuery) {
+                $clientQuery->where('status', true);
+        },
+            'rooms.reviews' => function($clientQuery) {
+                $clientQuery->where('approval_status', 'approved');
+            }
+        ])
+            ->where('status', true)
+            ->findOrFail($id);
 
-        $images = $room_type->images()->where('status', 1)->get();
         return view('front.room_type.profile')
             ->with([
                 'room_type' => $room_type,
-                'images' => $images,
             ]);
     }
 }

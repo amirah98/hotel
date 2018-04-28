@@ -57,7 +57,9 @@
                         @endif
 
                     </td>
-                    <td>
+                    <td>@if($room_booking->status !== "pending")
+                        <a href="{{url('dashboard/room/booking/'.$room_booking->id.'/review')}}"><span class="label label-primary">Review</span></a>
+                        @endif
                         @if($room_booking->status !== "cancelled")
                             <a href="{{url('dashboard/room/booking/'.$room_booking->id.'/cancel')}}"><span class="label label-danger">Cancel</span></a>
                         @endif

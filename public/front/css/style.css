@@ -3640,7 +3640,7 @@ footer ul li a {
     margin-bottom: 10px;
 }
 .db-profile p {} .db-profile-view {
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     /* text-align: center; */
 }
@@ -4572,4 +4572,12 @@ form .stars label:before {
     text-transform: none;
     padding: 0px;
     height: 20px
+}
+
+.review-textarea {
+    border: 1px solid #dfdfdf;
+    padding: 8px;
+    box-sizing: border-box;
+    height: 95px;
+    border-radius: 2px;
 }

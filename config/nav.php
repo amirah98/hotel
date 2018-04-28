@@ -23,7 +23,7 @@ return [
             'icon' => 'ti-control-forward'
         ],
         'event' => [
-            'name' => 'Events',
+            'name' => 'Event',
             'actions' => [
                 'view' => 'admin/event',
             ],
@@ -63,6 +63,13 @@ return [
                 'view' => 'admin/slider',
             ],
             'icon' => 'ti-layout-grid2'
+        ],
+        'Review' => [
+            'name' => 'Review',
+            'actions' => [
+                'view' => 'admin/review',
+            ],
+            'icon' => 'ti-star'
         ],
     ],
 

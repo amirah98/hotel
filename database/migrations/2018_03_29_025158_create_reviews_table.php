@@ -14,18 +14,15 @@ class CreateReviewsTable extends Migration
     public function up()
     {
         Schema::create('reviews', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('room_type_id')->unsigned()->index();
+            $table->increments('id');
             $table->string('review', 100);
-            $table->enum('rating', ['1', '2', '3', '4', '5']);
+            $table->enum('rating', ['0', '1', '2', '3', '4', '5']);
+            $table->enum('approval_status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->integer('room_booking_id')->unsigned()->index();
             $table->timestamps();
 
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-            $table->foreign('room_type_id')
-                ->references('id')->on('room_types')
+            $table->foreign('room_booking_id')
+                ->references('id')->on('room_bookings')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });

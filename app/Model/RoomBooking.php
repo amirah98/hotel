@@ -27,4 +27,9 @@ class RoomBooking extends Model
     {
         return $this->belongsTo('App\Model\Room');
     }
+
+    public function review()
+    {
+        return $this->hasOne('App\Model\Review');
+    }
 }

@@ -222,7 +222,7 @@ class UserController extends AdminController
             'about' => 'max:300'
         ];
         if (!empty($request->input('avatar'))) {
-            $rules['avatar'] = 'mimes:jpeg,jpg,png';
+            $rules['avatar'] = 'mimes:jpeg,jpg,png,JPG,JPEG,PNG';
         }
 
         if (!empty($request->input('phone'))) {

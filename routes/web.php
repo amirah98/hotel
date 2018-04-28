@@ -20,7 +20,7 @@ Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback
 
 // Routes for Front
 Route::get('/', 'Front\HomeController@index')->name('home');
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/contact', 'Front\PageController@contact');
 Route::get('/room_type', 'Front\RoomTypeController@index');
 Route::get('/room_type/{id}', 'Front\RoomTypeController@show');
 Route::get('/food', 'Front\FoodController@index');
@@ -32,6 +32,7 @@ Route::post('/event/{id}/book', 'Front\EventBookingController@book');
 
 
 
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 // Routes for Dashboard
 Route::group(['prefix' => 'dashboard'], function () {
     Route::get('/', 'Dashboard\HomeController@index');
@@ -39,6 +40,9 @@ Route::group(['prefix' => 'dashboard'], function () {
     Route::get('/event/booking', 'Dashboard\EventBookingController@index');
     Route::get('room/booking/{id}/cancel', 'Dashboard\RoomBookingController@cancel');
     Route::get('event/booking/{id}/cancel', 'Dashboard\EventBookingController@cancel');
+
+    Route::get('room/booking/{id}/review', 'Dashboard\ReviewController@create');
+    Route::post('room/booking/{id}/review', 'Dashboard\ReviewController@store');
 });
 
 
@@ -72,6 +76,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::put('/event_booking/{id}/edit', 'Admin\EventBookingController@update');
 
 
+    Route::get('/review', 'Admin\ReviewController@index');
+    Route::get('/review/{id}/approve', 'Admin\ReviewController@approve');
+    Route::get('/review/{id}/reject', 'Admin\ReviewController@reject');
 
     Route::resource('room_type', 'Admin\RoomTypeController');
     // Route for room types

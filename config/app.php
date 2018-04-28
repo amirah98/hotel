@@ -15,10 +15,15 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
     'phone_number' => env('PHONE_NUMBER', '977-9866893439'),
+    'email' => env('EMAIL', ''),
+    'website' => env('WEBSITE', ''),
+    'address' => env('ADDRESS', ''),
     'facebook' => env('FACEBOOK', '#'),
     'google' => env('GOOGLE', '#'),
     'twitter' => env('TWITTER', '#'),
     'instagram' => env('INSTAGRAM', '#'),
+    'latitude' => env('MAP_LATITUDE', '#'),
+    'longitude' => env('MAP_LONGITUDE', '#'),
 
     /*
     |--------------------------------------------------------------------------
