@@ -139,8 +139,6 @@
                             </li>
                             <li><span class="filter" data-filter=".room">Rooms</span>
                             </li>
-                            <li><span class="filter" data-filter=".facilities">Facilities</span>
-                            </li>
                             <li><span class="filter" data-filter=".food">Food Menu</span>
                             </li>
                             <li><span class="filter" data-filter=".event">Events</span>
@@ -200,74 +198,41 @@
                 </div>
             </div>
             <div class="row">
+                @if(count($slider_images)> 0)
                 <div class="col-md-4">
                     <div class="bot-gal h-gal">
                         <h4>Photo Gallery</h4>
                         <ul>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/8.jpg") }}" alt="">
+                            @foreach($slider_images as $image)
+                            <li><img class="materialboxed" data-caption="{{ $image->big_title }}" src="{{ '/storage/slider/'.$image->name }}" alt="">
                             </li>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/9.jpg") }}" alt="">
-                            </li>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/10.jp") }}" alt="">
-                            </li>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/11.jp") }}" alt="">
-                            </li>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/1.jpg") }}" alt="">
-                            </li>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/2.jpg") }}" alt="">
-                            </li>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/3.jpg") }}" alt="">
-                            </li>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/4.jpg") }}" alt="">
-                            </li>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/5.jp") }}" alt="">
-                            </li>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/6.jpg") }}" alt="">
-                            </li>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/7.jpg") }}" alt="">
-                            </li>
-                            <li><img class="materialboxed" data-caption="Hotel Captions" src="{{ asset("front/images/ami/8.jp") }}" alt="">
-                            </li>
+                                @endforeach
                         </ul>
                     </div>
                 </div>
+                @endif
                 <div class="col-md-4">
                     <div class="bot-gal h-vid">
                         <h4>Video Gallery</h4>
                         <iframe src="https://www.youtube.com/embed/mG4G8crGQ34?autoplay=0&amp;showinfo=0&amp;controls=0" allowfullscreen></iframe>
-                        <h5>Maecenas sollicitudin lacinia</h5>
-                        <p>Maecenas finibus neque a tellus auctor mattis. Aliquam tempor varius ornare. Maecenas dignissim leo leo, nec posuere purus finibus vitae.</p>
-                        <p>Quisque vitae neque at tellus malesuada convallis. Phasellus in lectus vitae ex euismod interdum non a lorem. Nulla bibendum. Curabitur mi odio, tempus quis risus cursus.</p>
+                        <h5>Introductory Video</h5>
+                        <p>Watch this video to learn more about our hotel facilities, luxuries and environment</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="bot-gal h-blog">
-                        <h4>News & Event</h4>
+                        <h4>Latest Reviews</h4>
                         <ul>
+                            @if(count($reviews) > 0)
+                                @foreach($reviews as $review)
                             <li>
-                                <a href="#!"> <img src="{{ asset("front/images/users/2.png") }}" alt="">
-                                    <h5>Joseph, write a review</h5> <span>3 Dec, 2017</span>
-                                    <p>Curabitur mi odio, tempus quis risus cursus, iaculis tempor augue.</p>
+                                <a href="#!"> <img src="{{'/storage/avatars/'.$review->room_booking->user->avatar}}" alt="">
+                                    <h5>{{ $review->room_booking->user->first_name }}, {{ $review->rating }} <i class="fa fa-star" aria-hidden="true"></i></h5> <span>{{ \Carbon\Carbon::parse($review->updated_at)->diffForHumans() }}</span>
+                                    <p>{{ $review->review }}</p>
                                 </a>
                             </li>
-                            <li>
-                                <a href="#!"> <img src="{{ asset("front/images/users/3.png") }}" alt="">
-                                    <h5>Joseph, write a review</h5> <span>3 Dec, 2017</span>
-                                    <p>Curabitur mi odio, tempus quis risus cursus, iaculis tempor augue.</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!"> <img src="{{ asset("front/images/users/4.png") }}" alt="">
-                                    <h5>Joseph, write a review</h5> <span>3 Dec, 2017</span>
-                                    <p>Curabitur mi odio, tempus quis risus cursus, iaculis tempor augue.</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!"> <img src="{{ asset("front/images/users/5.png") }}" alt="">
-                                    <h5>Joseph, write a review</h5> <span>3 Dec, 2017</span>
-                                    <p>Curabitur mi odio, tempus quis risus cursus, iaculis tempor augue.</p>
-                                </a>
-                            </li>
+                           @endforeach
+                                @endif
                         </ul>
                     </div>
                 </div>

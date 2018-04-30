@@ -1,0 +1,2 @@
+change php.ini settings
+max_upload = 20MB

@@ -195,7 +195,8 @@
                                 </div>
                                 <div class="hp-review-right">
                                     <h5>Overall Ratings</h5>
-                                    <p><span>4.5 <i class="fa fa-star" aria-hidden="true"></i></span> based on 555 reviews</p>
+                                    <p><span>
+                            {{ $room_type->getAggregatedRating() }} <i class="fa fa-star" aria-hidden="true"></i></span> based on {{$room_type->getRatingsCount() }} reviews</p>
                                 </div>
                             </div>
                         </div>
@@ -214,7 +215,7 @@
                                                     <li>
                                                         <div class="lr-user-wr-img"> <img src="{{'/storage/avatars/'.$review->room_booking->user->avatar}}" alt=""> </div>
                                                         <div class="lr-user-wr-con">
-                                                            <h6>Jacob Michael <span> {{ $review->rating }} <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date"> {{ \Carbon\Carbon::parse($review->updated_at)->diffForHumans() }}</span>
+                                                            <h6>{{ $review->room_booking->user->first_name." ".$review->room_booking->user->last_name }} <span> {{ $review->rating }} <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date"> {{ \Carbon\Carbon::parse($review->updated_at)->diffForHumans() }}</span>
                                                             <p>{{ $review->review }}</p>
 
                                                         </div>

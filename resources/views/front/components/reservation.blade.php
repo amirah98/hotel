@@ -17,12 +17,7 @@
             </div>
             <div class="foot-com foot-2">
                 <h5>Phone: {{ config('app.phone_number', '977-9866893439') }}</h5> </div>
-            <div class="foot-com foot-3">
-                <!--<a class="waves-effect waves-light" href="#">online room booking</a>--><a class="waves-effect waves-light" href="booking.html">room reservation</a> </div>
-            <div class="foot-com foot-4">
-                <a href="#"><img src="{{ asset("front/images/card.png") }}" alt="" />
-                </a>
-            </div>
+            <div class="foot-com foot-3"><a class="waves-effect waves-light" href="{{'/room_type'}}">Book Room</a> </div>
         </div>
     </div>
 </div>

@@ -143,8 +143,8 @@ class UserController extends AdminController
             $rules['phone'] = 'numeric|max:999999999999999';
         }
 
-        if (!empty($request->input('avatar'))) {
-            $rules['avatar'] = 'mimes:jpeg,jpg,png';
+        if ($request->hasFile('avatar')) {
+            $rules['avatar'] = 'mimes:jpeg,jpg,png,PNG,JPEG,JPG,JPG';
         }
 
         if (!empty($request->input('password'))) {
@@ -175,11 +175,12 @@ class UserController extends AdminController
 
             // Avatar Upload
             if ($request->hasFile('avatar')) {
-                Storage::delete('public/avatars/'.$user->avatar);
+                if(!in_array($user->avatar, ['boy.png', 'boy-1.png', 'man.png', 'man-1.png', 'man-2.png', 'man-3.png', 'man-4.png'])){
+                    Storage::delete('public/avatars/'.$user->avatar);
+                }
                 $path = $request->file('avatar')->store('','avatar');
                 $user->avatar = $path;
             }
-
 
             $user->save();
             Session::flash('flash_title', "Success");
@@ -221,10 +222,11 @@ class UserController extends AdminController
             'address' => 'max:200',
             'about' => 'max:300'
         ];
-        if (!empty($request->input('avatar'))) {
+        if ($request->hasFile('avatar')) {
             $rules['avatar'] = 'mimes:jpeg,jpg,png,JPG,JPEG,PNG';
         }
 
+        dd($request->all());
         if (!empty($request->input('phone'))) {
             $rules['phone'] = 'numeric|max:999999999999999';
         }
@@ -246,7 +248,9 @@ class UserController extends AdminController
             $user->about = $request->input('about');
 
             if ($request->hasFile('avatar')) {
-                Storage::delete('public/avatars/'.$user->avatar);
+                if(!in_array($user->avatar, ['boy.png', 'boy-1.png', 'man.png', 'man-1.png', 'man-2.png', 'man-3.png', 'man-4.png'])){
+                    Storage::delete('public/avatars/'.$user->avatar);
+                }
                 $path = $request->file('avatar')->store('','avatar');
                 $user->avatar = $path;
             }

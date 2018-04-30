@@ -18,7 +18,7 @@
                                             </li>
                                             <li><a href="db-activity.html">DB Activity</a>
                                             </li>
-                                            <li><a href="booking.html">Booking</a>
+                                            <li><a href="{{ '/room_type' }}">Booking</a>
                                             </li>
                                             <li><a href="contact-us.html">Contact Us</a>
                                             </li>

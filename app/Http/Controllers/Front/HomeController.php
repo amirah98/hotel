@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Front\FrontController;
 use App\Model\Event;
 use App\Model\Food;
+use App\Model\Review;
 use Illuminate\Http\Request;
 use App\Model\Slider;
 use App\Model\RoomType;
@@ -48,11 +49,17 @@ class HomeController extends FrontController
 
         $foods = Food::where('status', 1)->get();
 
+        $reviews = Review::where('approval_status', "approved")
+            ->orderBy('updated_at', 'desc')
+            ->limit('4')
+            ->get();
+
         return view('front.home')->with([
             'slider_images' => $slider_images,
             'room_types' => $room_types,
             'events' => $events,
-            'foods' => $foods
+            'foods' => $foods,
+            'reviews' => $reviews,
         ]);
     }
 }
