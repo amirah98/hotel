@@ -33,7 +33,7 @@
                         @if($room_booking->review->approval_status == "pending")
                             <span class="label label-default">Pending</span>
                         @elseif($room_booking->review->approval_status == "approved")
-                            <span class="label label-success">Pending</span>
+                            <span class="label label-success">Approved</span>
                         @else
                             <span class="label label-danger">Rejected</span>
                         @endif

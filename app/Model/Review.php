@@ -13,7 +13,7 @@ class Review extends Model
      */
     protected $table = 'reviews';
 
-    protected $fillable = ['review', 'rating', 'approved_status', 'room_booking_id'];
+    protected $fillable = ['review', 'rating', 'approval_status', 'room_booking_id'];
 
     public function room_booking(){
 
