@@ -2,6 +2,7 @@
 
 namespace App\Rules;
 
+use App\Algo\Booking;
 use Illuminate\Contracts\Validation\Rule;
 use Carbon\Carbon;
 
@@ -46,46 +47,11 @@ class RoomAvailableRule implements Rule
         return 'Sorry, no rooms are available in the given dates. Please try another date.';
     }
 
-    protected function room_available()
+    public function room_available()
     {
-        $this->rooms_exist();
-        foreach ($this->room_type->rooms as $room) {
-            if ($this->room_bookings_exist($room)) {
-                $this->room_bookings_check($room->room_bookings);
-            }
-            return true;
-        }
+        $booking = new Booking($this->room_type, $this->new_arrival_date, $this->new_departure_date);
+        return $booking->room_available();
     }
 
-    protected function rooms_exist()
-    {
-        if (count($this->room_type->rooms) > 0) {
-            return true;
-        }
-        $this->message = "Sorry, there are no room of given type available.";
-        return false;
-    }
 
-    protected function room_bookings_exist($room)
-    {
-        if (count($room->room_bookings) > 0) {
-            return true;
-        }
-    }
-
-    protected function room_bookings_check($room_bookings)
-    {
-        foreach ($room_bookings as $room_booking) {
-            $old_arrival_date = Carbon::parse($room_booking->arrival_date)->format('Y/m/d');
-            $old_departure_date = Carbon::parse($room_booking->departure_date)->format('Y/m/d');
-            if ($this->new_arrival_date < $old_arrival_date) {
-                if ($this->new_departure_date > $old_arrival_date)
-                    return false;
-            } elseif ($this->new_arrival_date >= $old_arrival_date) {
-                if ($this->new_arrival_date < $old_departure_date) {
-                    return false;
-                }
-            }
-        }
-    }
 }

@@ -34,7 +34,7 @@
 
                         <div class="row">
                                 <div class="input-field col s12 m4 l2">
-                                    <input type="text" style="color: black" value="Price: Rs. {{ $room_type->cost_per_day }}" class="form-btn" disabled>
+                                    <input type="text" style="color: black" value="Price: {{config('app.currency').$room_type->cost_per_day }}" class="form-btn" disabled>
                                 </div>
                                 <div class="input-field col s12 m4 l2">
                                     <select name="number_of_adult">
@@ -232,22 +232,21 @@
                 <div class="col-md-4">
                     <!--=========================================-->
                     <div class="hp-call hp-right-com">
-                        <div class="hp-call-in"> <img src="images/icon/dbc4.png" alt="">
-                            <h3><span>Check Availability. Call us!</span> +01 4214 4214</h3> <small>We are available 24/7 Monday to Sunday</small> <a href="#">Call Now</a> </div>
+                        <div class="hp-call-in"> <img src="{{ asset("front/images/icon/dbc4.png") }}" alt="">
+                            <h3><span>Check Availability. Call us!</span> {{ config('app.phone_number') }}</h3> <small>We are available 24/7 Monday to Sunday</small> <a href="#">Call Now</a> </div>
                     </div>
                     <!--=========================================-->
                     <!--=========================================-->
                     <div class="hp-book hp-right-com">
                         <div class="hp-book-in">
-                            <button class="like-button"><i class="fa fa-heart-o"></i> Bookmark this listing</button> <span>159 people bookmarked this place</span>
+                            <a href="" id="bookmark_button" class="like-button"><i class="fa fa-heart-o"></i> Bookmark this listing</a> <!--<span>159 people bookmarked this place</span>-->
                             <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i> Share</a>
+                                <li><a href="https://www.facebook.com/sharer.php?u={{ Request::url() }}" rel="me" title="Facebook" target="_blank"><i class="fa fa-facebook"></i> Share</a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-twitter"></i> Tweet</a>
+                                <li><a href="https://twitter.com/share?url={{ Request::url() }}&text={{ $room_type->name }}" rel="me" title="Twitter" target="_blank"><i class="fa fa-twitter"></i> Tweet</a>
                                 </li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i> Share</a>
+                                <li><a href="https://plus.google.com/share?url={{ Request::url() }}" rel="me" title="Google Plus" target="_blank"><i class="fa fa-google-plus"></i> Share</a>
                                 </li>
-                                <!-- <li><a class="pinterest-share" href="#"><i class="fa fa-pinterest-p"></i> Pin</a></li> -->
                             </ul>
                         </div>
                     </div>
@@ -255,7 +254,7 @@
                     <!--=========================================-->
                     <div class="hp-card hp-right-com">
                         <div class="hp-card-in">
-                            <h3>We Accept</h3> <span>159 people bookmarked this place</span> <img src="images/card.png" alt=""> </div>
+                            <h3>We Accept</h3> <img src="{{ asset("front/images/card.png") }}" alt=""> </div>
                     </div>
                     <!--=========================================-->
                 </div>
@@ -263,3 +262,25 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    @parent
+
+    <script>
+        $(function() {
+            $('#bookmark_button').click(function() {
+                if (window.sidebar && window.sidebar.addPanel) { // Mozilla Firefox Bookmark
+                    window.sidebar.addPanel(document.title, window.location.href, '');
+                } else if (window.external && ('AddFavorite' in window.external)) { // IE Favorite
+                    window.external.AddFavorite(location.href, document.title);
+                } else if (window.opera && window.print) { // Opera Hotlist
+                    this.title = document.title;
+                    return true;
+                } else { // webkit - safari/chrome
+                    alert('Press ' + (navigator.userAgent.toLowerCase().indexOf('mac') != -1 ? 'Command/Cmd' : 'CTRL') + ' + D to bookmark this page.');
+                }
+            });
+        });
+    </script>
+
+    @endsection

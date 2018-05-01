@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Algo\Booking;
 use App\Model\Room;
 use App\Model\RoomBooking;
 use App\Model\RoomType;
@@ -62,8 +63,10 @@ class RoomBookingController extends FrontController
         /**
          * Select random room for booking of given room type
          */
-        $room = Room::where('room_type_id', $room_type_id)->where('status', true)->first();
-        $room_booking->room_id = $room->id;
+
+        $booking = new Booking($room_type, $new_arrival_date, $new_departure_date);
+        //dd($booking->available_room_number());
+        $room_booking->room_id = $booking->available_room_number();
         $room_booking->user_id = $user->id;
         $room_booking->save();
 

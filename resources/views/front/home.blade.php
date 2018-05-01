@@ -58,7 +58,7 @@
                                         <li>
                                             <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
                                         </li>
-                                        <li><span class="ho-hot-pri">${{ $room_type->cost_per_day }}</span> </li>
+                                        <li><span class="ho-hot-pri">{{ config('app.currency').$room_type->cost_per_day }}</span> </li>
                                     </ul>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                             <div class="overlay"> <a href="booking.html"><span class="ev-book">Book Now</span></a> </div>
                         </div>
                         <!--event DETAILS-->
-                        <div class="n22-event"> <a href="#!"><h4>{{ $event->name }}</h4></a> <span class="event-date">Date: {{ $event->date }},</span> <span class="event-by"> Price: {{ $event->price > 0? "Rs. ".$event->price : 'Free'}}</span>
+                        <div class="n22-event"> <a href="#!"><h4>{{ $event->name }}</h4></a> <span class="event-date">Date: {{ $event->date }},</span> <span class="event-by"> Price: {{ $event->price > 0? config('app.currency').$event->price : 'Free'}}</span>
                             <p>{{ $event->description }}</p>
                             <!--event SHARE-->
                             <div class="event-share">

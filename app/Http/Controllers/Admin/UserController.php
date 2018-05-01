@@ -226,7 +226,6 @@ class UserController extends AdminController
             $rules['avatar'] = 'mimes:jpeg,jpg,png,JPG,JPEG,PNG';
         }
 
-        dd($request->all());
         if (!empty($request->input('phone'))) {
             $rules['phone'] = 'numeric|max:999999999999999';
         }

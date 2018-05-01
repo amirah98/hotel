@@ -24,6 +24,7 @@ return [
     'instagram' => env('INSTAGRAM', '#'),
     'latitude' => env('MAP_LATITUDE', '#'),
     'longitude' => env('MAP_LONGITUDE', '#'),
+    'currency' => env('CURRENCY', '$ '),
 
     /*
     |--------------------------------------------------------------------------

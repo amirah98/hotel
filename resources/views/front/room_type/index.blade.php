@@ -76,7 +76,7 @@
                     <!--ROOM PRICE-->
                     <div class="r4 r-com">
                         <p>Price for 1 night</p>
-                        <p><span class="room-price-1">${{ $room_type->cost_per_day }}</span>
+                        <p><span class="room-price-1">{{config('app.currency').$room_type->cost_per_day }}</span>
                         </p>
                         <p>Non Refundable</p>
                     </div>
