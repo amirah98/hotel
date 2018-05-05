@@ -37,7 +37,16 @@
                                     <div class="form-group">
                                         <label>Size</label>
                                         <input type="text" name="size" class="form-control border-input"
-                                               placeholder="Ex: 500" value="{{ old('size') }}">
+                                               placeholder="Size in feet" value="{{ old('size') }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Discount: <input class="form-control border-input" type="text" id="discount" disabled></label>
+                                        <input type="hidden" name="discount_percentage" id="discount_percentage" value="{{ old('discount_percentage')  }}">
+                                        <div id="slider-default" class="slider-info"></div>
                                     </div>
                                 </div>
                             </div>
@@ -153,6 +162,7 @@
     <script>
         $().ready(function () {
 
+            demo.initFormExtendedSliders();
             var $validator = $("#room_type-add-form").validate({
                 rules: {
                     name: {

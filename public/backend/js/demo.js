@@ -653,7 +653,7 @@ demo = {
             $("#slider-range").slider({
                 range: true,
                 min: 0,
-                max: 500,
+                max: 100,
                 values: [75, 300],
             });
         }
@@ -674,11 +674,17 @@ demo = {
 
         if ($('#slider-default').length != 0 || $('#slider-default2').length != 0) {
             $("#slider-default, #slider-default2").slider({
-                value: 70,
+                value:  $("#discount_percentage").val(),
                 orientation: "horizontal",
                 range: "min",
-                animate: true
+                animate: true,slide: function( event, ui ) {
+                    $( "#discount" ).val( ui.value + "%" );
+                    $( "#discount_percentage" ).val(ui.value);
+                }
+
             });
+            $( "#discount" ).val( $( "#slider-default" ).slider( "value" ) + "%" );
+            $( "#discount_percentage" ).val( $( "#slider-default" ).slider( "value" ));
         }
     },
 

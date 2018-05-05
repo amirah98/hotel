@@ -17,6 +17,7 @@ class CreateRoomTypesTable extends Migration
             $table->increments('id');
             $table->string('name', 50)->unique();
             $table->integer('cost_per_day');
+            $table->integer('discount_percentage')->default(0);
             $table->integer('size')->nullable();
             $table->integer('max_adult')->nullable()->default(0);
             $table->integer('max_child')->nullable()->default(0);

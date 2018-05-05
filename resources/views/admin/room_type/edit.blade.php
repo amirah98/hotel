@@ -41,6 +41,15 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Discount: <input class="form-control border-input" type="text" id="discount" disabled></label>
+                                        <input type="hidden" name="discount_percentage" id="discount_percentage" value="{{ $room_type->discount_percentage  }}">
+                                        <div id="slider-default" class="slider-info"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Maximum Number of Adult<star>*</star></label>
@@ -153,6 +162,7 @@
     <script>
         $().ready(function () {
 
+            demo.initFormExtendedSliders();
             var $validator = $("#room_type-add-form").validate({
                 rules: {
                     name: {

@@ -51,7 +51,8 @@ class RoomTypeController extends AdminController
             'name' => 'required|max:50|unique:room_types,name',
             'cost_per_day' => 'required|numeric|min:0',
             'size' => 'numeric|min:0',
-            'max_adult' => 'numeric',
+            'discount_percentage' => 'integer|between:0,100',
+            'max_adult' => 'integer|min:1',
             'max_child' => 'numeric',
             'description' => 'max:800',
             'facility' => 'array',
@@ -70,6 +71,7 @@ class RoomTypeController extends AdminController
         $room_type->name = $request->input('name');
         $room_type->cost_per_day = $request->input('cost_per_day');
         $room_type->size = $request->input('size');
+        $room_type->discount_percentage = $request->input('discount_percentage');
         $room_type->max_adult = $request->input('max_adult');
         $room_type->max_child = $request->input('max_child');
         $room_type->description = $request->input('description');
@@ -113,18 +115,16 @@ class RoomTypeController extends AdminController
     {
         $room_type = RoomType::find($id);
         $rules = [
-
-
             'name' => 'required|max:50|unique:room_types,name,'.$id,
             'cost_per_day' => 'required|numeric|min:0',
             'size' => 'numeric|min:0',
+            'discount_percentage' => 'integer|between:0,100',
             'max_adult' => 'numeric',
             'max_child' => 'numeric',
             'description' => 'max:800',
             'facility' => 'array',
             'room_service' => 'boolean',
             'status' => 'required|boolean'
-
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -137,6 +137,7 @@ class RoomTypeController extends AdminController
         $room_type->name = $request->input('name');
         $room_type->cost_per_day = $request->input('cost_per_day');
         $room_type->size = $request->input('size');
+        $room_type->discount_percentage = $request->input('discount_percentage');
         $room_type->max_adult = $request->input('max_adult');
         $room_type->max_child = $request->input('max_child');
         $room_type->description = $request->input('description');

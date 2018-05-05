@@ -24,7 +24,10 @@ return [
     'instagram' => env('INSTAGRAM', '#'),
     'latitude' => env('MAP_LATITUDE', '#'),
     'longitude' => env('MAP_LONGITUDE', '#'),
-    'currency' => env('CURRENCY', '$ '),
+    'currency' => env('CURRENCY', 'Rs. '),
+
+    'vat_percentage' => env('VAT_PERCENTAGE', '13'),
+    'service_charge_percentage' => env('SERVICE_CHARGE_PERCENTAGE', '10'),
 
     /*
     |--------------------------------------------------------------------------

@@ -58,7 +58,7 @@ class RoomBookingController extends FrontController
         $startTime = Carbon::parse($room_booking->arrival_date);
         $finishTime = Carbon::parse($room_booking->departure_date);
         $no_of_days = $finishTime->diffInDays($startTime) ? $finishTime->diffInDays($startTime) : 1;
-        $room_booking->room_cost = $no_of_days * $room_type->cost_per_day;
+        $room_booking->room_cost = $no_of_days * $room_type->finalPrice;
         $room_booking->user_id = $user->id;
         /**
          * Select random room for booking of given room type

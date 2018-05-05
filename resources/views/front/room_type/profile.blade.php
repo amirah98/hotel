@@ -28,13 +28,15 @@
                         @endif
                             <div class="row">
                                 <div class="col s12 avail-title">
-                                    <h4>Check Availability</h4> </div>
+                                    <h4>Check Availability</h4>
+                                    <p>The final price is calculated by giving {{$room_type->discount_percentage}}% discount, adding {{config('app.service_charge_percentage')}}% service charge and adding {{config('app.vat_percentage')}}% VAT in the room original price.</p>
+                                </div>
                             </div>
                         <input name="booking_validation" type="hidden" value="0">
 
                         <div class="row">
                                 <div class="input-field col s12 m4 l2">
-                                    <input type="text" style="color: black" value="Price: {{config('app.currency').$room_type->cost_per_day }}" class="form-btn" disabled>
+                                    <input type="text" style="color: black" value="{{config('app.currency').$room_type->finalPrice }}" class="form-btn" disabled>
                                 </div>
                                 <div class="input-field col s12 m4 l2">
                                     <select name="number_of_adult">
@@ -48,7 +50,7 @@
                                     <select name="number_of_child">
                                         <option value="" disabled selected>No of childs</option>
                                         @for($i = 0; $i <= $room_type->max_adult; $i++ )
-                                            <option value="{{ $i }}" @if (Input::old('number_of_child') == $i) selected="selected" @endif>{{ $i }}</option>
+                                            <option value="{{ $i }}" @if (Input::old('number_of_child') == $i && Input::old('number_of_child') != 0 ) selected="selected" @endif>{{ $i }}</option>
                                         @endfor
                                     </select>
                                 </div>
@@ -110,10 +112,6 @@
                                         <a data-toggle="tab" href="#home"><img src="{{ asset("front/images/icon/a8.png") }}" alt=""> <span class="tab-hide">Overview</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a data-toggle="tab" href="#menu"><img src="{{ asset("front/images/icon/a10.png") }}" alt=""> <span class="tab-hide">Other Features</span>
-                                        </a>
-                                    </li>
                                 </ul>
                                 <div class="tab-content">
                                     <div id="home" class="tab-pane fade in active tab-space">
@@ -127,12 +125,6 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div>
-                                    <div id="menu" class="tab-pane fade tab-space">
-                                        <p>Maecenas erat lorem, vulputate sed ex at, vehicula dignissim risus. Nullam non nisi congue elit cursus tempus. Nunc vel ante nec libero semper maximus. Donec cursus sed massa eget commodo. Phasellus semper neque id iaculis malesuada. Nulla efficitur dui vitae orci blandit tempor. Mauris sed venenatis nibh, sed sodales risus.</p>
-                                        <p>Nam sit amet tortor in elit fermentum consectetur et sit amet eros. Sed varius velit at eros tempor sodales. Fusce at enim at lectus sollicitudin pharetra at in risus. Donec ut semper turpis. Maecenas lobortis ante ut eros scelerisque, at semper augue ullamcorper.</p>
-                                        <p>Maecenas erat lorem, vulputate sed ex at, vehicula dignissim risus. Nullam non nisi congue elit cursus tempus. Nunc vel ante nec libero semper maximus. Donec cursus sed massa eget commodo. Phasellus semper neque id iaculis malesuada. Nulla efficitur dui vitae orci blandit tempor. Mauris sed venenatis nibh, sed sodales risus.</p>
-                                        <p>Nam sit amet tortor in elit fermentum consectetur et sit amet eros. Sed varius velit at eros tempor sodales. Fusce at enim at lectus sollicitudin pharetra at in risus. Donec ut semper turpis. Maecenas lobortis ante ut eros scelerisque, at semper augue ullamcorper.</p>
                                     </div>
                                 </div>
                             </div>

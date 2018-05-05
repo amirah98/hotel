@@ -21,6 +21,7 @@
                                 <th data-field="sn" class="text-center">S.N.</th>
                                 <th data-field="name" class="text-center">Name</th>
                                 <th data-field="cost_per_day">Cost Per Day</th>
+                                <th data-field="discount_percentage">Discount</th>
                                 <th data-field="max_adult">Max Adult</th>
                                 <th data-field="max_child">Max Child</th>
                                 <th data-field="status" data-sortable="true">Status</th>
@@ -34,7 +35,8 @@
                                             <tr>
                                                 <td>{{$index+1}}</td>
                                                 <td>{{ $room_type->name }}</td>
-                                               <td><span class="badge">{{ $room_type->formated_cost_per_day }}</span></td>
+                                               <td><span class="badge">{{ config('app.currency').$room_type->cost_per_day }}</span></td>
+                                               <td><span class="badge">{{ $room_type->discount_percentage."%" }}</span></td>
                                                <td><span class="btn btn-default btn-xs">{{ $room_type->max_adult }}</span></td>
                                                <td><span class="btn btn-default btn-xs">{{ $room_type->max_child }}</span></td>
                                                 <td>

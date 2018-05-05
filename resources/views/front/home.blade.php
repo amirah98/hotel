@@ -58,7 +58,12 @@
                                         <li>
                                             <div class="dir-rat-star ho-hot-rat-star"> Rating: <i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i> </div>
                                         </li>
-                                        <li><span class="ho-hot-pri">{{ config('app.currency').$room_type->cost_per_day }}</span> </li>
+                                        <li>
+                                            @if($room_type->cost_per_day !== $room_type->discountedPrice)
+                                            <span class="ho-hot-pri-dis">{{ config('app.currency').$room_type->cost_per_day }}</span>
+                                            @endif
+                                            <span class="ho-hot-pri">{{ config('app.currency').$room_type->discountedPrice}}</span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
