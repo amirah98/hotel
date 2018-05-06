@@ -18,9 +18,9 @@ $factory->define(App\Model\User::class, function (Faker $faker) {
     $gender = $faker->randomElement(['male', 'female', 'others']);
 
     if($gender == "female")
-        $avatar = $faker->randomElement(['girl.png', 'girl-1.png']);
+        $avatar = $faker->randomElement(['girl.png', 'girl-1.png', 'girl-2.png']);
     else
-        $avatar = $faker->randomElement(['boy.png', 'boy-1.png', 'man.png', 'man-1.png', 'man-2.png', 'man-3.png', 'man-4.png']);
+        $avatar = $faker->randomElement(['boy.png', 'boy-1.png', 'man.png', 'man-1.png', 'man-2.png', 'man-3.png']);
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,

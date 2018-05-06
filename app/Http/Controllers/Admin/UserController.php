@@ -175,7 +175,7 @@ class UserController extends AdminController
 
             // Avatar Upload
             if ($request->hasFile('avatar')) {
-                if(!in_array($user->avatar, ['boy.png', 'boy-1.png', 'man.png', 'man-1.png', 'man-2.png', 'man-3.png', 'man-4.png'])){
+                if(!in_array($user->avatar, ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'])){
                     Storage::delete('public/avatars/'.$user->avatar);
                 }
                 $path = $request->file('avatar')->store('','avatar');
@@ -247,7 +247,7 @@ class UserController extends AdminController
             $user->about = $request->input('about');
 
             if ($request->hasFile('avatar')) {
-                if(!in_array($user->avatar, ['boy.png', 'boy-1.png', 'man.png', 'man-1.png', 'man-2.png', 'man-3.png', 'man-4.png'])){
+                if(!in_array($user->avatar, ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'])){
                     Storage::delete('public/avatars/'.$user->avatar);
                 }
                 $path = $request->file('avatar')->store('','avatar');
@@ -287,7 +287,9 @@ class UserController extends AdminController
 
                 if ($user->delete()) {
                     if(Storage::disk('avatar')->exists($user->avatar)){
-                        Storage::delete('public/avatars/'.$user->avatar);
+                        if(!in_array($user->avatar, ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'])){
+                            Storage::delete('public/avatars/'.$user->avatar);
+                        }
                     }
 
                     Session::flash('flash_title', 'Success');

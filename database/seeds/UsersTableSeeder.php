@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
             'address' => "Kathmandu",
             'email' => "gita3459@gmail.com",
             'password' => bcrypt('password'),
-            'avatar' => 'girl.png',
+            'avatar' => 'girl-1.png',
             'about' => "hello from the other world",
             'role' => 'admin',
             'status' => TRUE,
