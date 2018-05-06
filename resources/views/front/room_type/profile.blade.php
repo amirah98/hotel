@@ -150,7 +150,7 @@
                         <div class="hp-section">
                             <div class="hp-sub-tit">
                                 <h4><span>Ratings</span></h4>
-                                <p>Aliquam id tempor sem. Cras molestie risus et lobortis congue. Donec id est consectetur, cursus tellus at, mattis lacus.</p>
+                                <p>If you have good experience with the hotel, please leave a review to recommend others.</p>
                             </div>
                             <div class="hp-review">
                                 <div class="hp-review-left">
@@ -207,7 +207,7 @@
                                                     <li>
                                                         <div class="lr-user-wr-img"> <img src="{{'/storage/avatars/'.$review->room_booking->user->avatar}}" alt=""> </div>
                                                         <div class="lr-user-wr-con">
-                                                            <h6>{{ $review->room_booking->user->first_name." ".$review->room_booking->user->last_name }} <span> {{ $review->rating }} <i class="fa fa-star" aria-hidden="true"></i></span></h6> <span class="lr-revi-date"> {{ \Carbon\Carbon::parse($review->updated_at)->diffForHumans() }}</span>
+                                                            <h6>{{ $review->room_booking->user->first_name." ".$review->room_booking->user->last_name }} @if($review->rating > 0)<span> {{ $review->rating }} <i class="fa fa-star" aria-hidden="true"></i></span>@endif</h6> <span class="lr-revi-date"> {{ \Carbon\Carbon::parse($review->updated_at)->diffForHumans() }}</span>
                                                             <p>{{ $review->review }}</p>
 
                                                         </div>

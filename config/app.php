@@ -17,6 +17,7 @@ return [
     'phone_number' => env('PHONE_NUMBER', '977-9866893439'),
     'email' => env('EMAIL', ''),
     'website' => env('WEBSITE', ''),
+    'video' => env('VIDEO', ''),
     'address' => env('ADDRESS', ''),
     'facebook' => env('FACEBOOK', '#'),
     'google' => env('GOOGLE', '#'),

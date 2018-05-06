@@ -56,11 +56,11 @@
                                 <div class="input-field col s12">
                                     <select name="gender">
                                         <option value="" disabled selected>Select Gender</option>
-                                        <option value="male">Male
+                                        <option value="male" @if(old('gender') == "male") selected="selected" @endif>Male
                                         </option>
-                                        <option value="female">Female
+                                        <option value="female" @if(old('gender') == "female") selected="selected" @endif>Female
                                         </option>
-                                        <option value="others">Others
+                                        <option value="others" @if(old('gender') == "others") selected="selected" @endif>Others
                                         </option>
                                     </select>
                                     @if ($errors->has('gender'))

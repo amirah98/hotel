@@ -9,9 +9,7 @@
                 <th>Room</th>
                 <th>Arrived Date</th>
                 <th>Booking Status</th>
-                @if(isset($room_booking->review->approval_status))
-                    <th>Review Approval Status</th>
-                @endif
+                <th>Review Approval Status</th>
             </tr>
             </thead>
             <tbody>
@@ -34,8 +32,10 @@
                             <span class="label label-default">Pending</span>
                         @elseif($room_booking->review->approval_status == "approved")
                             <span class="label label-success">Approved</span>
-                        @else
+                        @elseif($room_booking->review->approval_status == "rejected")
                             <span class="label label-danger">Rejected</span>
+                        @else
+                            <span class="label label-default">Not reviewed yet</span>
                         @endif
                     @endif
                 </td>

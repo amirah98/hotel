@@ -219,7 +219,7 @@
                 <div class="col-md-4">
                     <div class="bot-gal h-vid">
                         <h4>Video Gallery</h4>
-                        <iframe src="https://www.youtube.com/embed/mG4G8crGQ34?autoplay=0&amp;showinfo=0&amp;controls=0" allowfullscreen></iframe>
+                        <iframe src="{{config('app.video')}}?autoplay=0&amp;showinfo=0&amp;controls=0" allowfullscreen></iframe>
                         <h5>Introductory Video</h5>
                         <p>Watch this video to learn more about our hotel facilities, luxuries and environment</p>
                     </div>
@@ -232,7 +232,7 @@
                                 @foreach($reviews as $review)
                             <li>
                                 <a href="#!"> <img src="{{'/storage/avatars/'.$review->room_booking->user->avatar}}" alt="">
-                                    <h5>{{ $review->room_booking->user->first_name }}, {{ $review->rating }} <i class="fa fa-star" aria-hidden="true"></i></h5> <span>{{ \Carbon\Carbon::parse($review->updated_at)->diffForHumans() }}</span>
+                                    <h5>{{ $review->room_booking->user->first_name }}@if($review->rating > 0), {{ $review->rating }} <i class="fa fa-star" aria-hidden="true"></i>@endif</h5> <span>{{ \Carbon\Carbon::parse($review->updated_at)->diffForHumans() }}</span>
                                     <p>{{ $review->review }}</p>
                                 </a>
                             </li>
