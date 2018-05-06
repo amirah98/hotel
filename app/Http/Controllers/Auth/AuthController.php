@@ -78,6 +78,7 @@ class AuthController extends Controller
      */
     private function findOrCreateUser($socialLiteUser, $key)
     {
+        $available_avatars = ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'];
         $first_name = "";
         $last_name = "";
         if(!isset($socialLiteUser->name)){
@@ -93,6 +94,7 @@ class AuthController extends Controller
             $key . '_id' => $socialLiteUser->id,
             'first_name' => $first_name,
             'last_name' => $last_name,
+            'avatar' => $available_avatars[array_rand($available_avatars)]
         ]);
 
 

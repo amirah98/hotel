@@ -60,7 +60,7 @@ class UserController extends AdminController
         }
 
         if (!empty($request->input('avatar'))) {
-            $rules['avatar'] = 'mimes:jpeg,jpg,png';
+            $rules['avatar'] = 'mimes:jpeg,jpg,png,JPG,JPEG,PNG';
         }
 
         $validator = Validator::make($request->all(), $rules);
