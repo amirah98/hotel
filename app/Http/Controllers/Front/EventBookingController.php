@@ -59,7 +59,7 @@ class EventBookingController extends FrontController
         $event_booking->event_id = $event->id;
         $event_booking->save();
 
-        //$this->send_email_to_agent(Auth::user()->email);
+        $this->send_email(Auth::user()->email);
 
         Session::flash('flash_title', "Success");
         Session::flash('flash_message', "Event has been Booked.");
@@ -67,8 +67,10 @@ class EventBookingController extends FrontController
 
     }
 
-    private function send_email_to_agent($email){
-
+    private function send_email($email){
+        if(empty($email)){
+            $email = Auth::user()->email;
+        }
         Mail::to($email)->send(new EventBooked());
     }
 }

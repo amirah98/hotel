@@ -29,8 +29,8 @@ class EventBooked extends Mailable
      */
     public function build()
     {
-        $address = 'theroyalhotel99@gmail.me';
-        $name = 'The Royal Hotel';
+        $address = config('app.email');
+        $name = config('app.name');
         $subject = 'Event Booked';
 
         return $this->markdown('emails.event_booked')

@@ -29,7 +29,7 @@
                             <div class="row">
                                 <div class="col s12 avail-title">
                                     <h4>Check Availability</h4>
-                                    <p>The final price is calculated by giving {{$room_type->discount_percentage}}% discount, adding {{config('app.service_charge_percentage')}}% service charge and adding {{config('app.vat_percentage')}}% VAT in the room original price.</p>
+                                    <p>The final price is calculated by giving {{$room_type->discount_percentage}}% discount, adding {{config('app.service_charge_percentage')}}% service charge and adding {{config('app.vat_percentage')}}% VAT in the room's original price.</p>
                                 </div>
                             </div>
                         <input name="booking_validation" type="hidden" value="0">
@@ -225,7 +225,7 @@
                     <!--=========================================-->
                     <div class="hp-call hp-right-com">
                         <div class="hp-call-in"> <img src="{{ asset("front/images/icon/dbc4.png") }}" alt="">
-                            <h3><span>Check Availability. Call us!</span> {{ config('app.phone_number') }}</h3> <small>We are available 24/7 Monday to Sunday</small> <a href="#">Call Now</a> </div>
+                            <h3><span>Call us!</span> {{ config('app.phone_number') }}</h3> <small>We are available 24/7 Monday to Sunday</small> <a href="#">Call Now</a> </div>
                     </div>
                     <!--=========================================-->
                     <!--=========================================-->

@@ -43,7 +43,7 @@
         </div>
     </div>
    @yield('content')
-    /** @include('front.components.reservation') **/
+    @include('front.components.reservation')
 </section>
 <!--END HEADER SECTION-->
 @include('front.components.footer')

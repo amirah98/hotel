@@ -2,7 +2,7 @@
 
     The event has been recently booked.
     Please visit the following link to check your recent bookings.
-    @component('mail::button', ['url' => ''])
+    @component('mail::button', ['url' => url('/dashboard/event/booking')])
         Visit
     @endcomponent
 

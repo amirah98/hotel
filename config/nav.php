@@ -71,6 +71,13 @@ return [
             ],
             'icon' => 'ti-star'
         ],
+        'Page' => [
+            'name' => 'Page',
+            'actions' => [
+                'view' => 'admin/page',
+            ],
+            'icon' => 'ti-star'
+        ],
     ],
 
 ];

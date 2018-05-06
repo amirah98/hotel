@@ -40,13 +40,13 @@
                     <td>Rs. {{ $room_booking->room_cost }}</td>
                     <td>
                         @if($room_booking->status == "pending")
-                            <span class="db-success">Pending</span>
+                            <span class="label label-default">Pending</span>
                         @elseif($room_booking->status == "checked_in")
-                            <span class="db-success">Checked In</span>
+                            <span class="label label-primary">Checked In</span>
                         @elseif($room_booking->status == "checked_out")
-                            <span class="db-success">Checked Out</span>
+                            <span class="label label-success">Checked Out</span>
                         @else
-                            <span class="db-success">Cancelled</span>
+                            <span class="label label-danger">Cancelled</span>
                         @endif
                     </td>
                     <td>

@@ -18,8 +18,10 @@
             @forelse($room_types as $room_type)
                 <!--ROOM SECTION-->
                 <div class="room">
-                    <div class="ribbon ribbon-top-left"><span>Featured</span>
+                    @if($room_type->cost_per_day !== $room_type->discountedPrice)
+                    <div class="ribbon ribbon-top-left"><span>Discount</span>
                     </div>
+                    @endif
                     <!--ROOM IMAGE-->
                     <div class="r1 r-com"><img src="{{'/storage/room_types/'.$room_type->images->first()->name}}" alt="" />
                     </div>
@@ -76,7 +78,12 @@
                     <!--ROOM PRICE-->
                     <div class="r4 r-com">
                         <p>Price for 1 night</p>
-                        <p><span class="room-price-1">{{config('app.currency').$room_type->cost_per_day }}</span>
+
+                        <p>
+                            <span class="room-price-1">{{ config('app.currency').$room_type->discountedPrice}}</span>
+                            @if($room_type->cost_per_day !== $room_type->discountedPrice)
+                            <span class="room-price">{{ config('app.currency').$room_type->cost_per_day }}</span>
+                            @endif
                         </p>
                         <p>Non Refundable</p>
                     </div>

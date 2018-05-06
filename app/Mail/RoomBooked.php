@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+
 class RoomBooked extends Mailable
 {
     use Queueable, SerializesModels;
@@ -27,8 +28,8 @@ class RoomBooked extends Mailable
      */
     public function build()
     {
-        $address = 'theroyalhotel99@gmail.me';
-        $name = 'The Royal Hotel';
+        $address = config('app.email');
+        $name = config('app.name');
         $subject = 'Room Booked';
 
         return $this->markdown('emails.room_booked')

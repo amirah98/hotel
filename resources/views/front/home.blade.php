@@ -97,10 +97,10 @@
                     <div class="col-md-3 n2-event">
                         <!--event IMAGE-->
                         <div class="n21-event hovereffect"> <img src="{{'/storage/events/'.$event->image}}" alt="">
-                            <div class="overlay"> <a href="booking.html"><span class="ev-book">Book Now</span></a> </div>
+                            <div class="overlay"> <a href="{{ url('/event/') }}"><span class="ev-book">Book Now</span></a> </div>
                         </div>
                         <!--event DETAILS-->
-                        <div class="n22-event"> <a href="#!"><h4>{{ $event->name }}</h4></a> <span class="event-date">Date: {{ $event->date }},</span> <span class="event-by"> Price: {{ $event->price > 0? config('app.currency').$event->price : 'Free'}}</span>
+                        <div class="n22-event"> <a href="{{ url('/event/') }}"><h4>{{ $event->name }}</h4></a> <span class="event-date">Date: {{ $event->date }},</span> <span class="event-by"> Price: {{ $event->price > 0? config('app.currency').$event->price : 'Free'}}</span>
                             <p>{{ $event->description }}</p>
                             <!--event SHARE-->
                             <div class="event-share">

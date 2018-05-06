@@ -13,9 +13,9 @@
                 <h2>{{ $total_event_bookings }}</h2> </div>
         </div>
         <div class="db-2-main-1">
-            <div class="db-2-main-2"> <img src="{{ asset("front/images/icon/dbc3.png") }}" alt=""> <span> Payment Status</span>
+            <div class="db-2-main-2"> <img src="{{ asset("front/images/icon/dbc3.png") }}" alt=""> <span> Due Payments</span>
                 <p></p>
-                <h2>16</h2> </div>
+                <h2>{{ $total_pending_payments }}</h2> </div>
         </div>
     </div>
     <div class="db-cent-3">
@@ -46,11 +46,13 @@
                         <td>Rs. {{ $room_booking->room_cost }}</td>
                         <td>
                             @if($room_booking->status == "pending")
-                                <span class="db-success">Pending</span>
+                                <span class="label label-default">Pending</span>
                             @elseif($room_booking->status == "checked_in")
-                                <span class="db-success">Checked In</span>
+                                <span class="label label-primary">Checked In</span>
+                            @elseif($room_booking->status == "checked_out")
+                                <span class="label label-success">Checked Out</span>
                             @else
-                                <span class="db-success">Checked Out</span>
+                                <span class="label label-danger">Cancelled</span>
                             @endif
                         </td>
                         <td>
@@ -127,38 +129,37 @@
     <div class="db-cent-3">
         <div class="db-cent-acti">
             <div class="db-title">
-                <h3><img src="front/images/icon/dbc1.png" alt=""/> My Activity</h3>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+                <h3><img src="{{ asset("front/images/icon/review.png") }}" alt=""/> My Reviews</h3>
+                <p>Latest reviews submitted by me.</p>
             </div>
             <ul>
+                @forelse($room_booking_with_reviews as $room_booking)
                 <li>
-                    <div class="db-cent-wr-img"> <img src="front/images/users/3.png" alt=""> </div>
+                    <div class="db-cent-wr-img"> <img src="{{ asset("front/images/users/3.png") }}" alt=""> </div>
                     <div class="db-cent-wr-con">
-                        <h6>Hotel Booking Canceled</h6> <span class="lr-revi-date">21th July, 2016</span>
-                        <p>The hotel is clean, convenient and good value for money. Staff are courteous and helpful. However, they need more training to be efficient.</p>
-                        <ul>
-                            <li><a href="#!"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                            <li><a href="#!"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                            <li><a href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                            <li><a href="#!"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                            <li><a href="#!"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
-                        </ul>
+                        <h6>Hotel Booking
+                            @if($room_booking->status == "cancelled")
+                                <span class="label label-danger">Cancelled</span>
+                            @elseif($room_booking->status == "checked_in")
+                                <span class="label label-primary">Checked In</span>
+                            @elseif($room_booking->status == "checked_out")
+                                <span class="label label-success">Checked Out</span>
+                            @endif
+                        </h6>
+                        <span class="lr-revi-date">Review Date: {{ \Carbon\Carbon::parse($room_booking->review->updated_at)->format('Y-m-d') }}</span>
+                        <br>
+                        <span class="lr-revi-date">Rating: {{ $room_booking->review->rating }}/5</span>
+
+                        <p>
+                            {{ $room_booking->review->review }}
+                        </p>
+                        <a href="{{ url('dashboard/room/booking/'.$room_booking->review->id.'/review') }}" class="btn btn-danger btn-sm">Update Review</a>
+
                     </div>
                 </li>
-                <li>
-                    <div class="db-cent-wr-img"> <img src="front/images/users/3.png" alt=""> </div>
-                    <div class="db-cent-wr-con">
-                        <h6>Hotel Payment Success</h6> <span class="lr-revi-date">08th August, 2016</span>
-                        <p>The hotel is clean, convenient and good value for money. Staff are courteous and helpful. However, they need more training to be efficient.</p>
-                        <ul>
-                            <li><a href="#!"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
-                            <li><a href="#!"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
-                            <li><a href="#!"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
-                            <li><a href="#!"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
-                            <li><a href="#!"><i class="fa fa-youtube" aria-hidden="true"></i></a> </li>
-                        </ul>
-                    </div>
-                </li>
+                    @empty
+                    Sorry, you have not submitted any reviews yet.
+                    @endforelse
             </ul>
         </div>
     </div>

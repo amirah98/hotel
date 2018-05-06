@@ -1,48 +1,17 @@
 @section('dashboard_right')
 
     <div class="db-righ">
-        <h4>Notifications(18)</h4>
+        <h4>Upcoming Bookings</h4>
         <ul>
+            @foreach(\App\Model\RoomBooking::where('user_id', Auth::user()->id)->orderBy('arrival_date', 'desc')->limit('5')->get() as $room_booking)
             <li>
-                <a href="#!"> <img src="{{ asset("front/images/icon/dbr1.jpg") }}" alt="">
-                    <h5>Joseph, write a review</h5>
-                    <p>All the Lorem Ipsum generators on the</p> <span>2 hours ago</span> </a>
+                <a href="{{ url('dashboard/room/booking') }}"> <img src="{{'/storage/room_types/'.$room_booking->room->room_type->images->first()->name}}" alt="">
+                    <h5>{{ $room_booking->room->room_type->name }}, {{ $room_booking->room->room_number }} </h5>
+                    <p>Status: {{ studly_case($room_booking->status) }}
+                    </p>
+                    <span>{{ \Carbon\Carbon::parse($room_booking->arrival_date)->diffForHumans() }}</span> </a>
             </li>
-            <li>
-                <a href="#!"> <img src="{{ asset("front/images/icon/dbr2.jpg") }}" alt="">
-                    <h5>14 New Messages</h5>
-                    <p>All the Lorem Ipsum generators on the</p> <span>4 hours ago</span> </a>
-            </li>
-            <li>
-                <a href="#!"> <img src="{{ asset("front/images/icon/dbr3.jpg") }}" alt="">
-                    <h5>Ads expairy soon</h5>
-                    <p>All the Lorem Ipsum generators on the</p> <span>10 hours ago</span> </a>
-            </li>
-            <li>
-                <a href="#!"> <img src="{{ asset("front/images/icon/dbr4.jpg") }}" alt="">
-                    <h5>Post free ads - today only</h5>
-                    <p>All the Lorem Ipsum generators on the</p> <span>12 hours ago</span> </a>
-            </li>
-            <li>
-                <a href="#!"> <img src="{{ asset("front/images/icon/dbr5.jpg") }}" alt="">
-                    <h5>listing limit increase</h5>
-                    <p>All the Lorem Ipsum generators on the</p> <span>14 hours ago</span> </a>
-            </li>
-            <li>
-                <a href="#!"> <img src="{{ asset("front/images/icon/dbr6.jpg") }}" alt="">
-                    <h5>mobile app launch</h5>
-                    <p>All the Lorem Ipsum generators on the</p> <span>18 hours ago</span> </a>
-            </li>
-            <li>
-                <a href="#!"> <img src="{{ asset("front/images/icon/dbr7.jpg") }}" alt="">
-                    <h5>Setting Updated</h5>
-                    <p>All the Lorem Ipsum generators on the</p> <span>20 hours ago</span> </a>
-            </li>
-            <li>
-                <a href="#!"> <img src="{{ asset("front/images/icon/dbr8.jpg") }}" alt="">
-                    <h5>Increase listing viewers</h5>
-                    <p>All the Lorem Ipsum generators on the</p> <span>2 days ago</span> </a>
-            </li>
+            @endforeach
         </ul>
     </div>
     @show

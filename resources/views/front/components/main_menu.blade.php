@@ -15,13 +15,13 @@
                 </li>
                 <li><a href="{{ url('/food') }}">Food Menu</a>
                 </li>
+                @if(count(\App\Model\Page::where('title', 'About')->where('status', true)->get()) > 0)
                 <li><a href="{{ url('/about') }}">About</a>
                 </li>
+                @endif
                 <li><a href="{{ url('/contact') }}">Contact Us</a>
                 </li>
-                </li>
-                <li><a href="#" class='dropdown-button' data-activates='drop-home'>Pages <i class="fa fa-angle-down"></i></a>
-                </li>
+
 
                 @if (Auth::guest())
                     <li><a href="{{ route('register') }}">Register</a>

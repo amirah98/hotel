@@ -20,7 +20,8 @@ class RoomBookingsTableSeeder extends Seeder
             'payment' => false,
             'room_id' => 1,
             'user_id' => 2,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('room_bookings')->insert([
             'arrival_date' => "2018-04-25",
@@ -30,7 +31,8 @@ class RoomBookingsTableSeeder extends Seeder
             'payment' => false,
             'room_id' => 1,
             'user_id' => 4,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('room_bookings')->insert([
             'arrival_date' => "2018-04-24",
@@ -40,7 +42,8 @@ class RoomBookingsTableSeeder extends Seeder
             'payment' => false,
             'room_id' => 15,
             'user_id' => 3,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('room_bookings')->insert([
             'arrival_date' => "2018-04-20",
@@ -50,7 +53,8 @@ class RoomBookingsTableSeeder extends Seeder
             'payment' => false,
             'room_id' => 2,
             'user_id' => 2,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('room_bookings')->insert([
             'arrival_date' => "2018-04-01",
@@ -60,7 +64,8 @@ class RoomBookingsTableSeeder extends Seeder
             'payment' => true,
             'room_id' => 10,
             'user_id' => 6,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('room_bookings')->insert([
             'arrival_date' => "2018-04-05",
@@ -70,7 +75,8 @@ class RoomBookingsTableSeeder extends Seeder
             'payment' => false,
             'room_id' => 11,
             'user_id' => 6,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
     }
 }

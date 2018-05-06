@@ -20,19 +20,13 @@
                     <a href="{{ url('/dashboard/room/booking') }}"><img src="{{ asset("front/images/icon/db2.png") }}" alt="" /> Rooms</a>
                 </li>
                 <li>
-                    <a href="{{ url('/dashboard/room/booking/new') }}"><img src="{{ asset("front/images/icon/db3.png") }}" alt="" /> New Booking</a>
-                </li>
-                <li>
                     <a href="{{ url('/dashboard/event/booking') }}"><img src="{{ asset("front/images/icon/db4.png") }}" alt="" /> Events</a>
                 </li>
                 <li>
-                    <a href="db-activity.html"><img src="{{ asset("front/images/icon/db5.png") }}" alt="" /> Activity</a>
+                    <a href="{{ url('/dashboard/profile') }}"><img src="{{ asset("front/images/icon/db7.png") }}" alt="" /> Profile</a>
                 </li>
                 <li>
-                    <a href="{{ url('/dashboard/profile/edit') }}"><img src="{{ asset("front/images/icon/db7.png") }}" alt="" /> Profile</a>
-                </li>
-                <li>
-                    <a href="{{ url('/dashboard/payment') }}"><img src="{{ asset("front/images/icon/db6.png") }}" alt="" /> Payments</a>
+                    <a href="{{ url('/dashboard/setting') }}" alt="Change Password"><img src="{{ asset("front/images/icon/key.png") }}" alt="Change Password" /> Password</a>
                 </li>
                 <li>
                     <a href="{{ route('logout') }}"

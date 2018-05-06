@@ -15,7 +15,7 @@ class FoodsTableSeeder extends Seeder
         DB::table('foods')->insert([
             'name' => "Sizzling Gambas",
             'type' => 'Appetizer',
-            'image' => "sizzling_gambas.jpg",
+            'image' => "sizzling_gambas.jpeg",
             'price' => 630,
             'description' => "Sizzling gambas is made with a combination of shrimp and vegetables.",
             'status' => true,
@@ -135,7 +135,7 @@ class FoodsTableSeeder extends Seeder
         DB::table('foods')->insert([
             'name' => "Chocolate Vanilla Sundae",
             'type' => 'Dessert',
-            'image' => "chocolate_vanilla_sundae.jpg",
+            'image' => "chocolate_vanilla_sundae.jpeg",
             'price' => 200,
             'description' => "This is a rich sundae made with brownies, vanilla ice cream, chocolate syrup, and whipped cream.",
             'status' => true,

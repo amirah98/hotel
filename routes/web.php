@@ -21,6 +21,8 @@ Route::get('social/auth/{provider}', 'Auth\AuthController@handleProviderCallback
 // Routes for Front
 Route::get('/', 'Front\HomeController@index')->name('home');
 Route::get('/contact', 'Front\PageController@contact');
+Route::get('/about', 'Front\PageController@about');
+Route::post('/subscribe', 'Front\SubscriberController@store');
 Route::get('/room_type', 'Front\RoomTypeController@index');
 Route::get('/room_type/{id}', 'Front\RoomTypeController@show');
 Route::get('/food', 'Front\FoodController@index');
@@ -41,6 +43,12 @@ Route::group(['prefix' => 'dashboard'], function () {
     Route::get('room/booking/{id}/cancel', 'Dashboard\RoomBookingController@cancel');
     Route::get('event/booking/{id}/cancel', 'Dashboard\EventBookingController@cancel');
 
+    Route::get('profile', 'Dashboard\UserController@edit_profile');
+    Route::put('profile', 'Dashboard\UserController@update_profile');
+
+    Route::get('setting', 'Dashboard\UserController@setting');
+    Route::put('setting', 'Dashboard\UserController@update_setting');
+
     Route::get('room/booking/{id}/review', 'Dashboard\ReviewController@create');
     Route::post('room/booking/{id}/review', 'Dashboard\ReviewController@store');
 });
@@ -48,13 +56,14 @@ Route::group(['prefix' => 'dashboard'], function () {
 
 // Routes for Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-
-
     Route::get('/', 'Admin\HomeController@index');
     Route::resource('slider', 'Admin\SliderController');
     Route::resource('facility', 'Admin\FacilityController');
     Route::resource('event', 'Admin\EventController');
     Route::resource('food', 'Admin\FoodController');
+    Route::get('page', 'Admin\PageController@index');
+    Route::get('page/{id}/edit', 'Admin\PageController@edit');
+    Route::put('page/{id}', 'Admin\PageController@update');
 
     // User Routes
     Route::resource('user', 'Admin\UserController');
@@ -62,7 +71,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::put('user/{id}/profile', 'Admin\UserController@update_profile');
     Route::get('user/{id}/setting', 'Admin\UserController@setting');
     Route::put('user/{id}/setting', 'Admin\UserController@update_setting');
-
 
 
     //Routes for RoomBookings
