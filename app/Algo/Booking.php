@@ -49,10 +49,10 @@ class Booking
     {
         $this->rooms_exist();
         foreach ($this->room_type->rooms as $room) {
-
             if ($this->room_bookings_exist($room)) {
-                if($this->room_bookings_check($room->room_bookings) == false)
+                if ($this->room_bookings_check($room->room_bookings) == false) {
                     continue;
+                }
             }
 
             return true;
@@ -63,10 +63,10 @@ class Booking
     {
         $this->rooms_exist();
         foreach ($this->room_type->rooms as $room) {
-
             if ($this->room_bookings_exist($room)) {
-                if($this->room_bookings_check($room->room_bookings) == false)
+                if ($this->room_bookings_check($room->room_bookings) == false) {
                     continue;
+                }
             }
             return $room->room_number;
         }
@@ -94,8 +94,9 @@ class Booking
             $old_arrival_date = Carbon::parse($room_booking->arrival_date)->format('Y/m/d');
             $old_departure_date = Carbon::parse($room_booking->departure_date)->format('Y/m/d');
             if ($this->new_arrival_date < $old_arrival_date) {
-                if ($this->new_departure_date > $old_arrival_date)
+                if ($this->new_departure_date > $old_arrival_date) {
                     return false;
+                }
             } elseif ($this->new_arrival_date > $old_arrival_date) {
                 if ($this->new_arrival_date < $old_departure_date) {
                     return false;

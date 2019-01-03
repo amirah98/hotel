@@ -21,4 +21,3 @@ class PagesTableSeeder extends Seeder
         ]);
     }
 }
-

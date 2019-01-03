@@ -17,7 +17,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RoomBooked;
 
-
 class RoomBookingController extends FrontController
 {
     public function book(Request $request, $room_type_id)
@@ -40,7 +39,7 @@ class RoomBookingController extends FrontController
         $rules['booking_validation'] = [new RoomAvailableRule($room_type, $new_arrival_date, $new_departure_date)];
 
         $validator = Validator::make($request->all(), $rules);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()
                 ->withInput($request->all())
                 ->withErrors($validator);
@@ -74,11 +73,11 @@ class RoomBookingController extends FrontController
         Session::flash('flash_title', "Success");
         Session::flash('flash_message', "Room has been Booked.");
         return redirect('/dashboard/room/booking');
-
     }
 
-    private function send_email($email){
-        if(empty($email)){
+    private function send_email($email)
+    {
+        if (empty($email)) {
             $email = Auth::user()->email;
         }
         Mail::to($email)->send(new RoomBooked());

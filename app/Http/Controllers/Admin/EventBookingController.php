@@ -49,7 +49,7 @@ class EventBookingController extends AdminController
             'payment' => 'boolean'
         ];
         $validator = Validator::make($request->all(), $rules);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()
                 ->withInput($request->all())
                 ->withErrors($validator);
@@ -62,7 +62,5 @@ class EventBookingController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The Event Booking has been updated successfully.');
         return redirect('/admin/event_booking');
-
     }
-
 }

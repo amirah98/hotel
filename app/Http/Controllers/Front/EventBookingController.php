@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Front;
 
-
 use App\Model\Event;
 use App\Model\EventBooking;
 use App\Rules\EventCapacityRule;
@@ -29,7 +28,7 @@ class EventBookingController extends FrontController
         $event = Event::findOrFail($event_id);
         // compare capacity with total tickets sold
         $total_booked_tickets = 0;
-        foreach($event->event_bookings as $event_booking){
+        foreach ($event->event_bookings as $event_booking) {
             $total_booked_tickets += $event_booking->number_of_tickets;
         }
 
@@ -41,7 +40,7 @@ class EventBookingController extends FrontController
 
         $validator = Validator::make($request->all(), $rules);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()
                 ->withInput($request->all())
                 ->withErrors($validator);
@@ -64,11 +63,11 @@ class EventBookingController extends FrontController
         Session::flash('flash_title', "Success");
         Session::flash('flash_message', "Event has been Booked.");
         return redirect('/dashboard/event/booking');
-
     }
 
-    private function send_email($email){
-        if(empty($email)){
+    private function send_email($email)
+    {
+        if (empty($email)) {
             $email = Auth::user()->email;
         }
         Mail::to($email)->send(new EventBooked());

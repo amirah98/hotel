@@ -67,7 +67,6 @@ class FacilityController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The facility has been added successfully');
         return redirect('admin/facility');
-
     }
 
     /**
@@ -127,6 +126,5 @@ class FacilityController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The facility has been deleted successfully');
         return redirect('admin/facility');
-
     }
 }

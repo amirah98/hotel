@@ -18,8 +18,8 @@ $factory->define(App\Model\Room::class, function (Faker $faker) {
     return [
         'room_number' => $number++,
         'description' => $faker->text,
-        'available' => TRUE,
-        'status' => TRUE,
+        'available' => true,
+        'status' => true,
         'room_type_id' => $faker->numberBetween($min = 1, $max = 6),
     ];
 });

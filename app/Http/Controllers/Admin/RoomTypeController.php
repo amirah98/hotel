@@ -79,7 +79,7 @@ class RoomTypeController extends AdminController
         $room_type->status = $request->input('status');
         $room_type->save();
 
-        if($request->has('facility')){
+        if ($request->has('facility')) {
             $room_type->facilities()->attach(array_keys($request->input('facility')));
         }
 
@@ -186,6 +186,5 @@ class RoomTypeController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The room_type has been deleted successfully');
         return redirect('admin/room_type');
-
     }
 }

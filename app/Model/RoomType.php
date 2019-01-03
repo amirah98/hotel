@@ -38,12 +38,13 @@ class RoomType extends Model
     }
 
 
-    public function getRatingsCount(){
+    public function getRatingsCount()
+    {
         $rating_count = 0;
-        foreach($this->rooms as $room){
-            foreach($room->reviews as $review){
-                if($review->approval_status == 'approved'){
-                    if($review->rating != 0) {
+        foreach ($this->rooms as $room) {
+            foreach ($room->reviews as $review) {
+                if ($review->approval_status == 'approved') {
+                    if ($review->rating != 0) {
                         $rating_count++;
                     }
                 }
@@ -52,13 +53,14 @@ class RoomType extends Model
         return $rating_count;
     }
 
-    public function getAggregatedRating(){
+    public function getAggregatedRating()
+    {
         $total_rating = 0;
         $rating_count = 0;
-        foreach($this->rooms as $room){
-            foreach($room->reviews as $review){
-                if($review->approval_status == 'approved'){
-                    if($review->rating != 0) {
+        foreach ($this->rooms as $room) {
+            foreach ($room->reviews as $review) {
+                if ($review->approval_status == 'approved') {
+                    if ($review->rating != 0) {
                         $total_rating = $total_rating + $review->rating;
                         $rating_count++;
                     }
@@ -66,11 +68,10 @@ class RoomType extends Model
             }
         }
 
-        if($total_rating > 0 && $rating_count > 0){
+        if ($total_rating > 0 && $rating_count > 0) {
             return $total_rating/$rating_count;
-        } else{
+        } else {
             return 0;
         }
     }
-
 }

@@ -69,7 +69,6 @@ class UserController extends AdminController
                 ->withInput($request->all)
                 ->withErrors($validator);
         } else {
-
             $user = new User();
             $user->first_name = $request->input('first_name');
             $user->last_name = $request->input('last_name');
@@ -84,7 +83,7 @@ class UserController extends AdminController
 
             // Avatar Upload
             if ($request->hasFile('avatar')) {
-                $path = $request->file('avatar')->store('','avatar');
+                $path = $request->file('avatar')->store('', 'avatar');
                 $user->avatar = $path;
             }
 
@@ -169,16 +168,16 @@ class UserController extends AdminController
             $user->role = $request->input('role');
             $user->status = $request->input('status');
 
-            if ($request->input('password')){
+            if ($request->input('password')) {
                 $user->password = bcrypt($request->input('password'));
             }
 
             // Avatar Upload
             if ($request->hasFile('avatar')) {
-                if(!in_array($user->avatar, ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'])){
+                if (!in_array($user->avatar, ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'])) {
                     Storage::delete('public/avatars/'.$user->avatar);
                 }
-                $path = $request->file('avatar')->store('','avatar');
+                $path = $request->file('avatar')->store('', 'avatar');
                 $user->avatar = $path;
             }
 
@@ -247,10 +246,10 @@ class UserController extends AdminController
             $user->about = $request->input('about');
 
             if ($request->hasFile('avatar')) {
-                if(!in_array($user->avatar, ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'])){
+                if (!in_array($user->avatar, ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'])) {
                     Storage::delete('public/avatars/'.$user->avatar);
                 }
-                $path = $request->file('avatar')->store('','avatar');
+                $path = $request->file('avatar')->store('', 'avatar');
                 $user->avatar = $path;
             }
 
@@ -274,7 +273,6 @@ class UserController extends AdminController
         $error_message = '';
         if ($user->id !== 1) {
             if ($user->id !== Auth::user()->id) {
-
                 // Delete room bookings
                 foreach ($user->room_bookings as $booking) {
                     $booking->delete();
@@ -286,8 +284,8 @@ class UserController extends AdminController
                 }
 
                 if ($user->delete()) {
-                    if(Storage::disk('avatar')->exists($user->avatar)){
-                        if(!in_array($user->avatar, ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'])){
+                    if (Storage::disk('avatar')->exists($user->avatar)) {
+                        if (!in_array($user->avatar, ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'])) {
                             Storage::delete('public/avatars/'.$user->avatar);
                         }
                     }
@@ -302,7 +300,7 @@ class UserController extends AdminController
             } else {
                 $error_message = "Sorry, you cannot delete yourself.";
             }
-        }else{
+        } else {
             $error_message = "Sorry, you can not delete the first user.";
         }
 
@@ -352,5 +350,4 @@ class UserController extends AdminController
             return redirect('/admin');
         }
     }
-
 }

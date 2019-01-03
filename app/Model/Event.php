@@ -15,5 +15,4 @@ class Event extends Model
     {
         return $this->hasMany('App\Model\EventBooking');
     }
-
 }

@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-
 class RoomTypeController extends FrontController
 {
     /**
@@ -20,15 +19,15 @@ class RoomTypeController extends FrontController
      */
     public function index()
     {
-        $room_types = RoomType::whereHas('images', function ($query){
+        $room_types = RoomType::whereHas('images', function ($query) {
             $query->where('is_primary', true);
         })->with([
-            'images' => function($query){
-            $query->where('is_primary', true)->where('status', true);
-        },
-            'facilities' => function($query){
+            'images' => function ($query) {
+                $query->where('is_primary', true)->where('status', true);
+            },
+            'facilities' => function ($query) {
                 $query->where('status', true);
-        }
+            }
         ])
             ->where('status', 1)
             ->orderBy('id', 'asc')
@@ -50,10 +49,10 @@ class RoomTypeController extends FrontController
     public function show($id)
     {
         $room_type = RoomType::with([
-            'images' => function($clientQuery) {
+            'images' => function ($clientQuery) {
                 $clientQuery->where('status', true);
-        },
-            'rooms.reviews' => function($clientQuery) {
+            },
+            'rooms.reviews' => function ($clientQuery) {
                 $clientQuery->where('approval_status', 'approved');
             }
         ])

@@ -52,6 +52,4 @@ class RoomAvailableRule implements Rule
         $booking = new Booking($this->room_type, $this->new_arrival_date, $this->new_departure_date);
         return $booking->room_available();
     }
-
-
 }

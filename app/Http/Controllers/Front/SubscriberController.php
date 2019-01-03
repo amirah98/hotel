@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Front;
 
-
 use App\Model\Subscriber;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-
 
 class SubscriberController extends FrontController
 {
@@ -38,6 +36,5 @@ class SubscriberController extends FrontController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'You have subscribed to this website successfully.');
         return redirect('/');
-
     }
 }

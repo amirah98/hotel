@@ -67,10 +67,10 @@ class UserController extends DashboardController
             $user->about = $request->input('about');
 
             if ($request->hasFile('avatar')) {
-                if(!in_array($user->avatar, ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'])){
+                if (!in_array($user->avatar, ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'])) {
                     Storage::delete('public/avatars/'.$user->avatar);
                 }
-                $path = $request->file('avatar')->store('','avatar');
+                $path = $request->file('avatar')->store('', 'avatar');
                 $user->avatar = $path;
             }
 
@@ -121,5 +121,4 @@ class UserController extends DashboardController
             return redirect('/dashboard');
         }
     }
-
 }

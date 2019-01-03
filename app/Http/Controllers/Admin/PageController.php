@@ -67,7 +67,6 @@ class PageController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The page has been added successfully');
         return redirect('admin/page');
-
     }
 
     /**
@@ -131,6 +130,5 @@ class PageController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The page has been deleted successfully');
         return redirect('admin/page');
-
     }
 }

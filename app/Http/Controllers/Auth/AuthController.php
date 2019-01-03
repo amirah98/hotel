@@ -81,10 +81,10 @@ class AuthController extends Controller
         $available_avatars = ['boy.png', 'boy-1.png', 'girl.png', 'girl-1.png', 'girl-2.png','man.png', 'man-1.png', 'man-2.png', 'man-3.png'];
         $first_name = "";
         $last_name = "";
-        if(!isset($socialLiteUser->name)){
+        if (!isset($socialLiteUser->name)) {
             $first_name = $socialLiteUser->first_name;
             $last_name = $socialLiteUser->last_name;
-        } else{
+        } else {
             $first_name = $socialLiteUser->name;
         }
 
@@ -100,5 +100,4 @@ class AuthController extends Controller
 
         return $user;
     }
-
 }

@@ -90,7 +90,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
     Route::resource('room_type', 'Admin\RoomTypeController');
     // Route for room types
-    Route::group(['prefix' => 'room_type', 'middleware' => 'auth'], function(){
+    Route::group(['prefix' => 'room_type', 'middleware' => 'auth'], function () {
         // Rutes for Room Type Images
         Route::get('/{id}/image', 'Admin\ImageController@index');
         Route::get('/{id}/image/create', 'Admin\ImageController@create');
@@ -108,9 +108,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('/{id}/room/{room_id}/edit', 'Admin\RoomController@edit');
         Route::put('/{id}/room/{room_id}/edit', 'Admin\RoomController@update');
         Route::delete('/{id}/room/{image_id}', 'Admin\RoomController@destroy');
-
     });
 });
-
-
-

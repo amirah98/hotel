@@ -29,7 +29,5 @@ class Room extends Model
     public function reviews()
     {
         return $this->hasManyThrough('App\Model\Review', 'App\Model\RoomBooking');
-
     }
-
 }
