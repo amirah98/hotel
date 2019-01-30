@@ -49,7 +49,7 @@ class RoomBookingController extends AdminController
             'payment' => 'boolean'
         ];
         $validator = Validator::make($request->all(), $rules);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()
                 ->withInput($request->all())
                 ->withErrors($validator);
@@ -63,5 +63,4 @@ class RoomBookingController extends AdminController
         Session::flash('flash_message', 'The Room Booking has been updated successfully.');
         return redirect('/admin/room_booking');
     }
-
 }

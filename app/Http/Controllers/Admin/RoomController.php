@@ -107,7 +107,6 @@ class RoomController extends AdminController
         return view('admin.room.edit')
             ->with('room_type', $room_type)
             ->with('room', $room);
-
     }
 
     /**
@@ -134,7 +133,7 @@ class RoomController extends AdminController
             $room = Room::find($room_id);
             $room->room_number = $request->input('room_number');
             $room->description = $request->input('description');
-            if($request->has('available')){
+            if ($request->has('available')) {
                 $room->available = $request->input('available');
             }
             $room->status = $request->input('status');
@@ -162,8 +161,7 @@ class RoomController extends AdminController
             $booking->delete();
         }
 
-        if($room->delete()){
-
+        if ($room->delete()) {
             Session::flash('flash_title', 'Success');
             Session::flash('flash_message', 'Room has been deleted');
 
@@ -172,7 +170,5 @@ class RoomController extends AdminController
         return redirect()
             ->back()
             ->withErrors(array('message' => 'Sorry, the room could not be deleted.'));
-
     }
-
 }

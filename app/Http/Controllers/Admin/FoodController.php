@@ -81,7 +81,6 @@ class FoodController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The food has been added successfully');
         return redirect('admin/food');
-
     }
 
     /**
@@ -156,7 +155,7 @@ class FoodController extends AdminController
     public function destroy($id)
     {
         $food = Food::find($id);
-        if($food->delete()){
+        if ($food->delete()) {
             Storage::delete('public/foods/'.$food->image);
 
             Session::flash('flash_title', 'Success');
@@ -166,6 +165,5 @@ class FoodController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The food has been deleted successfully');
         return redirect('admin/food');
-
     }
 }

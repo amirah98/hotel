@@ -86,7 +86,6 @@ class EventController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The event has been added successfully');
         return redirect('admin/event');
-
     }
 
     /**
@@ -173,7 +172,7 @@ class EventController extends AdminController
             $booking->delete();
         }
 
-        if($event->delete()){
+        if ($event->delete()) {
             Storage::delete('public/events/'.$event->image);
 
             Session::flash('flash_title', 'Success');
@@ -183,6 +182,5 @@ class EventController extends AdminController
         Session::flash('flash_title', 'Success');
         Session::flash('flash_message', 'The event has been deleted successfully');
         return redirect('admin/event');
-
     }
 }

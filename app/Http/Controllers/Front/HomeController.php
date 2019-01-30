@@ -29,13 +29,13 @@ class HomeController extends FrontController
     public function index()
     {
         $slider_images = Slider::where('status', 1)->get();
-        $room_types = RoomType::whereHas('images', function ($query){
-           $query->where('is_primary', true);
+        $room_types = RoomType::whereHas('images', function ($query) {
+            $query->where('is_primary', true);
         })->with([
-            'images' => function($query){
-            $query->where('is_primary', true)->where('status', true);
-        },
-            'rooms' => function($query){
+            'images' => function ($query) {
+                $query->where('is_primary', true)->where('status', true);
+            },
+            'rooms' => function ($query) {
                 $query->where('status', true);
             }])
             ->where('status', 1)

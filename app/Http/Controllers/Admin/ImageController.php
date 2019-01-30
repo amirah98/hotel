@@ -81,7 +81,7 @@ class ImageController extends AdminController
 
             $image->caption = $request->input('caption');
             $image->is_primary = $request->input('is_primary');
-            if($image->is_primary == true){
+            if ($image->is_primary == true) {
                 $this->set_is_primary_false($id);
             }
 
@@ -120,7 +120,6 @@ class ImageController extends AdminController
         return view('admin.image.edit')
             ->with('room_type', $room_type)
             ->with('image', $image);
-
     }
 
     /**
@@ -146,7 +145,6 @@ class ImageController extends AdminController
                 ->withInput($request->all)
                 ->withErrors($validator);
         } else {
-
             $room_type = RoomType::find($id);
             $image = Image::find($image_id);
             if ($request->hasFile('image')) {
@@ -160,7 +158,7 @@ class ImageController extends AdminController
             }
             $image->caption = $request->input('caption');
             $image->is_primary = $request->input('is_primary');
-            if($image->is_primary == true){
+            if ($image->is_primary == true) {
                 $this->set_is_primary_false($id);
             }
             $image->status = $request->input('status');
@@ -183,7 +181,7 @@ class ImageController extends AdminController
     {
         $room_type = RoomType::find($id);
         $image = Image::findOrFail($image_id);
-        if($image->delete()){
+        if ($image->delete()) {
             Storage::delete('public/room_types/'.$image->name);
 
             Session::flash('flash_title', 'Success');
@@ -194,7 +192,6 @@ class ImageController extends AdminController
         return redirect()
             ->back()
             ->withErrors(array('message' => 'Sorry, the image could not be deleted.'));
-
     }
 
 
@@ -229,14 +226,12 @@ class ImageController extends AdminController
                 ->withInput($request->all)
                 ->withErrors($validator);
         } else {
-
             // Upload Photo
             if ($request->hasFile('images')) {
                 $images = $request->file('images');
 
                 foreach ($images as $file) {
-
-                    $path = $file->store('','room_type');
+                    $path = $file->store('', 'room_type');
                     $image = ImageManager::make('storage/room_types/'.$path);
                     $image->fit(950, 650);
                     $image->save(storage_path().'/app/public/room_types/'.$path);
@@ -259,10 +254,9 @@ class ImageController extends AdminController
     public function set_is_primary_false($room_type_id)
     {
         $room_type = RoomType::find($room_type_id);
-        foreach ($room_type->images as $image){
+        foreach ($room_type->images as $image) {
             $image->is_primary = false;
             $image->save();
         }
     }
-
 }

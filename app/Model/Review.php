@@ -15,9 +15,9 @@ class Review extends Model
 
     protected $fillable = ['review', 'rating', 'approval_status', 'room_booking_id'];
 
-    public function room_booking(){
+    public function room_booking()
+    {
 
         return $this->belongsTo('App\Model\RoomBooking');
     }
-
 }

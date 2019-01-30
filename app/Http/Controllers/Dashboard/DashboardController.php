@@ -16,6 +16,5 @@ class DashboardController extends BaseController
 
     public function __construct()
     {
-
     }
 }

@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
             'avatar' => 'girl-1.png',
             'about' => "hello from the other world",
             'role' => 'admin',
-            'status' => TRUE,
+            'status' => true,
             'remember_token' => str_random(10),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);

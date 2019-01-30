@@ -65,7 +65,6 @@ class SliderController extends AdminController
                 ->withInput($request->all)
                 ->withErrors($validator);
         } else {
-
             $slider = new Slider();
             $slider->small_title = $request->input('small_title');
             $slider->big_title = $request->input('big_title');
@@ -76,7 +75,7 @@ class SliderController extends AdminController
 
             // Image Upload
             if ($request->hasFile('image')) {
-                $path = $request->file('image')->store('','slider');
+                $path = $request->file('image')->store('', 'slider');
                 $slider_image = ImageManager::make('storage/slider/'.$path);
                 $slider_image->fit(1200, 500);
                 $slider_image->save(storage_path().'/app/public/slider/'.$path);
@@ -135,13 +134,13 @@ class SliderController extends AdminController
             'status' => 'required|boolean'
         ];
 
-        if(!empty($request->input('image'))){
+        if (!empty($request->input('image'))) {
             $rules['image'] = 'mimes:jpeg,jpg,png';
         }
 
         $validator = Validator::make($request->all(), $rules);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()
                 ->withInput($request->all())
                 ->withErrors($validator)
@@ -153,10 +152,10 @@ class SliderController extends AdminController
         $slider->link = $request->input('link');
         $slider->status = $request->input('status');
 
-        if($request->hasFile('image')){
+        if ($request->hasFile('image')) {
             Storage::delete('public/slider/'.$slider->name);
 
-            $path = $request->file('image')->store('','slider');
+            $path = $request->file('image')->store('', 'slider');
             $slider_image = ImageManager::make('storage/slider/'.$path);
             $slider_image->fit(1200, 500);
             $slider_image->save(storage_path().'/app/public/slider/'.$path);
@@ -178,7 +177,7 @@ class SliderController extends AdminController
     public function destroy($id)
     {
         $slider = Slider::findOrFail($id);
-        if($slider->delete()){
+        if ($slider->delete()) {
             Storage::delete('public/slider/'.$slider->name);
             Session::flash('flash_title', 'Success');
             Session::flash('flash_message', 'Image has been deleted');
@@ -187,6 +186,5 @@ class SliderController extends AdminController
         return redirect()
             ->back()
             ->withErrors(array('message' => 'Sorry, the image could not be deleted.'));
-
     }
 }

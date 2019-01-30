@@ -141,8 +141,5 @@ class FoodsTableSeeder extends Seeder
             'status' => true,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-
-
     }
 }
-

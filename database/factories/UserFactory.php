@@ -17,10 +17,11 @@ $factory->define(App\Model\User::class, function (Faker $faker) {
     static $password;
     $gender = $faker->randomElement(['male', 'female', 'others']);
 
-    if($gender == "female")
+    if ($gender == "female") {
         $avatar = $faker->randomElement(['girl.png', 'girl-1.png', 'girl-2.png']);
-    else
+    } else {
         $avatar = $faker->randomElement(['boy.png', 'boy-1.png', 'man.png', 'man-1.png', 'man-2.png', 'man-3.png']);
+    }
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
@@ -32,7 +33,7 @@ $factory->define(App\Model\User::class, function (Faker $faker) {
         'avatar' => $avatar,
         'about' => $faker->text($maxNbChars = 200),
         'role' => 'user',
-        'status' => TRUE,
+        'status' => true,
         'remember_token' => str_random(10),
     ];
 });

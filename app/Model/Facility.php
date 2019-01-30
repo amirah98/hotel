@@ -14,5 +14,4 @@ class Facility extends Model
     {
         return $this->belongsToMany('App\Model\RoomType', 'facility_room_type')->withTimestamps();
     }
-
 }
