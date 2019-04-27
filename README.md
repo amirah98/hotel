@@ -2,7 +2,7 @@
 Hotel Booking and Management is an web based application. It is built using laravel framework.
 Demo: hotel.dilipraya.com
 
-![screenshot](https://raw.githubusercontent.com/dilipraya/hotel/webpage_screenshot.png)
+![screenshot](https://github.com/dilipraya/hotel/blob/master/webpage_screenshot.png?raw=true)
 
 ## Getting Started
 
