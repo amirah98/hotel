@@ -5,7 +5,7 @@ Hotel Booking and Management is an web based application. It is built using lara
 
 ## View Demo
 
-hote.dilipraya.com
+[View Demo](hotel.dilipraya.com)
 
 ## Getting Started
 
